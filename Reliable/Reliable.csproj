@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{061947A7-2B45-4D87-81F5-9B551FBA1EB6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Reliable</RootNamespace>
+    <AssemblyName>Reliable</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>Z:\Reliable Application\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\RMPSRV02\Reliable Files\Reliable Application\</UpdateUrl>
+    <ApplicationRevision>72</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>reliablelogo_tJT_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>6B499048D7D4E0B46F6D9AF8EFE1B6805491871A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Reliable_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu.Licensing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=f89b4760ba7dcb6b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.1.5.3, Version=1.5.3.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuButton, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuCheckBox, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuCheckBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuCircleProgress, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuCircleProgress.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuColorTransition, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuColorTransition.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDatePicker, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuDatePicker.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuDropdown, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuDropdown.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuFormDock, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuFormDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGauge, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuGauge.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGradientPanel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuGradientPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGroupBox, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuGroupBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuImageButton, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuLabel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuPages.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPanel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuPictureBox, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuProgressBar, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRating, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuRating.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuScrollBar, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuScrollBar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSeparator, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuSeparator.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuShadowPanel, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuShadowPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuShapes, Version=4.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuShapes.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSlider, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuSlider.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuSnackbar, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuSnackbar.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTextBox, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuToggleSwitch, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuToggleSwitch.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuToolTip, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuToolTip.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuTransition, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuTransition.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuUserControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.BunifuUserControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
+    </Reference>
+    <Reference Include="DataGridViewAutoFilter">
+      <HintPath>..\DataGridViewAutoFilter\DataGridViewAutoFilter\bin\Debug\DataGridViewAutoFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Client, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.4.0.1\lib\net45\Microsoft.Azure.Mobile.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Mobile.Client.SQLiteStore, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.SQLiteStore.4.0.1\lib\net45\Microsoft.Azure.Mobile.Client.SQLiteStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.8.4.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\net45\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SQLitePCLRaw.batteries_green, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a84b7dcfb1391f7f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.2\lib\net45\SQLitePCLRaw.batteries_green.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_green.1.1.2\lib\net45\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.2\lib\net45\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9c301db686d0bd12, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.e_sqlite3.net45.1.1.2\lib\net45\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account Managment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account Managment.Designer.cs">
+      <DependentUpon>Account Managment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountPriviledges.cs" />
+    <Compile Include="APMailEFT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="APMailEFT.designer.cs">
+      <DependentUpon>APMailEFT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="APMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="APMenu.Designer.cs">
+      <DependentUpon>APMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AzureTableGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AzureTableGenerator.Designer.cs">
+      <DependentUpon>AzureTableGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BarcodeGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BarcodeGenerator.Designer.cs">
+      <DependentUpon>BarcodeGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Code128Conversion.cs" />
+    <Compile Include="CompanyInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyInformation.Designer.cs">
+      <DependentUpon>CompanyInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CountSheets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountSheets.Designer.cs">
+      <DependentUpon>CountSheets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EFTNotePad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EFTNotePad.Designer.cs">
+      <DependentUpon>EFTNotePad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmailPayroll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailPayroll.Designer.cs">
+      <DependentUpon>EmailPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GLLForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GLLForm.designer.cs">
+      <DependentUpon>GLLForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryCountTable.cs" />
+    <Compile Include="InventoryPricing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryPricing.Designer.cs">
+      <DependentUpon>InventoryPricing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryTable.cs" />
+    <Compile Include="Invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoices.Designer.cs">
+      <DependentUpon>Invoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingBarForm.designer.cs">
+      <DependentUpon>LoadingBarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagmentMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagmentMenu.Designer.cs">
+      <DependentUpon>ManagmentMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manufacturing Price Check.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manufacturing Price Check.Designer.cs">
+      <DependentUpon>Manufacturing Price Check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewBarcodesTable.cs" />
+    <Compile Include="PasswordChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordChange.Designer.cs">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuoteForm.Designer.cs">
+      <DependentUpon>QuoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reliable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reliable.Designer.cs">
+      <DependentUpon>Reliable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SalesCatalogue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesCatalogue.Designer.cs">
+      <DependentUpon>SalesCatalogue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesMenu.Designer.cs">
+      <DependentUpon>SalesMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesPricingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesPricingInfo.Designer.cs">
+      <DependentUpon>SalesPricingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesToCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesToCustomer.Designer.cs">
+      <DependentUpon>SalesToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShippingLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShippingLabels.Designer.cs">
+      <DependentUpon>ShippingLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowroomLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowroomLabels.Designer.cs">
+      <DependentUpon>ShowroomLabels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vendors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vendors.Designer.cs">
+      <DependentUpon>Vendors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseMenu.Designer.cs">
+      <DependentUpon>WarehouseMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WarehouseProductLabels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WarehouseProductLabels.Designer.cs">
+      <DependentUpon>WarehouseProductLabels.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Account Managment.resx">
+      <DependentUpon>Account Managment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="APMailEFT.resx">
+      <DependentUpon>APMailEFT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="APMenu.resx">
+      <DependentUpon>APMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AzureTableGenerator.resx">
+      <DependentUpon>AzureTableGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BarcodeGenerator.resx">
+      <DependentUpon>BarcodeGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompanyInformation.resx">
+      <DependentUpon>CompanyInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountSheets.resx">
+      <DependentUpon>CountSheets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EFTNotePad.resx">
+      <DependentUpon>EFTNotePad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmailPayroll.resx">
+      <DependentUpon>EmailPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GLLForm.resx">
+      <DependentUpon>GLLForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryPricing.resx">
+      <DependentUpon>InventoryPricing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoices.resx">
+      <DependentUpon>Invoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingBarForm.resx">
+      <DependentUpon>LoadingBarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagmentMenu.resx">
+      <DependentUpon>ManagmentMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manufacturing Price Check.resx">
+      <DependentUpon>Manufacturing Price Check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordChange.resx">
+      <DependentUpon>PasswordChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuoteForm.resx">
+      <DependentUpon>QuoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reliable.resx">
+      <DependentUpon>Reliable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SalesCatalogue.resx">
+      <DependentUpon>SalesCatalogue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesMenu.resx">
+      <DependentUpon>SalesMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesPricingInfo.resx">
+      <DependentUpon>SalesPricingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesToCustomer.resx">
+      <DependentUpon>SalesToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShippingLabels.resx">
+      <DependentUpon>ShippingLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowroomLabels.resx">
+      <DependentUpon>ShowroomLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vendors.resx">
+      <DependentUpon>Vendors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseMenu.resx">
+      <DependentUpon>WarehouseMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WarehouseProductLabels.resx">
+      <DependentUpon>WarehouseProductLabels.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Image1.bmp" />
+    <Content Include="reliablelogo_tJT_icon.ico" />
+    <None Include="Resources\Transparent.png" />
+    <None Include="Resources\No Image File.PNG" />
+    <None Include="Resources\Hyphen Icon.PNG" />
+    <EmbeddedResource Include="Resources\UPC-A.ttf" />
+    <None Include="Resources\X.PNG" />
+    <None Include="Resources\ReliableLongWhiteBlueNew.png" />
+    <None Include="Resources\ReliableLongWhiteBlue.png" />
+    <None Include="Resources\ReliableLongWhite.png" />
+    <None Include="Resources\Reliable Logo White.png" />
+    <None Include="Resources\Icon_-_Padlock_-_Monochrome.png" />
+    <None Include="Reliable_TemporaryKey.pfx" />
+    <None Include="Resources\ReliableIndustrialLogoTrans.png" />
+    <None Include="Resources\ReliableLogoTrans.png" />
+    <None Include="Resources\Reliable-Industrial-Grey.jpg" />
+    <None Include="Resources\ReliableLogo.jpg" />
+    <None Include="Resources\ReliableLong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.linux.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.osx.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets'))" />
+  </Target>
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.osx.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.osx.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.osx.targets')" />
+  <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.v110_xp.1.1.2\build\SQLitePCLRaw.lib.e_sqlite3.v110_xp.targets')" />
+</Project>
