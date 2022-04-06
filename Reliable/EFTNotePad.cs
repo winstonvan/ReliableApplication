@@ -13,53 +13,40 @@ using System.Diagnostics;
 using System.Threading;
 using System.Text.RegularExpressions;
 
-namespace Reliable
-{
-    public partial class EFTNotePad : Form
-    {
+namespace Reliable {
+    public partial class EFTNotePad : Form {
 
         bool connectRIS = false;
-
-        List<Checks> checkNumbers = new List<Checks>();
-
-        String OLDBEConnect = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1.accdb; Persist Security Info=False;";
-        String OLDBEConnectRIS = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1RIS.accdb; Persist Security Info=False;";
+        readonly List<Checks> checkNumbers = new List<Checks>();
+        readonly String OLDBEConnect = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1.accdb; Persist Security Info=False;";
+        readonly String OLDBEConnectRIS = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1RIS.accdb; Persist Security Info=False;";
 
         OleDbConnection connect = null;
 
-        public EFTNotePad()
-        {
+        public EFTNotePad() {
             InitializeComponent();
         }
 
-        private void DisconnectFromDatabases()
-        {
-            try
-            {
+        private void DisconnectFromDatabases() {
+            try {
                 connect = new OleDbConnection(OLDBEConnect);
                 connect.Close();
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 connect.Close();
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
         }
 
-        private void RMPConnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void RMPConnect_Click(object sender, EventArgs e) {
+            try {
                 this.Cursor = Cursors.WaitCursor;
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 connect.Close();
                 connect = new OleDbConnection(OLDBEConnect);
                 connect.Open();
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -86,19 +73,15 @@ namespace Reliable
             connectRIS = false;
         }
 
-        private void EFTNotePad_Load(object sender, EventArgs e)
-        {
+        private void EFTNotePad_Load(object sender, EventArgs e) {
             connectRIS = false;
 
-            try
-            {
+            try {
                 this.Cursor = Cursors.WaitCursor;
                 connect = new OleDbConnection(OLDBEConnect);
                 connect.Open();
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -119,15 +102,12 @@ namespace Reliable
 
         }
 
-        private void EFTNotePad_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void EFTNotePad_FormClosing(object sender, FormClosingEventArgs e) {
             DisconnectFromDatabases();
         }
 
-        private void RISConnect_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
+        private void RISConnect_Click_1(object sender, EventArgs e) {
+            try {
                 this.Cursor = Cursors.WaitCursor;
 
                 connect = new OleDbConnection(OLDBEConnect);
@@ -136,9 +116,7 @@ namespace Reliable
                 connect.Open();
 
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -167,19 +145,15 @@ namespace Reliable
             this.Cursor = Cursors.Default;
         }
 
-        private void addEntryButton_Click(object sender, EventArgs e)
-        {
+        private void addEntryButton_Click(object sender, EventArgs e) {
 
             this.Cursor = Cursors.WaitCursor;
 
             string query = "INSERT INTO EFTCrossTable (EasypayNumber, StepOneNumber) VALUES ('" + easyPayText.Text + "', '" + stepOneText.Text + "');";
 
-            using (connect)
-            {
-                using (var accessUpdateCommand = connect.CreateCommand())
-                {
-                    if(connect.State == ConnectionState.Closed)
-                    {
+            using (connect) {
+                using (var accessUpdateCommand = connect.CreateCommand()) {
+                    if (connect.State == ConnectionState.Closed) {
                         connect.Open();
                     }
                     accessUpdateCommand.CommandText = query;
@@ -190,8 +164,7 @@ namespace Reliable
             crossTableDGV.DataSource = null;
             crossTableDGV.Rows.Clear();
 
-            if (connectRIS == false)
-            {
+            if (connectRIS == false) {
                 connect = new OleDbConnection(OLDBEConnect);
                 OleDbCommand command = new OleDbCommand("SELECT * FROM EFTCrossTable", connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -203,9 +176,7 @@ namespace Reliable
                 adapter.Fill(crossTable);
 
                 crossTableDGV.DataSource = crossTable;
-            }
-            else
-            {
+            } else {
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 OleDbCommand command = new OleDbCommand("SELECT * FROM EFTCrossTable", connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -225,18 +196,14 @@ namespace Reliable
             this.Cursor = Cursors.Default;
         }
 
-        private void removebutton_Click(object sender, EventArgs e)
-        {
+        private void removebutton_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
             string query = "DELETE * FROM EFTCrossTable WHERE ID = " + idBox.Text + ";";
 
-            using (connect)
-            {
-                using (var accessUpdateCommand = connect.CreateCommand())
-                {
-                    if (connect.State == ConnectionState.Closed)
-                    {
+            using (connect) {
+                using (var accessUpdateCommand = connect.CreateCommand()) {
+                    if (connect.State == ConnectionState.Closed) {
                         connect.Open();
                     }
                     accessUpdateCommand.CommandText = query;
@@ -247,8 +214,7 @@ namespace Reliable
             crossTableDGV.DataSource = null;
             crossTableDGV.Rows.Clear();
 
-            if (connectRIS == false)
-            {
+            if (connectRIS == false) {
                 connect = new OleDbConnection(OLDBEConnect);
                 OleDbCommand command = new OleDbCommand("SELECT * FROM EFTCrossTable", connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -260,9 +226,7 @@ namespace Reliable
                 adapter.Fill(crossTable);
 
                 crossTableDGV.DataSource = crossTable;
-            }
-            else
-            {
+            } else {
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 OleDbCommand command = new OleDbCommand("SELECT * FROM EFTCrossTable", connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -282,24 +246,18 @@ namespace Reliable
         }
 
 
-        private void creatTxtFile_Click(object sender, EventArgs e)
-        {
+        private void creatTxtFile_Click(object sender, EventArgs e) {
             string folderPath = "Z:\\EFT_Files\\" + ConvertDateFormatting(dateTimePicker1.Value) + "\\";
 
-            if (!Directory.Exists(folderPath))
-            {
+            if (!Directory.Exists(folderPath)) {
                 Directory.CreateDirectory(folderPath);
             }
 
-            if (connectRIS == false)
-            {
+            if (connectRIS == false) {
 
                 folderPath += "RMP.txt";
 
-            }
-
-            else
-            {
+            } else {
 
                 folderPath += "RIS.txt";
 
@@ -307,12 +265,10 @@ namespace Reliable
 
             File.WriteAllText(folderPath, String.Empty);
 
-            using (StreamWriter sw = new StreamWriter(folderPath, true))
-            {
+            using (StreamWriter sw = new StreamWriter(folderPath, true)) {
                 int i = 1;
 
-                foreach (Checks check in checkNumbers)
-                {
+                foreach (Checks check in checkNumbers) {
 
                     string myDate = Regex.Replace(textFileDGV.Rows[check.index].Cells[6].Value.ToString(), "-", "");
                     myDate = myDate.Substring(2);
@@ -320,7 +276,7 @@ namespace Reliable
                     i++;
                 }
             }
-      
+
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             process.StartInfo = startInfo;
@@ -332,32 +288,23 @@ namespace Reliable
 
         }
 
-        private string ConvertDateFormatting(DateTime myDate)
-        {
+        private string ConvertDateFormatting(DateTime myDate) {
             string newDate = null;
             string tempMonth = null;
             string tempDay = null;
 
 
-            if (myDate.Month <= 9)
-            {
+            if (myDate.Month <= 9) {
                 tempMonth = "0" + myDate.Month.ToString();
-            }
-
-            else
-            {
+            } else {
                 tempMonth = myDate.Month.ToString();
             }
 
 
 
-            if (myDate.Day <= 9)
-            {
+            if (myDate.Day <= 9) {
                 tempDay = "0" + myDate.Day.ToString();
-            }
-
-            else
-            {
+            } else {
                 tempDay = myDate.Day.ToString();
             }
 
@@ -366,8 +313,7 @@ namespace Reliable
             return newDate;
         }
 
-        private string queryBuilder()
-        {
+        private string queryBuilder() {
 
             String query = null;
 
@@ -386,12 +332,10 @@ namespace Reliable
             return query;
         }
 
-        private void queryButton_Click(object sender, EventArgs e)
-        {
+        private void queryButton_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
-            if (connectRIS == false)
-            {
+            if (connectRIS == false) {
                 connect = new OleDbConnection(OLDBEConnect);
                 OleDbCommand command = new OleDbCommand(queryBuilder(), connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -404,9 +348,7 @@ namespace Reliable
 
                 textFileDGV.DataSource = crossTable;
 
-            }
-            else
-            {
+            } else {
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 OleDbCommand command = new OleDbCommand(queryBuilder(), connect);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
@@ -425,10 +367,8 @@ namespace Reliable
 
             int myindex = 0;
 
-            foreach (DataGridViewColumn col in textFileDGV.Columns)
-            {
-                if (col.HeaderText == "CheckNum")
-                {
+            foreach (DataGridViewColumn col in textFileDGV.Columns) {
+                if (col.HeaderText == "CheckNum") {
                     myindex = col.Index;
                     break;
                 }
@@ -436,15 +376,10 @@ namespace Reliable
 
             List<string> checkStrings = new List<string>();
 
-            for (int i = 0; i < textFileDGV.RowCount - 1; i++)
-            {
-                if (checkStrings.Contains(textFileDGV.Rows[i].Cells[myindex].Value.ToString()))
-                {
+            for (int i = 0; i < textFileDGV.RowCount - 1; i++) {
+                if (checkStrings.Contains(textFileDGV.Rows[i].Cells[myindex].Value.ToString())) {
                     continue;
-                }
-
-                else
-                {
+                } else {
                     checkStrings.Add(textFileDGV.Rows[i].Cells[myindex].Value.ToString());
                     checkNumbers.Add(new Checks(i, textFileDGV.Rows[i].Cells[myindex].Value.ToString()));
 
@@ -456,36 +391,30 @@ namespace Reliable
             this.Cursor = Cursors.Default;
         }
 
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
             FormState.PreviousPage.Show();
 
             this.Hide();
         }
 
-        private void crossTableDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void crossTableDGV_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void closeButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void minimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
     }
 
-    public class Checks
-    {
+    public class Checks {
         public int index;
         public string checkNumber;
 
-        public Checks(int indexNew, string checkNew)
-        {
+        public Checks(int indexNew, string checkNew) {
             index = indexNew;
             checkNumber = checkNew;
         }

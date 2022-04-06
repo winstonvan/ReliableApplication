@@ -10,74 +10,54 @@ using System.Windows.Forms;
 using TestProject;
 using System.Data.OleDb;
 
-namespace Reliable
-{
-    public partial class Reliable : Form
-    {
-
-        String OLDBEConnect = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1.accdb; Persist Security Info=False;";
-        String OLDBEConnectRIS = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=P:\\CSPRACK\\step1RIS.accdb; Persist Security Info=False;";
-
-        OleDbConnection connect = null;
-
+namespace Reliable {
+    public partial class Reliable : Form {
         public static string account = null;
-        public Reliable()
-        {
+        public Reliable() {
             InitializeComponent();
         }
-
-        private void Reliable_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
+        
+        private void Reliable_FormClosing(object sender, FormClosingEventArgs e) {
 
         }
 
-        private void Reliable_Load(object sender, EventArgs e)
-        {
+        private void Reliable_Load(object sender, EventArgs e) {
             menuPanel.Height = 45;
             menuPanel.Width = 146;
             menuPanelTwo.Height = 14;
-            
-            if(AccountPriviledges.getAP() == false)
-            {
+
+            if (AccountPriviledges.getAP() == false) {
                 accountsPayableButton.Visible = false;
             }
 
-            if (AccountPriviledges.getGL() == false)
-            {
+            if (AccountPriviledges.getGL() == false) {
                 generalLedgerButton.Visible = false;
             }
 
-            if (AccountPriviledges.getSales() == false)
-            {
+            if (AccountPriviledges.getSales() == false) {
                 salesNewButton.Visible = false;
             }
 
-            if (AccountPriviledges.getManage() == false)
-            {
+            if (AccountPriviledges.getManage() == false) {
                 managmentButton.Visible = false;
             }
 
-            if (AccountPriviledges.getWarehouse() == false)
-            {
+            if (AccountPriviledges.getWarehouse() == false) {
                 warehouseButton.Visible = false;
             }
 
-            if(AccountPriviledges.getAdminFlag() == false)
-            {
+            if (AccountPriviledges.getAdminFlag() == false) {
                 accountManagmentButton.Visible = false;
             }
 
             FormState.PreviousPage = this;
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void CloseButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void changePasswordButton_Click(object sender, EventArgs e)
-        {
+        private void ChangePasswordButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             PasswordChange passForm = new PasswordChange();
@@ -87,31 +67,21 @@ namespace Reliable
             passForm.Show();
         }
 
-        private void menuButton_Click(object sender, EventArgs e)
-        {
-            if(menuPanelTwo.Height == 14 && AccountPriviledges.getAdminFlag() == true)
-            {
+        private void MenuButton_Click(object sender, EventArgs e) {
+            if (menuPanelTwo.Height == 14 && AccountPriviledges.getAdminFlag() == true) {
                 menuPanelTwo.Visible = false;
                 menuPanelTwo.Height = 126;
                 menuPanelTransitionTwo.ShowSync(menuPanelTwo);
-            }
-
-            else if(menuPanelTwo.Height == 14 && AccountPriviledges.getAdminFlag() == false)
-            {
+            } else if (menuPanelTwo.Height == 14 && AccountPriviledges.getAdminFlag() == false) {
                 menuPanelTwo.Visible = false;
                 menuPanelTwo.Height = 92;
                 menuPanelTransitionTwo.ShowSync(menuPanelTwo);
-            }
-
-            else
-            {
+            } else {
                 menuPanelTwo.Height = 14;
             }
         }
 
-        private void accountsPayableButton_Click(object sender, EventArgs e)
-        {
-
+        private void AccountsPayableButton_Click(object sender, EventArgs e) {
             accountsPayableButton.Visible = false;
             apButtonTransition.ShowSync(accountsPayableButton);
 
@@ -122,11 +92,9 @@ namespace Reliable
             apForm.Closed += (s, args) => this.Close();
 
             apForm.Show();
-
         }
 
-        private void generalLedgerButton_Click(object sender, EventArgs e)
-        {
+        private void GeneralLedgerButton_Click(object sender, EventArgs e) {
             generalLedgerButton.Visible = false;
             glTransition.ShowSync(generalLedgerButton);
 
@@ -137,11 +105,9 @@ namespace Reliable
             glForm.Closed += (s, args) => this.Close();
 
             glForm.Show();
-
         }
 
-        private void salesNewButton_Click(object sender, EventArgs e)
-        {
+        private void SalesNewButton_Click(object sender, EventArgs e) {
             salesNewButton.Visible = false;
             salesTransition.ShowSync(salesNewButton);
 
@@ -152,11 +118,9 @@ namespace Reliable
             salesForm.Closed += (s, args) => this.Close();
 
             salesForm.Show();
-
         }
 
-        private void companyInformationButton_Click(object sender, EventArgs e)
-        {
+        private void CompanyInformationButton_Click(object sender, EventArgs e) {
             companyInformationButton.Visible = false;
             companyTransition.ShowSync(companyInformationButton);
 
@@ -169,13 +133,11 @@ namespace Reliable
             salesForm.Show();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void MinimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void managmentButton_Click(object sender, EventArgs e)
-        {
+        private void ManagmentButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             ManagmentMenu managmentForm = new ManagmentMenu();
@@ -185,8 +147,7 @@ namespace Reliable
             managmentForm.Show();
         }
 
-        private void warehouseButton_Click(object sender, EventArgs e)
-        {
+        private void WarehouseButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             WarehouseMenu newForm = new WarehouseMenu();
@@ -196,8 +157,7 @@ namespace Reliable
             newForm.Show();
         }
 
-        private void accountManagmentButton_Click(object sender, EventArgs e)
-        {
+        private void accountManagmentButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             Account_Managment newForm = new Account_Managment();
@@ -208,8 +168,7 @@ namespace Reliable
         }
     }
 
-    public static class FormState
-    {
+    public static class FormState {
         public static Form PreviousPage;
     }
 }

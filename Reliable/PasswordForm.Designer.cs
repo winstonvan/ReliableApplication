@@ -74,7 +74,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(471, 182);
             this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // closeButton
             // 
@@ -109,7 +109,7 @@
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.closeButton.Textcolor = System.Drawing.Color.White;
             this.closeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label3
             // 
@@ -146,7 +146,7 @@
             this.okayButton.TabIndex = 16;
             this.okayButton.Text = "OK";
             this.okayButton.UseVisualStyleBackColor = false;
-            this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
+            this.okayButton.Click += new System.EventHandler(this.OkayButton_Click);
             // 
             // bunifuDragControl1
             // 

@@ -9,28 +9,21 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RMP_Inventory_Finder;
 
-namespace Reliable
-{
-    public partial class APMenu : Form
-    {
-        public APMenu()
-        {
+namespace Reliable {
+    public partial class APMenu : Form {
+        public APMenu() {
             InitializeComponent();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void CloseButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void MinimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void apMailButton_Click(object sender, EventArgs e)
-        {
-
+        private void ApMailButton_Click(object sender, EventArgs e) {
             apMailButton.Visible = false;
             eftMailTransition.ShowSync(apMailButton);
 
@@ -43,9 +36,7 @@ namespace Reliable
             eftMailForm.Show();
         }
 
-        private void apNotePadButton_Click(object sender, EventArgs e)
-        {
-
+        private void ApNotePadButton_Click(object sender, EventArgs e) {
             apNotePadButton.Visible = false;
             eftnotepadTransition.ShowSync(apNotePadButton);
 
@@ -58,11 +49,24 @@ namespace Reliable
             eftNoteForm.Show();
         }
 
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormState.PreviousPage.Show();
+        private void APImportButton_Click(object sender, EventArgs e) {
+            apImportButton.Visible = false;
+            //eftnotepadTransition.ShowSync(apImportButton);
 
             this.Hide();
+
+            APImport import = new APImport();
+
+            import.Closed += (s, args) => this.Close();
+
+            import.Show();
         }
+
+        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
+            FormState.PreviousPage.Show();
+            this.Hide();
+        }
+
+
     }
 }

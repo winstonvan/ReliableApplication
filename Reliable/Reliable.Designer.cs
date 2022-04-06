@@ -126,7 +126,7 @@
             this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minimizeButton.Textcolor = System.Drawing.Color.White;
             this.minimizeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            this.minimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
             // pictureBox2
             // 
@@ -181,7 +181,7 @@
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.closeButton.Textcolor = System.Drawing.Color.White;
             this.closeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // bunifuDragControl1
             // 
@@ -235,7 +235,7 @@
             this.warehouseButton.Name = "warehouseButton";
             this.warehouseButton.Size = new System.Drawing.Size(169, 147);
             this.warehouseButton.TabIndex = 13;
-            this.warehouseButton.Click += new System.EventHandler(this.warehouseButton_Click);
+            this.warehouseButton.Click += new System.EventHandler(this.WarehouseButton_Click);
             // 
             // managmentButton
             // 
@@ -260,7 +260,7 @@
             this.managmentButton.Name = "managmentButton";
             this.managmentButton.Size = new System.Drawing.Size(169, 147);
             this.managmentButton.TabIndex = 12;
-            this.managmentButton.Click += new System.EventHandler(this.managmentButton_Click);
+            this.managmentButton.Click += new System.EventHandler(this.ManagmentButton_Click);
             // 
             // salesNewButton
             // 
@@ -285,7 +285,7 @@
             this.salesNewButton.Name = "salesNewButton";
             this.salesNewButton.Size = new System.Drawing.Size(169, 147);
             this.salesNewButton.TabIndex = 9;
-            this.salesNewButton.Click += new System.EventHandler(this.salesNewButton_Click);
+            this.salesNewButton.Click += new System.EventHandler(this.SalesNewButton_Click);
             // 
             // generalLedgerButton
             // 
@@ -310,7 +310,7 @@
             this.generalLedgerButton.Name = "generalLedgerButton";
             this.generalLedgerButton.Size = new System.Drawing.Size(169, 147);
             this.generalLedgerButton.TabIndex = 8;
-            this.generalLedgerButton.Click += new System.EventHandler(this.generalLedgerButton_Click);
+            this.generalLedgerButton.Click += new System.EventHandler(this.GeneralLedgerButton_Click);
             // 
             // accountsPayableButton
             // 
@@ -335,7 +335,7 @@
             this.accountsPayableButton.Name = "accountsPayableButton";
             this.accountsPayableButton.Size = new System.Drawing.Size(169, 147);
             this.accountsPayableButton.TabIndex = 7;
-            this.accountsPayableButton.Click += new System.EventHandler(this.accountsPayableButton_Click);
+            this.accountsPayableButton.Click += new System.EventHandler(this.AccountsPayableButton_Click);
             // 
             // menuPanel
             // 
@@ -389,7 +389,7 @@
             this.menuButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.menuButton.Textcolor = System.Drawing.Color.White;
             this.menuButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuButton.Click += new System.EventHandler(this.menuButton_Click);
+            this.menuButton.Click += new System.EventHandler(this.MenuButton_Click);
             // 
             // pictureBox1
             // 
@@ -502,7 +502,7 @@
             this.companyInformationButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.companyInformationButton.Textcolor = System.Drawing.Color.White;
             this.companyInformationButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.companyInformationButton.Click += new System.EventHandler(this.companyInformationButton_Click);
+            this.companyInformationButton.Click += new System.EventHandler(this.CompanyInformationButton_Click);
             // 
             // changePasswordButton
             // 
@@ -542,7 +542,7 @@
             this.changePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.changePasswordButton.Textcolor = System.Drawing.Color.White;
             this.changePasswordButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changePasswordButton.Click += new System.EventHandler(this.changePasswordButton_Click);
+            this.changePasswordButton.Click += new System.EventHandler(this.ChangePasswordButton_Click);
             // 
             // apButtonTransition
             // 

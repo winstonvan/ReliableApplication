@@ -21,12 +21,9 @@ using System.Threading;
 using Reliable;
 
 
-namespace RMP_Inventory_Finder
-{
-    public partial class APMailEFT : Form
-    {
-        public APMailEFT()
-        {
+namespace RMP_Inventory_Finder {
+    public partial class APMailEFT : Form {
+        public APMailEFT() {
             InitializeComponent();
         }
 
@@ -49,16 +46,14 @@ namespace RMP_Inventory_Finder
         iTextSharp.text.Rectangle headerOverflow = new iTextSharp.text.Rectangle(20, 1600, 1170, 1625);
 
         int index = 0;
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
             connectedRIS = false;
 
             generatePDFS.Visible = false;
 
             mailButton.Visible = false;
 
-            try
-            {
+            try {
                 this.Cursor = Cursors.WaitCursor;
                 connect = new OleDbConnection(OLDBEConnect);
                 connect.Open();
@@ -84,9 +79,7 @@ namespace RMP_Inventory_Finder
                 bccEmail.Text = additionalInfoTable.Rows[0][8].ToString();
 
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -95,13 +88,11 @@ namespace RMP_Inventory_Finder
 
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
             DisconnectFromDatabases();
         }
 
-        private string queryBuilder()
-        {
+        private string queryBuilder() {
 
             String query = null;
 
@@ -120,8 +111,7 @@ namespace RMP_Inventory_Finder
             return query;
         }
 
-        private string queryBuilderRegister()
-        {
+        private string queryBuilderRegister() {
 
             String query = null;
 
@@ -138,16 +128,11 @@ namespace RMP_Inventory_Finder
             return query;
         }
 
-        private void queryButton_Click(object sender, EventArgs e)
-        {
+        private void queryButton_Click(object sender, EventArgs e) {
 
-            if (connectedRIS == false)
-            {
+            if (connectedRIS == false) {
                 connect = new OleDbConnection(OLDBEConnect);
-            }
-
-            else
-            {
+            } else {
                 connect = new OleDbConnection(OLDBEConnectRIS);
             }
 
@@ -168,13 +153,10 @@ namespace RMP_Inventory_Finder
 
             checkNumbers.Clear();
 
-            try
-            {
+            try {
 
-                foreach (DataGridViewColumn col in emailDGV.Columns)
-                {
-                    if (col.HeaderText == "CheckNum")
-                    {
+                foreach (DataGridViewColumn col in emailDGV.Columns) {
+                    if (col.HeaderText == "CheckNum") {
                         index = col.Index;
                         break;
                     }
@@ -182,23 +164,16 @@ namespace RMP_Inventory_Finder
 
                 List<string> checkVals = new List<string>();
 
-                for (int i = 0; i < emailDGV.RowCount - 1; i++)
-                {
-                    if (checkVals.Contains(emailDGV.Rows[i].Cells[index].Value.ToString()))
-                    {
+                for (int i = 0; i < emailDGV.RowCount - 1; i++) {
+                    if (checkVals.Contains(emailDGV.Rows[i].Cells[index].Value.ToString())) {
                         continue;
-                    }
-
-                    else
-                    {
+                    } else {
                         checkVals.Add(emailDGV.Rows[i].Cells[index].Value.ToString());
                         checkNumbers.Add(new Checks(emailDGV.Rows[i].Cells[index].Value.ToString(), i, emailDGV.Rows[i].Cells[10].Value.ToString()));
                     }
                 }
 
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 MessageBox.Show("There were no entries for the provided data.");
             }
 
@@ -208,32 +183,23 @@ namespace RMP_Inventory_Finder
             rmpFile = "Z:\\EFT\\" + dateTimePicker1.Value.Year.ToString() + "\\" + ConvertDateFormatting(dateTimePicker1.Value) + "\\RMP\\";
         }
 
-        private string ConvertDateFormatting(DateTime myDate)
-        {
+        private string ConvertDateFormatting(DateTime myDate) {
             string newDate = null;
             string tempMonth = null;
             string tempDay = null;
 
 
-            if (myDate.Month <= 9)
-            {
+            if (myDate.Month <= 9) {
                 tempMonth = "0" + myDate.Month.ToString();
-            }
-
-            else
-            {
+            } else {
                 tempMonth = myDate.Month.ToString();
             }
 
 
 
-            if (myDate.Day <= 9)
-            {
+            if (myDate.Day <= 9) {
                 tempDay = "0" + myDate.Day.ToString();
-            }
-
-            else
-            {
+            } else {
                 tempDay = myDate.Day.ToString();
             }
 
@@ -242,8 +208,7 @@ namespace RMP_Inventory_Finder
             return newDate;
         }
 
-        private void generatePDFS_Click(object sender, EventArgs e)
-        {
+        private void generatePDFS_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
             LoadingBarForm frm = new LoadingBarForm();
@@ -256,7 +221,7 @@ namespace RMP_Inventory_Finder
             frm.SetStepValue(1);
 
             frm.Text = "Creating PDFs...";
-            
+
             string folderPath = null;
 
             iTextSharp.text.BaseColor colourBlack = new iTextSharp.text.BaseColor(0, 0, 0);
@@ -264,19 +229,14 @@ namespace RMP_Inventory_Finder
             iTextSharp.text.BaseColor colourWhite = new iTextSharp.text.BaseColor(255, 255, 255);
 
 
-            foreach (Checks check in checkNumbers)
-            {
-                if (connectedRIS == false)
-                {
+            foreach (Checks check in checkNumbers) {
+                if (connectedRIS == false) {
                     folderPath = rmpFile;
-                }
-                else
-                {
+                } else {
                     folderPath = risFile;
                 }
 
-                if (!Directory.Exists(folderPath))
-                {
+                if (!Directory.Exists(folderPath)) {
                     Directory.CreateDirectory(folderPath);
                 }
 
@@ -298,7 +258,7 @@ namespace RMP_Inventory_Finder
 
                 //myPDF.Add(new Paragraph("Payment Info"));
 
-                PdfContentByte contentByte = write.DirectContent;            
+                PdfContentByte contentByte = write.DirectContent;
 
                 BaseFont myFontBold = FontFactory.GetFont(BaseFont.HELVETICA_BOLD).BaseFont;
                 BaseFont myFontRegular = FontFactory.GetFont(BaseFont.HELVETICA).BaseFont;
@@ -313,8 +273,7 @@ namespace RMP_Inventory_Finder
                 contentByte.SetRGBColorStroke(0, 0, 0);
 
 
-                if (connectedRIS == false)
-                {
+                if (connectedRIS == false) {
                     Bitmap myBitmap = new Bitmap(Reliable.Properties.Resources.ReliableLogo);
 
                     System.Drawing.Image myImage = (System.Drawing.Image)myBitmap;
@@ -326,10 +285,7 @@ namespace RMP_Inventory_Finder
                     logo.ScaleToFit(100, 100);
                     logo.SetAbsolutePosition(40, 660);
                     contentByte.AddImage(logo);
-                }
-
-                else
-                {
+                } else {
                     Bitmap myBitmap = new Bitmap(Reliable.Properties.Resources.Reliable_Industrial_Grey);
 
                     System.Drawing.Image myImage = (System.Drawing.Image)myBitmap;
@@ -345,9 +301,9 @@ namespace RMP_Inventory_Finder
 
                 //Creating the header
 
-                
+
                 float paymentWidth = myFontBold.GetWidthPoint(nameText.Text + " Payment Advice", 17);
-                iTextSharp.text.Rectangle adviceName = new iTextSharp.text.Rectangle(570-paymentWidth-20, 712, 570, 740);
+                iTextSharp.text.Rectangle adviceName = new iTextSharp.text.Rectangle(570 - paymentWidth - 20, 712, 570, 740);
                 adviceName.BackgroundColor = colourBlue;
                 adviceName.BorderWidth = 0;
                 contentByte.Rectangle(adviceName);
@@ -379,16 +335,11 @@ namespace RMP_Inventory_Finder
                 //Check to see the text that is furthest left
                 float rectangleLeft = 0;
 
-                if (compLeft <= compLeftAddressOne && compLeft <= compLeftAddressTwo)
-                {
+                if (compLeft <= compLeftAddressOne && compLeft <= compLeftAddressTwo) {
                     rectangleLeft = compLeft;
-                }
-                else if (compLeftAddressOne <= compLeft && compLeftAddressOne <= compLeftAddressTwo)
-                {
+                } else if (compLeftAddressOne <= compLeft && compLeftAddressOne <= compLeftAddressTwo) {
                     rectangleLeft = compLeftAddressOne;
-                }
-                else if (compLeftAddressTwo <= compLeftAddressOne && compLeftAddressTwo <= compLeft)
-                {
+                } else if (compLeftAddressTwo <= compLeftAddressOne && compLeftAddressTwo <= compLeft) {
                     rectangleLeft = compLeftAddressTwo;
                 }
 
@@ -404,7 +355,7 @@ namespace RMP_Inventory_Finder
                 //Entering the Date Label
                 contentByte.SetFontAndSize(myFontBold, 8);
                 contentByte.SetColorFill(colourBlack);
-                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "Date:", 570- paymentWidth - 20 - (((570 - paymentWidth - 20) - rectangleLeft) / 2), 690, 0);
+                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "Date:", 570 - paymentWidth - 20 - (((570 - paymentWidth - 20) - rectangleLeft) / 2), 690, 0);
 
                 //Entering the Date Value
                 contentByte.SetFontAndSize(myFontRegular, 8);
@@ -428,7 +379,7 @@ namespace RMP_Inventory_Finder
 
                 //Entering the RMPEmail Label
                 contentByte.SetFontAndSize(myFontBold, 8);
-                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "Email:", 570 - paymentWidth - 20 - (((570 - paymentWidth - 20)-rectangleLeft) / 2), 660, 0);
+                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, "Email:", 570 - paymentWidth - 20 - (((570 - paymentWidth - 20) - rectangleLeft) / 2), 660, 0);
 
                 //Entering the RMPEmail Value
                 contentByte.SetFontAndSize(myFontRegular, 8);
@@ -461,7 +412,7 @@ namespace RMP_Inventory_Finder
                 contentByte.SetFontAndSize(myFontBold, 10);
                 contentByte.SetColorFill(colourBlack);
                 iTextSharp.text.Rectangle paymentAmountRectangle = new iTextSharp.text.Rectangle(570 - paymentWidth - 20 - (((570 - paymentWidth - 20) - rectangleLeft) / 2) - 5, 566, 575, 582);
-                paymentAmountRectangle.BackgroundColor = new iTextSharp.text.BaseColor(100,100,100);
+                paymentAmountRectangle.BackgroundColor = new iTextSharp.text.BaseColor(100, 100, 100);
                 contentByte.Rectangle(paymentAmountRectangle);
 
                 string myFormat = "$ #,##0.00 ;$ (#,##0.00)";
@@ -526,11 +477,9 @@ namespace RMP_Inventory_Finder
                 double discSum = 0;
                 double paidSum = 0;
 
-                for (int i = 0; i < emailDGV.RowCount - 1; i++)
-                {
+                for (int i = 0; i < emailDGV.RowCount - 1; i++) {
 
-                    if (emailDGV.Rows[i].Cells[index].Value.ToString() == check.getNumber())
-                    {
+                    if (emailDGV.Rows[i].Cells[index].Value.ToString() == check.getNumber()) {
                         grossSum += Convert.ToDouble(emailDGV.Rows[i].Cells[2].Value.ToString());
                         discSum += Convert.ToDouble(emailDGV.Rows[i].Cells[8].Value.ToString());
                         paidSum += Convert.ToDouble(emailDGV.Rows[i].Cells[3].Value.ToString());
@@ -569,8 +518,7 @@ namespace RMP_Inventory_Finder
                         bottom = bottom - 15;
                     }
 
-                    if (bottom <= 40)
-                    {
+                    if (bottom <= 40) {
                         contentByte.BeginText();
 
                         contentByte.EndText();
@@ -685,8 +633,7 @@ namespace RMP_Inventory_Finder
         }
 
         //Sending required e-mails
-        private void mailButton_Click(object sender, EventArgs e)
-        {
+        private void mailButton_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
             LoadingBarForm frm = new LoadingBarForm();
@@ -703,14 +650,12 @@ namespace RMP_Inventory_Finder
             //string sendEmail = "matt.bert44@gmail.com";
 
 
-            for (int i = 0; i < checkNumbers.Count; i++)
-            {
+            for (int i = 0; i < checkNumbers.Count; i++) {
                 string sendEmail = checkNumbers.ElementAt<Checks>(i).getEmail();
                 SmtpClient client = new SmtpClient();
                 MailMessage message = new MailMessage(emailText.Text, sendEmail);
 
-                try
-                {
+                try {
 
                     client.Port = 25;
                     client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -725,12 +670,9 @@ namespace RMP_Inventory_Finder
 
                     message.Body = "Please see the attached document for Electronic Funds Transfer proof of payment under check number " + checkNumbers.ElementAt<Checks>(i).getNumber() + ".";
 
-                    if (connectedRIS == false)
-                    {
+                    if (connectedRIS == false) {
                         message.Attachments.Add(new Attachment(rmpFile + nameText.Text + "-" + checkNumbers.ElementAt<Checks>(i).getNumber() + "-Remittance.pdf"));
-                    }
-                    else
-                    {
+                    } else {
                         message.Attachments.Add(new Attachment(risFile + nameText.Text + "-" + checkNumbers.ElementAt<Checks>(i).getNumber() + "-Remittance.pdf"));
                     }
 
@@ -740,9 +682,7 @@ namespace RMP_Inventory_Finder
                     client.Dispose();
 
 
-                }
-                catch (Exception)
-                {
+                } catch (Exception) {
                     i--;
 
                     frm.decrementProgressBar();
@@ -764,23 +704,28 @@ namespace RMP_Inventory_Finder
             MessageBox.Show("E-mails complete. Please ensure that all e-mails have been sent successfully. Unsent e-mails may be caused by illegitimate e-mail addresses.");
         }
 
-        private void saveChanges_Click(object sender, EventArgs e)
-        {
+        private void saveChanges_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
-            if (MessageBox.Show("Are you sure that you would like to save the changes made?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
+            if (MessageBox.Show("Are you sure that you would like to save the changes made?", "Save", MessageBoxButtons.YesNo) == DialogResult.Yes) {
 
 
                 string query = "UPDATE APMail SET APMail.AccountingClerk = '" + creatorName.Text + "', APMail.CompanyName = '" + compName.Text + "', APMail.AddressOne = '" + compAddressOne.Text + "', APMail.AddressTwo = '" + compAddressTwo.Text + "', APMail.Email = '" + emailText.Text + "', APMail.Password = '" + passwordText.Text + "', APMail.Server = '" + serverText.Text + "' , APMail.BCC = '" + bccEmail.Text + "' WHERE Key = 1;";
 
 
-                if (connectedRIS == false)
-                {
-                    using (connect = new OleDbConnection(OLDBEConnect))
-                    {
-                        using (var accessUpdateCommand = connect.CreateCommand())
-                        {
+                if (connectedRIS == false) {
+                    using (connect = new OleDbConnection(OLDBEConnect)) {
+                        using (var accessUpdateCommand = connect.CreateCommand()) {
+                            accessUpdateCommand.CommandText = query;
+
+                            accessUpdateCommand.Connection.Open();
+                            accessUpdateCommand.ExecuteNonQuery();
+                            accessUpdateCommand.Connection.Close();
+                        }
+                    }
+                } else {
+                    using (connect = new OleDbConnection(OLDBEConnectRIS)) {
+                        using (var accessUpdateCommand = connect.CreateCommand()) {
                             accessUpdateCommand.CommandText = query;
 
                             accessUpdateCommand.Connection.Open();
@@ -789,49 +734,26 @@ namespace RMP_Inventory_Finder
                         }
                     }
                 }
-                else
-                {
-                    using (connect = new OleDbConnection(OLDBEConnectRIS))
-                    {
-                        using (var accessUpdateCommand = connect.CreateCommand())
-                        {
-                            accessUpdateCommand.CommandText = query;
-
-                            accessUpdateCommand.Connection.Open();
-                            accessUpdateCommand.ExecuteNonQuery();
-                            accessUpdateCommand.Connection.Close();
-                        }
-                    }
-                }
-            }
-
-            else
-            {
+            } else {
 
             }
 
             this.Cursor = Cursors.Default;
         }
 
-        private void DisconnectFromDatabases()
-        {
-            try
-            {
+        private void DisconnectFromDatabases() {
+            try {
                 connect = new OleDbConnection(OLDBEConnect);
                 connect.Close();
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 connect.Close();
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
         }
 
-        private void RMPConnect_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void RMPConnect_Click(object sender, EventArgs e) {
+            try {
                 this.Cursor = Cursors.WaitCursor;
                 connect = new OleDbConnection(OLDBEConnectRIS);
                 connect.Close();
@@ -859,9 +781,7 @@ namespace RMP_Inventory_Finder
                 bccEmail.Text = additionalInfoTable.Rows[0][8].ToString();
 
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -880,11 +800,9 @@ namespace RMP_Inventory_Finder
             connectedRIS = false;
         }
 
-        private void RISConnect_Click(object sender, EventArgs e)
-        {
+        private void RISConnect_Click(object sender, EventArgs e) {
 
-            try
-            {
+            try {
                 this.Cursor = Cursors.WaitCursor;
 
                 connect = new OleDbConnection(OLDBEConnect);
@@ -912,9 +830,7 @@ namespace RMP_Inventory_Finder
                 bccEmail.Text = additionalInfoTable.Rows[0][8].ToString();
 
                 this.Cursor = Cursors.Default;
-            }
-            catch (Exception error)
-            {
+            } catch (Exception error) {
                 MessageBox.Show(error.Message);
             }
 
@@ -933,8 +849,7 @@ namespace RMP_Inventory_Finder
             connectedRIS = true;
         }
 
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
 
             FormState.PreviousPage.Show();
 
@@ -990,33 +905,25 @@ namespace RMP_Inventory_Finder
 
 
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void closeButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void minimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void pageLayoutTabs_DrawItem_1(object sender, DrawItemEventArgs e)
-        {
+        private void pageLayoutTabs_DrawItem_1(object sender, DrawItemEventArgs e) {
 
 
 
 
         }
 
-        private void checkRegisterQueryButton_Click(object sender, EventArgs e)
-        {
-            if (connectedRIS == false)
-            {
+        private void checkRegisterQueryButton_Click(object sender, EventArgs e) {
+            if (connectedRIS == false) {
                 connect = new OleDbConnection(OLDBEConnect);
-            }
-
-            else
-            {
+            } else {
                 connect = new OleDbConnection(OLDBEConnectRIS);
             }
 
@@ -1039,8 +946,7 @@ namespace RMP_Inventory_Finder
 
         }
 
-        private void checkRegisterPDFButton_Click(object sender, EventArgs e)
-        {
+        private void checkRegisterPDFButton_Click(object sender, EventArgs e) {
 
             double total = 0;
 
@@ -1049,17 +955,13 @@ namespace RMP_Inventory_Finder
 
             string folderPath = null;
 
-            if (connectedRIS == false)
-            {
+            if (connectedRIS == false) {
                 folderPath = rmpFile;
-            }
-            else
-            {
+            } else {
                 folderPath = risFile;
             }
 
-            if (!Directory.Exists(folderPath))
-            {
+            if (!Directory.Exists(folderPath)) {
                 Directory.CreateDirectory(folderPath);
             }
 
@@ -1092,14 +994,11 @@ namespace RMP_Inventory_Finder
             contentByte.SetFontAndSize(myFontBold, 20);
             contentByte.SetColorFill(new iTextSharp.text.BaseColor(0, 0, 255));
 
-            
 
-            if (connectedRIS == false)
-            {
+
+            if (connectedRIS == false) {
                 contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, "Reliable Maintenance Products", 300, 735, 0);
-            }
-            else
-            {
+            } else {
                 contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, "Reliable Industrial Supply", 300, 735, 0);
             }
 
@@ -1155,11 +1054,9 @@ namespace RMP_Inventory_Finder
 
             int i = 0;
 
-            for (; i < checkRegisterDGV.Rows.Count - 1; i++)
-            {
+            for (; i < checkRegisterDGV.Rows.Count - 1; i++) {
 
-                if(i%2 == 1)
-                {
+                if (i % 2 == 1) {
                     iTextSharp.text.Rectangle colourChangeRect = new iTextSharp.text.Rectangle(30, bottom + 1, 570, bottom + 16);
                     colourChangeRect.BackgroundColor = new iTextSharp.text.BaseColor(100, 100, 100);
                     contentByte.Rectangle(colourChangeRect);
@@ -1202,8 +1099,7 @@ namespace RMP_Inventory_Finder
                 contentByte.Stroke();
                 bottom = bottom - 17;
 
-                if (bottom <= 40)
-                {
+                if (bottom <= 40) {
                     contentByte.BeginText();
 
                     pageNumber++;
@@ -1301,41 +1197,34 @@ namespace RMP_Inventory_Finder
 
 
 
-    public class Checks
-    {
+    public class Checks {
         private string checkNumber;
         private int checkRow;
         private string email;
 
-        public Checks(string num, int row, string emailNew)
-        {
+        public Checks(string num, int row, string emailNew) {
             checkNumber = num;
             checkRow = row;
             email = emailNew;
         }
 
-        public string getNumber()
-        {
+        public string getNumber() {
             return checkNumber;
         }
 
-        public int getRow()
-        {
+        public int getRow() {
             return checkRow;
         }
 
-        public string getEmail()
-        {
+        public string getEmail() {
             return email;
         }
     }
 
-    
+
     // Create Form2.
-    public class FormNew : Form
-    {
-        public FormNew()
-        {
+    public class FormNew : Form {
+        public FormNew() {
             Text = "Form2";
         }
     }

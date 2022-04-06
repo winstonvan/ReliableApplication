@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(APMenu));
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.headerPanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -41,10 +41,11 @@
             this.apMailButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.eftMailTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.apNotePadButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.eftnotepadTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.apImportButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.eftnotepadTransition = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.headerPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,8 +65,9 @@
             this.eftMailTransition.SetDecoration(this.headerPanel, BunifuAnimatorNS.DecorationType.None);
             this.headerPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.headerPanel.Location = new System.Drawing.Point(0, 0);
+            this.headerPanel.Margin = new System.Windows.Forms.Padding(4);
             this.headerPanel.Name = "headerPanel";
-            this.headerPanel.Size = new System.Drawing.Size(364, 36);
+            this.headerPanel.Size = new System.Drawing.Size(485, 44);
             this.headerPanel.TabIndex = 2;
             // 
             // bunifuCustomLabel1
@@ -75,22 +77,24 @@
             this.eftnotepadTransition.SetDecoration(this.bunifuCustomLabel1, BunifuAnimatorNS.DecorationType.None);
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.White;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(12, 9);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(16, 11);
+            this.bunifuCustomLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(136, 20);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(170, 25);
             this.bunifuCustomLabel1.TabIndex = 14;
             this.bunifuCustomLabel1.Text = "Accounts Payable";
             // 
             // minimizeButton
             // 
+            this.minimizeButton.Active = false;
             this.minimizeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimizeButton.BorderRadius = 0;
             this.minimizeButton.ButtonText = "";
             this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.eftnotepadTransition.SetDecoration(this.minimizeButton, BunifuAnimatorNS.DecorationType.None);
             this.eftMailTransition.SetDecoration(this.minimizeButton, BunifuAnimatorNS.DecorationType.None);
+            this.eftnotepadTransition.SetDecoration(this.minimizeButton, BunifuAnimatorNS.DecorationType.None);
             this.minimizeButton.DisabledColor = System.Drawing.Color.Gray;
             this.minimizeButton.Iconcolor = System.Drawing.Color.Transparent;
             this.minimizeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Iconimage")));
@@ -104,29 +108,31 @@
             this.minimizeButton.IconVisible = true;
             this.minimizeButton.IconZoom = 50D;
             this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(284, 3);
+            this.minimizeButton.Location = new System.Drawing.Point(379, 4);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(5);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.minimizeButton.selected = false;
-            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
+            this.minimizeButton.Size = new System.Drawing.Size(41, 37);
             this.minimizeButton.TabIndex = 13;
             this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minimizeButton.Textcolor = System.Drawing.Color.White;
             this.minimizeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            this.minimizeButton.Click += new System.EventHandler(this.MinimizeButton_Click);
             // 
             // closeButton
             // 
+            this.closeButton.Active = false;
             this.closeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton.BorderRadius = 0;
             this.closeButton.ButtonText = "";
             this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.eftnotepadTransition.SetDecoration(this.closeButton, BunifuAnimatorNS.DecorationType.None);
             this.eftMailTransition.SetDecoration(this.closeButton, BunifuAnimatorNS.DecorationType.None);
+            this.eftnotepadTransition.SetDecoration(this.closeButton, BunifuAnimatorNS.DecorationType.None);
             this.closeButton.DisabledColor = System.Drawing.Color.Gray;
             this.closeButton.Iconcolor = System.Drawing.Color.Transparent;
             this.closeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("closeButton.Iconimage")));
@@ -140,18 +146,19 @@
             this.closeButton.IconVisible = true;
             this.closeButton.IconZoom = 50D;
             this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(321, 3);
+            this.closeButton.Location = new System.Drawing.Point(428, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(5);
             this.closeButton.Name = "closeButton";
             this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.OnHovercolor = System.Drawing.Color.Red;
             this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.closeButton.selected = false;
-            this.closeButton.Size = new System.Drawing.Size(31, 30);
+            this.closeButton.Size = new System.Drawing.Size(41, 37);
             this.closeButton.TabIndex = 1;
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.closeButton.Textcolor = System.Drawing.Color.White;
             this.closeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // bunifuDragControl1
             // 
@@ -162,14 +169,15 @@
             // 
             // apMailButton
             // 
+            this.apMailButton.Active = false;
             this.apMailButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.apMailButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.apMailButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.apMailButton.BorderRadius = 0;
             this.apMailButton.ButtonText = "EFT Mail";
             this.apMailButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.eftnotepadTransition.SetDecoration(this.apMailButton, BunifuAnimatorNS.DecorationType.None);
             this.eftMailTransition.SetDecoration(this.apMailButton, BunifuAnimatorNS.DecorationType.None);
+            this.eftnotepadTransition.SetDecoration(this.apMailButton, BunifuAnimatorNS.DecorationType.None);
             this.apMailButton.DisabledColor = System.Drawing.Color.Gray;
             this.apMailButton.Iconcolor = System.Drawing.Color.Transparent;
             this.apMailButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("apMailButton.Iconimage")));
@@ -183,85 +191,25 @@
             this.apMailButton.IconVisible = true;
             this.apMailButton.IconZoom = 75D;
             this.apMailButton.IsTab = false;
-            this.apMailButton.Location = new System.Drawing.Point(65, 100);
+            this.apMailButton.Location = new System.Drawing.Point(87, 123);
+            this.apMailButton.Margin = new System.Windows.Forms.Padding(5);
             this.apMailButton.Name = "apMailButton";
             this.apMailButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.apMailButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.apMailButton.OnHoverTextColor = System.Drawing.Color.White;
             this.apMailButton.selected = false;
-            this.apMailButton.Size = new System.Drawing.Size(241, 48);
+            this.apMailButton.Size = new System.Drawing.Size(321, 59);
             this.apMailButton.TabIndex = 3;
             this.apMailButton.Text = "EFT Mail";
             this.apMailButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.apMailButton.Textcolor = System.Drawing.Color.White;
             this.apMailButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apMailButton.Click += new System.EventHandler(this.apMailButton_Click);
+            this.apMailButton.Click += new System.EventHandler(this.ApMailButton_Click);
             // 
             // eftMailTransition
             // 
             this.eftMailTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.eftMailTransition.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 1F;
-            this.eftMailTransition.DefaultAnimation = animation2;
-            this.eftMailTransition.Interval = 1;
-            this.eftMailTransition.MaxAnimationTime = 500;
-            this.eftMailTransition.TimeStep = 0.05F;
-            // 
-            // apNotePadButton
-            // 
-            this.apNotePadButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.apNotePadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.apNotePadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.apNotePadButton.BorderRadius = 0;
-            this.apNotePadButton.ButtonText = "EFT Text File";
-            this.apNotePadButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.eftnotepadTransition.SetDecoration(this.apNotePadButton, BunifuAnimatorNS.DecorationType.None);
-            this.eftMailTransition.SetDecoration(this.apNotePadButton, BunifuAnimatorNS.DecorationType.None);
-            this.apNotePadButton.DisabledColor = System.Drawing.Color.Gray;
-            this.apNotePadButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.apNotePadButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("apNotePadButton.Iconimage")));
-            this.apNotePadButton.Iconimage_right = null;
-            this.apNotePadButton.Iconimage_right_Selected = null;
-            this.apNotePadButton.Iconimage_Selected = null;
-            this.apNotePadButton.IconMarginLeft = 0;
-            this.apNotePadButton.IconMarginRight = 0;
-            this.apNotePadButton.IconRightVisible = true;
-            this.apNotePadButton.IconRightZoom = 0D;
-            this.apNotePadButton.IconVisible = true;
-            this.apNotePadButton.IconZoom = 85D;
-            this.apNotePadButton.IsTab = false;
-            this.apNotePadButton.Location = new System.Drawing.Point(65, 198);
-            this.apNotePadButton.Name = "apNotePadButton";
-            this.apNotePadButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.apNotePadButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.apNotePadButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.apNotePadButton.selected = false;
-            this.apNotePadButton.Size = new System.Drawing.Size(241, 48);
-            this.apNotePadButton.TabIndex = 4;
-            this.apNotePadButton.Text = "EFT Text File";
-            this.apNotePadButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.apNotePadButton.Textcolor = System.Drawing.Color.White;
-            this.apNotePadButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apNotePadButton.Click += new System.EventHandler(this.apNotePadButton_Click);
-            // 
-            // eftnotepadTransition
-            // 
-            this.eftnotepadTransition.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
-            this.eftnotepadTransition.Cursor = null;
             animation1.AnimateOnlyDifferences = true;
             animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
             animation1.LeafCoeff = 0F;
@@ -276,22 +224,62 @@
             animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
             animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
             animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.eftnotepadTransition.DefaultAnimation = animation1;
-            this.eftnotepadTransition.Interval = 1;
-            this.eftnotepadTransition.MaxAnimationTime = 500;
-            this.eftnotepadTransition.TimeStep = 0.05F;
+            animation1.TransparencyCoeff = 1F;
+            this.eftMailTransition.DefaultAnimation = animation1;
+            this.eftMailTransition.Interval = 1;
+            this.eftMailTransition.MaxAnimationTime = 500;
+            this.eftMailTransition.TimeStep = 0.05F;
+            // 
+            // apNotePadButton
+            // 
+            this.apNotePadButton.Active = false;
+            this.apNotePadButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.apNotePadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.apNotePadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.apNotePadButton.BorderRadius = 0;
+            this.apNotePadButton.ButtonText = "EFT Text File";
+            this.apNotePadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.eftMailTransition.SetDecoration(this.apNotePadButton, BunifuAnimatorNS.DecorationType.None);
+            this.eftnotepadTransition.SetDecoration(this.apNotePadButton, BunifuAnimatorNS.DecorationType.None);
+            this.apNotePadButton.DisabledColor = System.Drawing.Color.Gray;
+            this.apNotePadButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.apNotePadButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("apNotePadButton.Iconimage")));
+            this.apNotePadButton.Iconimage_right = null;
+            this.apNotePadButton.Iconimage_right_Selected = null;
+            this.apNotePadButton.Iconimage_Selected = null;
+            this.apNotePadButton.IconMarginLeft = 0;
+            this.apNotePadButton.IconMarginRight = 0;
+            this.apNotePadButton.IconRightVisible = true;
+            this.apNotePadButton.IconRightZoom = 0D;
+            this.apNotePadButton.IconVisible = true;
+            this.apNotePadButton.IconZoom = 85D;
+            this.apNotePadButton.IsTab = false;
+            this.apNotePadButton.Location = new System.Drawing.Point(87, 244);
+            this.apNotePadButton.Margin = new System.Windows.Forms.Padding(5);
+            this.apNotePadButton.Name = "apNotePadButton";
+            this.apNotePadButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.apNotePadButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.apNotePadButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.apNotePadButton.selected = false;
+            this.apNotePadButton.Size = new System.Drawing.Size(321, 59);
+            this.apNotePadButton.TabIndex = 4;
+            this.apNotePadButton.Text = "EFT Text File";
+            this.apNotePadButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.apNotePadButton.Textcolor = System.Drawing.Color.White;
+            this.apNotePadButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apNotePadButton.Click += new System.EventHandler(this.ApNotePadButton_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.eftnotepadTransition.SetDecoration(this.menuStrip1, BunifuAnimatorNS.DecorationType.None);
             this.eftMailTransition.SetDecoration(this.menuStrip1, BunifuAnimatorNS.DecorationType.None);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 36);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 44);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(364, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(485, 28);
             this.menuStrip1.TabIndex = 50;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -301,7 +289,7 @@
             this.mainMenuToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // mainMenuToolStripMenuItem
@@ -309,24 +297,89 @@
             this.mainMenuToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.mainMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
-            this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.mainMenuToolStripMenuItem_Click);
+            this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.MainMenuToolStripMenuItem_Click);
+            // 
+            // apImportButton
+            // 
+            this.apImportButton.Active = false;
+            this.apImportButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.apImportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.apImportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.apImportButton.BorderRadius = 0;
+            this.apImportButton.ButtonText = "AP Import";
+            this.apImportButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.eftMailTransition.SetDecoration(this.apImportButton, BunifuAnimatorNS.DecorationType.None);
+            this.eftnotepadTransition.SetDecoration(this.apImportButton, BunifuAnimatorNS.DecorationType.None);
+            this.apImportButton.DisabledColor = System.Drawing.Color.Gray;
+            this.apImportButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.apImportButton.Iconimage = global::Reliable.Properties.Resources.Hyphen_Icon;
+            this.apImportButton.Iconimage_right = null;
+            this.apImportButton.Iconimage_right_Selected = null;
+            this.apImportButton.Iconimage_Selected = null;
+            this.apImportButton.IconMarginLeft = 0;
+            this.apImportButton.IconMarginRight = 0;
+            this.apImportButton.IconRightVisible = true;
+            this.apImportButton.IconRightZoom = 0D;
+            this.apImportButton.IconVisible = true;
+            this.apImportButton.IconZoom = 85D;
+            this.apImportButton.IsTab = false;
+            this.apImportButton.Location = new System.Drawing.Point(87, 362);
+            this.apImportButton.Margin = new System.Windows.Forms.Padding(5);
+            this.apImportButton.Name = "apImportButton";
+            this.apImportButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.apImportButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.apImportButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.apImportButton.selected = false;
+            this.apImportButton.Size = new System.Drawing.Size(321, 59);
+            this.apImportButton.TabIndex = 51;
+            this.apImportButton.Text = "AP Import";
+            this.apImportButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.apImportButton.Textcolor = System.Drawing.Color.White;
+            this.apImportButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apImportButton.Click += new System.EventHandler(this.APImportButton_Click);
+            // 
+            // eftnotepadTransition
+            // 
+            this.eftnotepadTransition.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
+            this.eftnotepadTransition.Cursor = null;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.eftnotepadTransition.DefaultAnimation = animation2;
+            this.eftnotepadTransition.Interval = 1;
+            this.eftnotepadTransition.MaxAnimationTime = 500;
+            this.eftnotepadTransition.TimeStep = 0.05F;
             // 
             // APMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(364, 302);
+            this.ClientSize = new System.Drawing.Size(485, 471);
+            this.Controls.Add(this.apImportButton);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.apNotePadButton);
             this.Controls.Add(this.apMailButton);
             this.Controls.Add(this.headerPanel);
-            this.eftMailTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.eftnotepadTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
+            this.eftMailTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "APMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accounts Payable";
@@ -353,5 +406,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
+        private Bunifu.Framework.UI.BunifuFlatButton apImportButton;
     }
 }
