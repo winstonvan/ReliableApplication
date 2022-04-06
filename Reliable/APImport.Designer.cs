@@ -32,6 +32,7 @@
             this.RMPConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.rISToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RISConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
@@ -41,15 +42,9 @@
             this.closeButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.generateAPImportFile = new System.Windows.Forms.TabPage();
-            this.refreshButton = new System.Windows.Forms.Button();
             this.dataTable = new System.Windows.Forms.DataGridView();
-            this.dateRange = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.headerPanel.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.generateAPImportFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +64,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.databaseToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.exportToolStripMenuItem,
             this.mainMenuToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
@@ -124,7 +120,16 @@
             this.RISConnect.Name = "RISConnect";
             this.RISConnect.Size = new System.Drawing.Size(146, 26);
             this.RISConnect.Text = "Connect";
-            this.RISConnect.Click += new System.EventHandler(this.RISConnect_Click_1);
+            this.RISConnect.Click += new System.EventHandler(this.RISConnect_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.toolStripMenuItem1.Text = "Reload";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.ReloadMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -133,7 +138,7 @@
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportMenuItem_Click);
             // 
             // mainMenuToolStripMenuItem
             // 
@@ -255,47 +260,6 @@
             this.bunifuDragControl1.TargetControl = this.headerPanel;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // tabControl
-            // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl.Controls.Add(this.generateAPImportFile);
-            this.tabControl.Location = new System.Drawing.Point(0, 78);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1091, 660);
-            this.tabControl.TabIndex = 1;
-            // 
-            // generateAPImportFile
-            // 
-            this.generateAPImportFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.generateAPImportFile.Controls.Add(this.refreshButton);
-            this.generateAPImportFile.Controls.Add(this.dataTable);
-            this.generateAPImportFile.Controls.Add(this.dateRange);
-            this.generateAPImportFile.Location = new System.Drawing.Point(4, 28);
-            this.generateAPImportFile.Margin = new System.Windows.Forms.Padding(4);
-            this.generateAPImportFile.Name = "generateAPImportFile";
-            this.generateAPImportFile.Padding = new System.Windows.Forms.Padding(4);
-            this.generateAPImportFile.Size = new System.Drawing.Size(1083, 628);
-            this.generateAPImportFile.TabIndex = 0;
-            this.generateAPImportFile.Text = "Generate AP Import File";
-            this.generateAPImportFile.Click += new System.EventHandler(this.GenerateNotepadTab_Click);
-            // 
-            // refreshButton
-            // 
-            this.refreshButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.refreshButton.ForeColor = System.Drawing.Color.White;
-            this.refreshButton.Location = new System.Drawing.Point(980, 7);
-            this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(90, 30);
-            this.refreshButton.TabIndex = 27;
-            this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = false;
-            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
-            // 
             // dataTable
             // 
             this.dataTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -303,31 +267,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataTable.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTable.Location = new System.Drawing.Point(11, 44);
+            this.dataTable.Location = new System.Drawing.Point(0, 76);
             this.dataTable.Margin = new System.Windows.Forms.Padding(4);
             this.dataTable.Name = "dataTable";
             this.dataTable.RowHeadersWidth = 51;
-            this.dataTable.Size = new System.Drawing.Size(1059, 570);
+            this.dataTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataTable.Size = new System.Drawing.Size(1091, 479);
             this.dataTable.TabIndex = 3;
             this.dataTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTable_CellContentClick);
-            // 
-            // dateRange
-            // 
-            this.dateRange.AutoSize = true;
-            this.dateRange.ForeColor = System.Drawing.Color.White;
-            this.dateRange.Location = new System.Drawing.Point(9, 34);
-            this.dateRange.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.dateRange.Name = "dateRange";
-            this.dateRange.Size = new System.Drawing.Size(0, 16);
-            this.dateRange.TabIndex = 2;
             // 
             // APImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(1091, 736);
-            this.Controls.Add(this.tabControl);
+            this.ClientSize = new System.Drawing.Size(1091, 554);
+            this.Controls.Add(this.dataTable);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.headerPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -343,9 +298,6 @@
             this.menuStrip1.PerformLayout();
             this.headerPanel.ResumeLayout(false);
             this.headerPanel.PerformLayout();
-            this.tabControl.ResumeLayout(false);
-            this.generateAPImportFile.ResumeLayout(false);
-            this.generateAPImportFile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -369,11 +321,8 @@
         private Bunifu.Framework.UI.BunifuCustomLabel apImportHeaderLabel;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage generateAPImportFile;
         private System.Windows.Forms.DataGridView dataTable;
-        private System.Windows.Forms.Label dateRange;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }

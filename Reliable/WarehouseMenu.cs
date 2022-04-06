@@ -8,34 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reliable
-{
-    public partial class WarehouseMenu : Form
-    {
-        public WarehouseMenu()
-        {
+namespace Reliable {
+    public partial class WarehouseMenu : Form {
+        public WarehouseMenu() {
             InitializeComponent();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void CloseButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void MinimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void MainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
             FormState.PreviousPage.Show();
 
             this.Hide();
         }
 
-        private void warehouseLabelsButton_Click(object sender, EventArgs e)
-        {
+        private void WarehouseLabelsButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             WarehouseProductLabels newForm = new WarehouseProductLabels();
@@ -45,8 +38,7 @@ namespace Reliable
             newForm.Show();
         }
 
-        private void showroomLabelsButton_Click(object sender, EventArgs e)
-        {
+        private void ShowroomLabelsButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             ShowroomLabels newForm = new ShowroomLabels();
@@ -56,8 +48,7 @@ namespace Reliable
             newForm.Show();
         }
 
-        private void countSheetsButton_Click(object sender, EventArgs e)
-        {
+        private void CountSheetsButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             CountSheets newForm = new CountSheets();
@@ -67,8 +58,7 @@ namespace Reliable
             newForm.Show();
         }
 
-        private void barcodeGeneratorButton_Click(object sender, EventArgs e)
-        {
+        private void BarcodeGeneratorButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             transparentBackgroundCheck newForm = new transparentBackgroundCheck();
@@ -78,8 +68,7 @@ namespace Reliable
             newForm.Show();
         }
 
-        private void shippingLabelsButton_Click(object sender, EventArgs e)
-        {
+        private void ShippingLabelsButton_Click(object sender, EventArgs e) {
             this.Hide();
 
             ShippingLabels newForm = new ShippingLabels();
@@ -87,6 +76,16 @@ namespace Reliable
             newForm.Closed += (s, args) => this.Close();
 
             newForm.Show();
+        }
+
+        private void OrderDeskErrorsButton_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            OrderDeskErrors orderDeskErrors = new OrderDeskErrors();
+
+            orderDeskErrors.Closed += (s, args) => this.Close();
+
+            orderDeskErrors.Show();
         }
     }
 }

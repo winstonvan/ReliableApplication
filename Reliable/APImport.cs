@@ -85,6 +85,11 @@ namespace Reliable {
             adapter.Fill(table);
             dataTable.DataSource = table;
 
+            // resize form to fit datagridview
+            int width = dataTable.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
+            dataTable.Width = width + 53;
+            this.Width = width + 53;
+
             this.Cursor = Cursors.Default;
         }
 
@@ -92,7 +97,7 @@ namespace Reliable {
             DisconnectFromDatabases();
         }
 
-        private void RISConnect_Click_1(object sender, EventArgs e) {
+        private void RISConnect_Click(object sender, EventArgs e) {
             try {
                 this.Cursor = Cursors.WaitCursor;
 
@@ -177,34 +182,16 @@ namespace Reliable {
         }
 
         private void RefreshButton_Click(object sender, EventArgs e) {
-            this.Cursor = Cursors.WaitCursor;
-
-            if (connectRIS == false) {
-                connection = new OleDbConnection(OLDBEConnect);
-
-            } else {
-                connection = new OleDbConnection(OLDBEConnectRIS);
-            }
-
-            OleDbCommand command = new OleDbCommand(QueryBuilder(), connection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(command) {
-                SelectCommand = command
-            };
-
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dataTable.DataSource = table;
-
-            this.Cursor = Cursors.Default;
+            
         }
 
-        private void ExportToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void ExportMenuItem_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
             if (dataTable.Rows.Count > 0) {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "CSV (*.csv)|*.csv";
-                sfd.FileName = "AP Export File " +  DateTime.Now + ".csv";
+                sfd.FileName = "AP Export File " + DateTime.Now + ".csv";
                 bool fileError = false;
                 if (sfd.ShowDialog() == DialogResult.OK) {
                     if (File.Exists(sfd.FileName)) {
@@ -237,10 +224,32 @@ namespace Reliable {
                             MessageBox.Show("Error:" + ex.Message + ".");
                         }
                     }
-                   }
+                }
             } else {
                 MessageBox.Show("No record to export.", "Info");
             }
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void ReloadMenuItem_Click(object sender, EventArgs e) {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (connectRIS == false) {
+                connection = new OleDbConnection(OLDBEConnect);
+
+            } else {
+                connection = new OleDbConnection(OLDBEConnectRIS);
+            }
+
+            OleDbCommand command = new OleDbCommand(QueryBuilder(), connection);
+            OleDbDataAdapter adapter = new OleDbDataAdapter(command) {
+                SelectCommand = command
+            };
+
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            dataTable.DataSource = table;
 
             this.Cursor = Cursors.Default;
         }
