@@ -70,7 +70,7 @@ namespace TestProject {
                     }
                 } else if (majorNumberDropdown.SelectedItem.ToString() == "Pick") {
                     for (int i = 0; i < majorNumberList.CheckedItems.Count; i++) {
-                        condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + " ";
+                        condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + "' ";
 
                         if (i != majorNumberList.CheckedItems.Count - 1) {
                             condition += "OR ";
@@ -222,7 +222,7 @@ namespace TestProject {
                     }
                 } else if (majorNumberDropdown.SelectedItem.ToString() == "Pick") {
                     for (int i = 0; i < majorNumberList.CheckedItems.Count; i++) {
-                        condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + " ";
+                        condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + "' ";
 
                         if (i != majorNumberList.CheckedItems.Count - 1) {
                             condition += "OR ";
