@@ -753,21 +753,21 @@ namespace TestProject {
                         }
                     } else if (majorNumberDropdown.SelectedItem.ToString() == "Pick") {
                         for (int i = 0; i < majorNumberList.CheckedItems.Count; i++) {
-                            condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + " ";
+                            condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + "' ";
 
                             if (i != majorNumberList.CheckedItems.Count - 1) {
                                 condition += "OR ";
                             }
                         }
                     }
-                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + startDatePicker.Value.AddDays(-1).ToString("MM-dd-yyyy") + "' AND " + condition + "' AND " + output1;
+                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + startDatePicker.Value.AddDays(-1).ToString("MM-dd-yyyy") + "' AND " + condition + " AND " + output1;
                     RunSingleQuery(beginningBalance);
-                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + endDatePicker.Value.ToString("MM-dd-yyyy") + "' AND " + condition + "' AND " + output1;
+                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + endDatePicker.Value.ToString("MM-dd-yyyy") + "' AND " + condition + " AND " + output1;
                     RunSingleQuery(endingBalance);
                 } else {
-                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + startDatePicker.Value.AddDays(-1).ToString("MM-dd-yyyy") + "' AND " + output1;
+                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + startDatePicker.Value.AddDays(-1).ToString("MM-dd-yyyy") + " AND " + output1;
                     RunSingleQuery(beginningBalance);
-                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + endDatePicker.Value.ToString("MM-dd-yyyy") + "' AND " + output1;
+                    query = "SELECT (SUM(IIF(ISNULL(DebitAmount),0,DebitAmount)) - SUM(IIF(ISNULL(CreditAmount),0,CreditAmount))) AS NetChange " + "FROM dbo_vGLAccountHistory " + "WHERE dbo_vGLAccountHistory.TransDate BETWEEN '01-01-0001' AND '" + endDatePicker.Value.ToString("MM-dd-yyyy") + " AND " + output1;
                     RunSingleQuery(endingBalance);
                 }
             } else {
