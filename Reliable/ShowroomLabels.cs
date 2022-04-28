@@ -311,7 +311,7 @@ namespace Reliable
 
             BaseFont myFontBold = FontFactory.GetFont(BaseFont.HELVETICA_BOLD).BaseFont;
             BaseFont myFontRegular = FontFactory.GetFont(BaseFont.HELVETICA).BaseFont;
-            BaseFont codeFont = BaseFont.CreateFont("c:\\windows\\fonts\\code128.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            BaseFont codeFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\LibreBarcode128-Regular.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
             //Counter for the loop of inserting labels on the pdf
 
