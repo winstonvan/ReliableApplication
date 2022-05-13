@@ -330,8 +330,6 @@ namespace Reliable
              Therefore each page will contain 28 labels with top and bottom margins of 39 point and
              left and right margins of 20 point*/
 
-            MessageBox.Show(itemNumbersTableWHSR.Rows.Count.ToString());
-
             for (; i < itemNumbersTableWHSR.Rows.Count; i = i + 2)
             {
 
@@ -464,8 +462,6 @@ namespace Reliable
                 if (locationsCheckbox.Checked == false)
                 {
                     i = i - 1;
-
-                    MessageBox.Show(i.ToString());
                 }
 
 

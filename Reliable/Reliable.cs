@@ -27,23 +27,23 @@ namespace Reliable {
             menuPanelTwo.Height = 14;
 
             if (AccountPriviledges.getAP() == false) {
-                accountsPayableButton.Visible = false;
+                AccountsPayable.Visible = false;
             }
 
             if (AccountPriviledges.getGL() == false) {
-                generalLedgerButton.Visible = false;
+                GeneralLedger.Visible = false;
             }
 
             if (AccountPriviledges.getSales() == false) {
-                salesNewButton.Visible = false;
+                Sales.Visible = false;
             }
 
             if (AccountPriviledges.getManage() == false) {
-                managmentButton.Visible = false;
+                Management.Visible = false;
             }
 
             if (AccountPriviledges.getWarehouse() == false) {
-                warehouseButton.Visible = false;
+                Warehouse.Visible = false;
             }
 
             if (AccountPriviledges.getAdminFlag() == false) {
@@ -81,45 +81,6 @@ namespace Reliable {
             }
         }
 
-        private void AccountsPayableButton_Click(object sender, EventArgs e) {
-            accountsPayableButton.Visible = false;
-            apButtonTransition.ShowSync(accountsPayableButton);
-
-            this.Hide();
-
-            APMenu apForm = new APMenu();
-
-            apForm.Closed += (s, args) => this.Close();
-
-            apForm.Show();
-        }
-
-        private void GeneralLedgerButton_Click(object sender, EventArgs e) {
-            generalLedgerButton.Visible = false;
-            glTransition.ShowSync(generalLedgerButton);
-
-            this.Hide();
-
-            GLListing glForm = new GLListing();
-
-            glForm.Closed += (s, args) => this.Close();
-
-            glForm.Show();
-        }
-
-        private void SalesNewButton_Click(object sender, EventArgs e) {
-            salesNewButton.Visible = false;
-            salesTransition.ShowSync(salesNewButton);
-
-            this.Hide();
-
-            SalesMenu salesForm = new SalesMenu();
-
-            salesForm.Closed += (s, args) => this.Close();
-
-            salesForm.Show();
-        }
-
         private void CompanyInformationButton_Click(object sender, EventArgs e) {
             companyInformationButton.Visible = false;
             companyTransition.ShowSync(companyInformationButton);
@@ -137,7 +98,60 @@ namespace Reliable {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void ManagmentButton_Click(object sender, EventArgs e) {
+        private void accountManagmentButton_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            Account_Managment newForm = new Account_Managment();
+
+            newForm.Closed += (s, args) => this.Close();
+
+            newForm.Show();
+        }
+
+
+
+        /// <summary>
+        /// ////////////////////////////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AccountsPayable_Click(object sender, EventArgs e) {
+            AccountsPayable.Visible = false;
+            apButtonTransition.ShowSync(AccountsPayable);
+
+            this.Hide();
+
+            APMenu apForm = new APMenu();
+
+            apForm.Closed += (s, args) => this.Close();
+
+            apForm.Show();
+        }
+
+        private void AccountsReceivable_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            ARForm newForm = new ARForm();
+
+            newForm.Closed += (s, args) => this.Close();
+
+            newForm.Show();
+        }
+
+        private void GeneralLedger_Click(object sender, EventArgs e) {
+            GeneralLedger.Visible = false;
+            glTransition.ShowSync(GeneralLedger);
+
+            this.Hide();
+
+            GLListing glForm = new GLListing();
+
+            glForm.Closed += (s, args) => this.Close();
+
+            glForm.Show();
+        }
+
+        private void Management_Click(object sender, EventArgs e) {
             this.Hide();
 
             ManagmentMenu managmentForm = new ManagmentMenu();
@@ -147,7 +161,20 @@ namespace Reliable {
             managmentForm.Show();
         }
 
-        private void WarehouseButton_Click(object sender, EventArgs e) {
+        private void Sales_Click(object sender, EventArgs e) {
+            Sales.Visible = false;
+            salesTransition.ShowSync(Sales);
+
+            this.Hide();
+
+            SalesMenu salesForm = new SalesMenu();
+
+            salesForm.Closed += (s, args) => this.Close();
+
+            salesForm.Show();
+        }
+
+        private void Warehouse_Click(object sender, EventArgs e) {
             this.Hide();
 
             WarehouseMenu newForm = new WarehouseMenu();
@@ -157,14 +184,8 @@ namespace Reliable {
             newForm.Show();
         }
 
-        private void accountManagmentButton_Click(object sender, EventArgs e) {
-            this.Hide();
+        private void backPanel_Paint(object sender, PaintEventArgs e) {
 
-            Account_Managment newForm = new Account_Managment();
-
-            newForm.Closed += (s, args) => this.Close();
-
-            newForm.Show();
         }
     }
 

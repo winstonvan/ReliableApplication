@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\RMPSRV02\Reliable Files\Reliable Application\</UpdateUrl>
-    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationRevision>81</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -235,6 +235,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -311,6 +312,12 @@
     </Compile>
     <Compile Include="EmailPayroll.Designer.cs">
       <DependentUpon>EmailPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ARForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ARForm.designer.cs">
+      <DependentUpon>ARForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GLLForm.cs">
       <SubType>Form</SubType>
@@ -467,6 +474,9 @@
     <EmbeddedResource Include="EmailPayroll.resx">
       <DependentUpon>EmailPayroll.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ARForm.resx">
+      <DependentUpon>ARForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GLLForm.resx">
       <DependentUpon>GLLForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -554,6 +564,14 @@
   <ItemGroup>
     <Content Include="Properties\Image1.bmp" />
     <Content Include="reliablelogo_tJT_icon.ico" />
+    <None Include="Resources\warehouse.png" />
+    <None Include="Resources\planning.png" />
+    <None Include="Resources\Management1.png" />
+    <None Include="Resources\Management.png" />
+    <None Include="Resources\General Ledger.png" />
+    <None Include="Resources\AR.png" />
+    <None Include="Resources\AccountsPayableButton1.png" />
+    <None Include="Resources\AccountsPayableButton.png" />
     <None Include="Resources\Transparent.png" />
     <None Include="Resources\No Image File.PNG" />
     <None Include="Resources\Hyphen Icon.PNG" />

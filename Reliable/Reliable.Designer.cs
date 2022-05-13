@@ -1,4 +1,6 @@
-﻿namespace Reliable
+﻿using System;
+
+namespace Reliable
 {
     partial class Reliable
     {
@@ -42,14 +44,14 @@
             this.closeButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.backPanel = new System.Windows.Forms.Panel();
-            this.warehouseButton = new Bunifu.Framework.UI.BunifuTileButton();
-            this.managmentButton = new Bunifu.Framework.UI.BunifuTileButton();
-            this.salesNewButton = new Bunifu.Framework.UI.BunifuTileButton();
-            this.generalLedgerButton = new Bunifu.Framework.UI.BunifuTileButton();
-            this.accountsPayableButton = new Bunifu.Framework.UI.BunifuTileButton();
+            this.Warehouse = new Bunifu.Framework.UI.BunifuTileButton();
+            this.Sales = new Bunifu.Framework.UI.BunifuTileButton();
+            this.Management = new Bunifu.Framework.UI.BunifuTileButton();
+            this.GeneralLedger = new Bunifu.Framework.UI.BunifuTileButton();
+            this.AccountsReceivable = new Bunifu.Framework.UI.BunifuTileButton();
+            this.AccountsPayable = new Bunifu.Framework.UI.BunifuTileButton();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.menuButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuPanelTwo = new System.Windows.Forms.Panel();
             this.accountManagmentButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.companyInformationButton = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -63,7 +65,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.backPanel.SuspendLayout();
             this.menuPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuPanelTwo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,12 +86,14 @@
             this.menuPanelTransitionTwo.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1175, 36);
+            this.panel1.Size = new System.Drawing.Size(985, 44);
             this.panel1.TabIndex = 9;
             // 
             // minimizeButton
             // 
+            this.minimizeButton.Active = false;
             this.minimizeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -115,13 +118,14 @@
             this.minimizeButton.IconVisible = true;
             this.minimizeButton.IconZoom = 50D;
             this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(1095, 3);
+            this.minimizeButton.Location = new System.Drawing.Point(898, 4);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(5);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.minimizeButton.selected = false;
-            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
+            this.minimizeButton.Size = new System.Drawing.Size(41, 37);
             this.minimizeButton.TabIndex = 12;
             this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minimizeButton.Textcolor = System.Drawing.Color.White;
@@ -132,19 +136,21 @@
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.salesTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
-            this.glTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
             this.companyTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
             this.apButtonTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
-            this.pictureBox2.Location = new System.Drawing.Point(12, 6);
+            this.glTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
+            this.pictureBox2.Location = new System.Drawing.Point(16, 7);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 26);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
             // closeButton
             // 
+            this.closeButton.Active = false;
             this.closeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -169,13 +175,14 @@
             this.closeButton.IconVisible = true;
             this.closeButton.IconZoom = 50D;
             this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(1132, 3);
+            this.closeButton.Location = new System.Drawing.Point(939, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(5);
             this.closeButton.Name = "closeButton";
             this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.OnHovercolor = System.Drawing.Color.Red;
             this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.closeButton.selected = false;
-            this.closeButton.Size = new System.Drawing.Size(31, 30);
+            this.closeButton.Size = new System.Drawing.Size(41, 37);
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "gfdsg";
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -193,149 +200,187 @@
             // backPanel
             // 
             this.backPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.backPanel.Controls.Add(this.warehouseButton);
-            this.backPanel.Controls.Add(this.managmentButton);
-            this.backPanel.Controls.Add(this.salesNewButton);
-            this.backPanel.Controls.Add(this.generalLedgerButton);
-            this.backPanel.Controls.Add(this.accountsPayableButton);
+            this.backPanel.Controls.Add(this.Warehouse);
+            this.backPanel.Controls.Add(this.Sales);
+            this.backPanel.Controls.Add(this.Management);
+            this.backPanel.Controls.Add(this.GeneralLedger);
+            this.backPanel.Controls.Add(this.AccountsReceivable);
             this.backPanel.Controls.Add(this.menuPanel);
-            this.backPanel.Controls.Add(this.pictureBox1);
             this.backPanel.Controls.Add(this.menuPanelTwo);
+            this.backPanel.Controls.Add(this.AccountsPayable);
             this.salesTransition.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.companyTransition.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.apButtonTransition.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
-            this.backPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.backPanel.Location = new System.Drawing.Point(0, 0);
+            this.backPanel.Margin = new System.Windows.Forms.Padding(4);
             this.backPanel.Name = "backPanel";
-            this.backPanel.Size = new System.Drawing.Size(1175, 592);
+            this.backPanel.Size = new System.Drawing.Size(985, 648);
             this.backPanel.TabIndex = 10;
+            this.backPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.backPanel_Paint);
             // 
-            // warehouseButton
+            // Warehouse
             // 
-            this.warehouseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.warehouseButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.warehouseButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.warehouseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.warehouseButton, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.warehouseButton, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.warehouseButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.warehouseButton, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.warehouseButton, BunifuAnimatorNS.DecorationType.None);
-            this.warehouseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warehouseButton.ForeColor = System.Drawing.Color.White;
-            this.warehouseButton.Image = ((System.Drawing.Image)(resources.GetObject("warehouseButton.Image")));
-            this.warehouseButton.ImagePosition = 5;
-            this.warehouseButton.ImageZoom = 60;
-            this.warehouseButton.LabelPosition = 34;
-            this.warehouseButton.LabelText = "Warehouse";
-            this.warehouseButton.Location = new System.Drawing.Point(928, 346);
-            this.warehouseButton.Margin = new System.Windows.Forms.Padding(6);
-            this.warehouseButton.Name = "warehouseButton";
-            this.warehouseButton.Size = new System.Drawing.Size(169, 147);
-            this.warehouseButton.TabIndex = 13;
-            this.warehouseButton.Click += new System.EventHandler(this.WarehouseButton_Click);
+            this.Warehouse.AutoSize = true;
+            this.Warehouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Warehouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Warehouse.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Warehouse.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Warehouse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.Warehouse, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.Warehouse, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.Warehouse, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.Warehouse, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.Warehouse, BunifuAnimatorNS.DecorationType.None);
+            this.Warehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.Warehouse.ForeColor = System.Drawing.Color.White;
+            this.Warehouse.Image = global::Reliable.Properties.Resources.warehouse;
+            this.Warehouse.ImagePosition = 14;
+            this.Warehouse.ImageZoom = 50;
+            this.Warehouse.LabelPosition = 27;
+            this.Warehouse.LabelText = "Warehouse";
+            this.Warehouse.Location = new System.Drawing.Point(696, 375);
+            this.Warehouse.Margin = new System.Windows.Forms.Padding(0);
+            this.Warehouse.Name = "Warehouse";
+            this.Warehouse.Size = new System.Drawing.Size(200, 200);
+            this.Warehouse.TabIndex = 20;
+            this.Warehouse.Click += new System.EventHandler(this.Warehouse_Click);
             // 
-            // managmentButton
+            // Sales
             // 
-            this.managmentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.managmentButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.managmentButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.managmentButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.managmentButton, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.managmentButton, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.managmentButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.managmentButton, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.managmentButton, BunifuAnimatorNS.DecorationType.None);
-            this.managmentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.managmentButton.ForeColor = System.Drawing.Color.White;
-            this.managmentButton.Image = ((System.Drawing.Image)(resources.GetObject("managmentButton.Image")));
-            this.managmentButton.ImagePosition = 2;
-            this.managmentButton.ImageZoom = 70;
-            this.managmentButton.LabelPosition = 34;
-            this.managmentButton.LabelText = "Managment";
-            this.managmentButton.Location = new System.Drawing.Point(488, 346);
-            this.managmentButton.Margin = new System.Windows.Forms.Padding(6);
-            this.managmentButton.Name = "managmentButton";
-            this.managmentButton.Size = new System.Drawing.Size(169, 147);
-            this.managmentButton.TabIndex = 12;
-            this.managmentButton.Click += new System.EventHandler(this.ManagmentButton_Click);
+            this.Sales.AutoSize = true;
+            this.Sales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Sales.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Sales.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Sales.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Sales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.Sales, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.Sales, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.Sales, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.Sales, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.Sales, BunifuAnimatorNS.DecorationType.None);
+            this.Sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.Sales.ForeColor = System.Drawing.Color.White;
+            this.Sales.Image = global::Reliable.Properties.Resources.Management;
+            this.Sales.ImagePosition = 14;
+            this.Sales.ImageZoom = 50;
+            this.Sales.LabelPosition = 27;
+            this.Sales.LabelText = "Sales";
+            this.Sales.Location = new System.Drawing.Point(396, 375);
+            this.Sales.Margin = new System.Windows.Forms.Padding(0);
+            this.Sales.Name = "Sales";
+            this.Sales.Size = new System.Drawing.Size(200, 200);
+            this.Sales.TabIndex = 19;
+            this.Sales.Click += new System.EventHandler(this.Sales_Click);
             // 
-            // salesNewButton
+            // Management
             // 
-            this.salesNewButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.salesNewButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.salesNewButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.salesNewButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.salesNewButton, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.salesNewButton, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.salesNewButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.salesNewButton, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.salesNewButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesNewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.salesNewButton.ForeColor = System.Drawing.Color.White;
-            this.salesNewButton.Image = ((System.Drawing.Image)(resources.GetObject("salesNewButton.Image")));
-            this.salesNewButton.ImagePosition = 6;
-            this.salesNewButton.ImageZoom = 65;
-            this.salesNewButton.LabelPosition = 34;
-            this.salesNewButton.LabelText = "Sales";
-            this.salesNewButton.Location = new System.Drawing.Point(713, 346);
-            this.salesNewButton.Margin = new System.Windows.Forms.Padding(6);
-            this.salesNewButton.Name = "salesNewButton";
-            this.salesNewButton.Size = new System.Drawing.Size(169, 147);
-            this.salesNewButton.TabIndex = 9;
-            this.salesNewButton.Click += new System.EventHandler(this.SalesNewButton_Click);
+            this.Management.AutoSize = true;
+            this.Management.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Management.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Management.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.Management.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.Management.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.Management, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.Management, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.Management, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.Management, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.Management, BunifuAnimatorNS.DecorationType.None);
+            this.Management.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.Management.ForeColor = System.Drawing.Color.White;
+            this.Management.Image = global::Reliable.Properties.Resources.planning;
+            this.Management.ImagePosition = 14;
+            this.Management.ImageZoom = 50;
+            this.Management.LabelPosition = 27;
+            this.Management.LabelText = "Management";
+            this.Management.Location = new System.Drawing.Point(96, 375);
+            this.Management.Margin = new System.Windows.Forms.Padding(0);
+            this.Management.Name = "Management";
+            this.Management.Size = new System.Drawing.Size(200, 200);
+            this.Management.TabIndex = 18;
+            this.Management.Click += new System.EventHandler(this.Management_Click);
             // 
-            // generalLedgerButton
+            // GeneralLedger
             // 
-            this.generalLedgerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.generalLedgerButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.generalLedgerButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.generalLedgerButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.generalLedgerButton, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.generalLedgerButton, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.generalLedgerButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.generalLedgerButton, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.generalLedgerButton, BunifuAnimatorNS.DecorationType.None);
-            this.generalLedgerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.generalLedgerButton.ForeColor = System.Drawing.Color.White;
-            this.generalLedgerButton.Image = ((System.Drawing.Image)(resources.GetObject("generalLedgerButton.Image")));
-            this.generalLedgerButton.ImagePosition = 20;
-            this.generalLedgerButton.ImageZoom = 50;
-            this.generalLedgerButton.LabelPosition = 34;
-            this.generalLedgerButton.LabelText = "General Ledger";
-            this.generalLedgerButton.Location = new System.Drawing.Point(263, 346);
-            this.generalLedgerButton.Margin = new System.Windows.Forms.Padding(6);
-            this.generalLedgerButton.Name = "generalLedgerButton";
-            this.generalLedgerButton.Size = new System.Drawing.Size(169, 147);
-            this.generalLedgerButton.TabIndex = 8;
-            this.generalLedgerButton.Click += new System.EventHandler(this.GeneralLedgerButton_Click);
+            this.GeneralLedger.AutoSize = true;
+            this.GeneralLedger.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.GeneralLedger.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.GeneralLedger.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.GeneralLedger.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.GeneralLedger.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.GeneralLedger, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.GeneralLedger, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.GeneralLedger, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.GeneralLedger, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.GeneralLedger, BunifuAnimatorNS.DecorationType.None);
+            this.GeneralLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.GeneralLedger.ForeColor = System.Drawing.Color.White;
+            this.GeneralLedger.Image = global::Reliable.Properties.Resources.General_Ledger;
+            this.GeneralLedger.ImagePosition = 14;
+            this.GeneralLedger.ImageZoom = 50;
+            this.GeneralLedger.LabelPosition = 27;
+            this.GeneralLedger.LabelText = "General Ledger";
+            this.GeneralLedger.Location = new System.Drawing.Point(696, 125);
+            this.GeneralLedger.Margin = new System.Windows.Forms.Padding(0);
+            this.GeneralLedger.Name = "GeneralLedger";
+            this.GeneralLedger.Size = new System.Drawing.Size(200, 200);
+            this.GeneralLedger.TabIndex = 17;
+            this.GeneralLedger.Click += new System.EventHandler(this.GeneralLedger_Click);
             // 
-            // accountsPayableButton
+            // AccountsReceivable
             // 
-            this.accountsPayableButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.accountsPayableButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.accountsPayableButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.accountsPayableButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.accountsPayableButton, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.accountsPayableButton, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.accountsPayableButton, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.accountsPayableButton, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.accountsPayableButton, BunifuAnimatorNS.DecorationType.None);
-            this.accountsPayableButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.accountsPayableButton.ForeColor = System.Drawing.Color.White;
-            this.accountsPayableButton.Image = ((System.Drawing.Image)(resources.GetObject("accountsPayableButton.Image")));
-            this.accountsPayableButton.ImagePosition = 17;
-            this.accountsPayableButton.ImageZoom = 50;
-            this.accountsPayableButton.LabelPosition = 34;
-            this.accountsPayableButton.LabelText = "Accounts Payable";
-            this.accountsPayableButton.Location = new System.Drawing.Point(48, 346);
-            this.accountsPayableButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.accountsPayableButton.Name = "accountsPayableButton";
-            this.accountsPayableButton.Size = new System.Drawing.Size(169, 147);
-            this.accountsPayableButton.TabIndex = 7;
-            this.accountsPayableButton.Click += new System.EventHandler(this.AccountsPayableButton_Click);
+            this.AccountsReceivable.AutoSize = true;
+            this.AccountsReceivable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.AccountsReceivable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AccountsReceivable.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.AccountsReceivable.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.AccountsReceivable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.AccountsReceivable, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.AccountsReceivable, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.AccountsReceivable, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.AccountsReceivable, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.AccountsReceivable, BunifuAnimatorNS.DecorationType.None);
+            this.AccountsReceivable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.AccountsReceivable.ForeColor = System.Drawing.Color.White;
+            this.AccountsReceivable.Image = global::Reliable.Properties.Resources.AR;
+            this.AccountsReceivable.ImagePosition = 14;
+            this.AccountsReceivable.ImageZoom = 50;
+            this.AccountsReceivable.LabelPosition = 27;
+            this.AccountsReceivable.LabelText = "Accounts Receivable";
+            this.AccountsReceivable.Location = new System.Drawing.Point(396, 125);
+            this.AccountsReceivable.Margin = new System.Windows.Forms.Padding(0);
+            this.AccountsReceivable.Name = "AccountsReceivable";
+            this.AccountsReceivable.Size = new System.Drawing.Size(200, 200);
+            this.AccountsReceivable.TabIndex = 16;
+            this.AccountsReceivable.Click += new System.EventHandler(this.AccountsReceivable_Click);
+            // 
+            // AccountsPayable
+            // 
+            this.AccountsPayable.AutoSize = true;
+            this.AccountsPayable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.AccountsPayable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AccountsPayable.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.AccountsPayable.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.AccountsPayable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.AccountsPayable, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.AccountsPayable, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.AccountsPayable, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.AccountsPayable, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.AccountsPayable, BunifuAnimatorNS.DecorationType.None);
+            this.AccountsPayable.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.AccountsPayable.ForeColor = System.Drawing.Color.White;
+            this.AccountsPayable.Image = global::Reliable.Properties.Resources.AccountsPayableButton1;
+            this.AccountsPayable.ImagePosition = 14;
+            this.AccountsPayable.ImageZoom = 50;
+            this.AccountsPayable.LabelPosition = 27;
+            this.AccountsPayable.LabelText = "Accounts Payable";
+            this.AccountsPayable.Location = new System.Drawing.Point(96, 125);
+            this.AccountsPayable.Margin = new System.Windows.Forms.Padding(0);
+            this.AccountsPayable.Name = "AccountsPayable";
+            this.AccountsPayable.Size = new System.Drawing.Size(200, 200);
+            this.AccountsPayable.TabIndex = 15;
+            this.AccountsPayable.Click += new System.EventHandler(this.AccountsPayable_Click);
             // 
             // menuPanel
             // 
@@ -346,13 +391,15 @@
             this.apButtonTransition.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanel.Location = new System.Drawing.Point(0, 35);
+            this.menuPanel.Location = new System.Drawing.Point(0, 43);
+            this.menuPanel.Margin = new System.Windows.Forms.Padding(4);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(146, 45);
+            this.menuPanel.Size = new System.Drawing.Size(195, 55);
             this.menuPanel.TabIndex = 4;
             // 
             // menuButton
             // 
+            this.menuButton.Active = false;
             this.menuButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.menuButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.menuButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -377,36 +424,20 @@
             this.menuButton.IconVisible = true;
             this.menuButton.IconZoom = 50D;
             this.menuButton.IsTab = false;
-            this.menuButton.Location = new System.Drawing.Point(3, 7);
+            this.menuButton.Location = new System.Drawing.Point(4, 9);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(5);
             this.menuButton.Name = "menuButton";
             this.menuButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.menuButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.menuButton.OnHoverTextColor = System.Drawing.Color.White;
             this.menuButton.selected = false;
-            this.menuButton.Size = new System.Drawing.Size(140, 34);
+            this.menuButton.Size = new System.Drawing.Size(187, 42);
             this.menuButton.TabIndex = 1;
             this.menuButton.Text = "Menu";
             this.menuButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.menuButton.Textcolor = System.Drawing.Color.White;
             this.menuButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.Click += new System.EventHandler(this.MenuButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.pictureBox1.BackgroundImage = global::Reliable.Properties.Resources.ReliableLongWhiteBlueNew;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.salesTransition.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.glTransition.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
-            this.pictureBox1.Location = new System.Drawing.Point(170, 66);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(852, 221);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // menuPanelTwo
             // 
@@ -419,13 +450,15 @@
             this.apButtonTransition.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTwo.Location = new System.Drawing.Point(0, 66);
+            this.menuPanelTwo.Location = new System.Drawing.Point(0, 81);
+            this.menuPanelTwo.Margin = new System.Windows.Forms.Padding(4);
             this.menuPanelTwo.Name = "menuPanelTwo";
-            this.menuPanelTwo.Size = new System.Drawing.Size(146, 126);
+            this.menuPanelTwo.Size = new System.Drawing.Size(195, 155);
             this.menuPanelTwo.TabIndex = 11;
             // 
             // accountManagmentButton
             // 
+            this.accountManagmentButton.Active = false;
             this.accountManagmentButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.accountManagmentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.accountManagmentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -450,13 +483,14 @@
             this.accountManagmentButton.IconVisible = true;
             this.accountManagmentButton.IconZoom = 90D;
             this.accountManagmentButton.IsTab = false;
-            this.accountManagmentButton.Location = new System.Drawing.Point(3, 88);
+            this.accountManagmentButton.Location = new System.Drawing.Point(4, 108);
+            this.accountManagmentButton.Margin = new System.Windows.Forms.Padding(5);
             this.accountManagmentButton.Name = "accountManagmentButton";
             this.accountManagmentButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.accountManagmentButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.accountManagmentButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.accountManagmentButton.selected = false;
-            this.accountManagmentButton.Size = new System.Drawing.Size(141, 28);
+            this.accountManagmentButton.Size = new System.Drawing.Size(188, 34);
             this.accountManagmentButton.TabIndex = 2;
             this.accountManagmentButton.Text = "Account Managment";
             this.accountManagmentButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -466,6 +500,7 @@
             // 
             // companyInformationButton
             // 
+            this.companyInformationButton.Active = false;
             this.companyInformationButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -490,13 +525,14 @@
             this.companyInformationButton.IconVisible = true;
             this.companyInformationButton.IconZoom = 90D;
             this.companyInformationButton.IsTab = false;
-            this.companyInformationButton.Location = new System.Drawing.Point(3, 54);
+            this.companyInformationButton.Location = new System.Drawing.Point(4, 66);
+            this.companyInformationButton.Margin = new System.Windows.Forms.Padding(5);
             this.companyInformationButton.Name = "companyInformationButton";
             this.companyInformationButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.companyInformationButton.selected = false;
-            this.companyInformationButton.Size = new System.Drawing.Size(140, 28);
+            this.companyInformationButton.Size = new System.Drawing.Size(187, 34);
             this.companyInformationButton.TabIndex = 1;
             this.companyInformationButton.Text = "Company Info";
             this.companyInformationButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -506,6 +542,7 @@
             // 
             // changePasswordButton
             // 
+            this.changePasswordButton.Active = false;
             this.changePasswordButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -530,13 +567,14 @@
             this.changePasswordButton.IconVisible = true;
             this.changePasswordButton.IconZoom = 90D;
             this.changePasswordButton.IsTab = false;
-            this.changePasswordButton.Location = new System.Drawing.Point(3, 20);
+            this.changePasswordButton.Location = new System.Drawing.Point(4, 25);
+            this.changePasswordButton.Margin = new System.Windows.Forms.Padding(5);
             this.changePasswordButton.Name = "changePasswordButton";
             this.changePasswordButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.changePasswordButton.selected = false;
-            this.changePasswordButton.Size = new System.Drawing.Size(140, 28);
+            this.changePasswordButton.Size = new System.Drawing.Size(187, 34);
             this.changePasswordButton.TabIndex = 0;
             this.changePasswordButton.Text = "Change Password";
             this.changePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -664,19 +702,20 @@
             // 
             // Reliable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1175, 592);
+            this.ClientSize = new System.Drawing.Size(985, 646);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.backPanel);
+            this.salesTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.apButtonTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.companyTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reliable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dff";
@@ -685,15 +724,14 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.backPanel.ResumeLayout(false);
+            this.backPanel.PerformLayout();
             this.menuPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuPanelTwo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuElipse mainMenuElipse;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
@@ -702,10 +740,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton menuButton;
         private System.Windows.Forms.Panel menuPanel;
         private Bunifu.Framework.UI.BunifuFlatButton changePasswordButton;
-        private Bunifu.Framework.UI.BunifuTileButton accountsPayableButton;
         private BunifuAnimatorNS.BunifuTransition apButtonTransition;
-        private Bunifu.Framework.UI.BunifuTileButton salesNewButton;
-        private Bunifu.Framework.UI.BunifuTileButton generalLedgerButton;
         private System.Windows.Forms.PictureBox pictureBox2;
         private BunifuAnimatorNS.BunifuTransition glTransition;
         private BunifuAnimatorNS.BunifuTransition companyTransition;
@@ -714,9 +749,13 @@
         private BunifuAnimatorNS.BunifuTransition menuPanelTransitionTwo;
         private Bunifu.Framework.UI.BunifuFlatButton minimizeButton;
         private Bunifu.Framework.UI.BunifuFlatButton companyInformationButton;
-        private Bunifu.Framework.UI.BunifuTileButton managmentButton;
-        private Bunifu.Framework.UI.BunifuTileButton warehouseButton;
         private Bunifu.Framework.UI.BunifuFlatButton accountManagmentButton;
+        private Bunifu.Framework.UI.BunifuTileButton AccountsPayable;
+        private Bunifu.Framework.UI.BunifuTileButton AccountsReceivable;
+        private Bunifu.Framework.UI.BunifuTileButton GeneralLedger;
+        private Bunifu.Framework.UI.BunifuTileButton Management;
+        private Bunifu.Framework.UI.BunifuTileButton Sales;
+        private Bunifu.Framework.UI.BunifuTileButton Warehouse;
     }
 }
 
