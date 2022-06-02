@@ -93,6 +93,16 @@ namespace Reliable.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap catalog {
+            get {
+                object obj = ResourceManager.GetObject("catalog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap General_Ledger {
             get {
                 object obj = ResourceManager.GetObject("General Ledger", resourceCulture);

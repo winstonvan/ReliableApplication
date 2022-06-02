@@ -74,6 +74,16 @@ namespace Reliable {
                     else
                         AccountPriviledges.setWarehouse(false);
 
+                    if (row[8].ToString() == "1")
+                        AccountPriviledges.setAR(true);
+                    else
+                        AccountPriviledges.setAR(false);
+
+                    if (row[9].ToString() == "1")
+                        AccountPriviledges.setCatalogCreator(true);
+                    else
+                        AccountPriviledges.setCatalogCreator(false);
+
                     cancel = true;
 
                     this.Hide();

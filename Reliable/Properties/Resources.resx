@@ -142,6 +142,9 @@
   <data name="Reliable_Logo_White" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Reliable Logo White.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ReliableIndustrialLogoTrans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ReliableIndustrialLogoTrans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,20 +160,20 @@
   <data name="AccountsPayableButton1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AccountsPayableButton1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Management1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Management1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ReliableLogoTrans" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ReliableLogoTrans.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Reliable_Industrial_Grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Reliable-Industrial-Grey.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AccountsPayableButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AccountsPayableButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Management1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Management1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Reliable_Industrial_Grey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Reliable-Industrial-Grey.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Management" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Management.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,7 +184,7 @@
   <data name="planning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="catalog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\catalog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

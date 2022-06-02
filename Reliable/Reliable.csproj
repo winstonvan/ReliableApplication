@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\RMPSRV02\Reliable Files\Reliable Application\</UpdateUrl>
-    <ApplicationRevision>81</ApplicationRevision>
+    <ApplicationRevision>84</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -270,6 +270,18 @@
     <Compile Include="APMenu.Designer.cs">
       <DependentUpon>APMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="CatalogCreatorImportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatalogCreatorImportDialog.designer.cs">
+      <DependentUpon>CatalogCreatorImportDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CatalogCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatalogCreator.designer.cs">
+      <DependentUpon>CatalogCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="AzureTableGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -452,6 +464,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="APMenu.resx">
       <DependentUpon>APMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatalogCreatorImportDialog.resx">
+      <DependentUpon>CatalogCreatorImportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatalogCreator.resx">
+      <DependentUpon>CatalogCreator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AzureTableGenerator.resx">
       <DependentUpon>AzureTableGenerator.cs</DependentUpon>

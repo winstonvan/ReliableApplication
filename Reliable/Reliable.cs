@@ -17,10 +17,6 @@ namespace Reliable {
             InitializeComponent();
         }
         
-        private void Reliable_FormClosing(object sender, FormClosingEventArgs e) {
-
-        }
-
         private void Reliable_Load(object sender, EventArgs e) {
             menuPanel.Height = 45;
             menuPanel.Width = 146;
@@ -28,6 +24,14 @@ namespace Reliable {
 
             if (AccountPriviledges.getAP() == false) {
                 AccountsPayable.Visible = false;
+            }
+
+            if (AccountPriviledges.getAR() == false) {
+                AccountsReceivable.Visible = false;
+            }
+
+            if (AccountPriviledges.getCatalogCreator() == false) {
+                CatalogCreator.Visible = false;
             }
 
             if (AccountPriviledges.getGL() == false) {
@@ -183,9 +187,14 @@ namespace Reliable {
 
             newForm.Show();
         }
+        private void CatalogCreator_Click(object sender, EventArgs e) {
+            this.Hide();
 
-        private void backPanel_Paint(object sender, PaintEventArgs e) {
+            CatalogCreator newForm = new CatalogCreator();
 
+            newForm.Closed += (s, args) => this.Close();
+
+            newForm.Show();
         }
     }
 
