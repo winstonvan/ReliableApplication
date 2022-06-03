@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\RMPSRV02\Reliable Files\Reliable Application\</UpdateUrl>
-    <ApplicationRevision>84</ApplicationRevision>
+    <ApplicationRevision>85</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -382,6 +382,11 @@
     <Compile Include="PasswordForm.Designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="QuoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -527,14 +532,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="Resources\UPC-A.ttf" />
     <EmbeddedResource Include="SalesCatalogue.resx">
       <DependentUpon>SalesCatalogue.cs</DependentUpon>
     </EmbeddedResource>
@@ -575,6 +576,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\GeneralLedgerButton.png" />
+    <None Include="Resources\Hyphen Icon.PNG" />
+    <None Include="Resources\Icon_-_Padlock_-_Monochrome.png" />
+    <None Include="Resources\ManagementButton.png" />
+    <None Include="Resources\No Image File.PNG" />
+    <None Include="Resources\Reliable Logo White.png" />
+    <None Include="Resources\Reliable-Industrial-Grey.jpg" />
+    <None Include="Resources\ReliableIndustrialLogoTrans.png" />
+    <None Include="Resources\ReliableLogo.jpg" />
+    <None Include="Resources\ReliableLogoTrans.png" />
+    <None Include="Resources\ReliableLong.png" />
+    <None Include="Resources\ReliableLongWhite.png" />
+    <None Include="Resources\ReliableLongWhiteBlue.png" />
+    <None Include="Resources\ReliableLongWhiteBlueNew.png" />
+    <None Include="Resources\SalesButton.png" />
+    <None Include="Resources\Thumbs.db" />
+    <None Include="Resources\Transparent.png" />
+    <None Include="Resources\WarehouseButton.png" />
+    <None Include="Resources\X.PNG" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -582,30 +602,20 @@
   <ItemGroup>
     <Content Include="Properties\Image1.bmp" />
     <Content Include="reliablelogo_tJT_icon.ico" />
-    <None Include="Resources\warehouse.png" />
-    <None Include="Resources\planning.png" />
-    <None Include="Resources\Management1.png" />
-    <None Include="Resources\Management.png" />
-    <None Include="Resources\General Ledger.png" />
-    <None Include="Resources\AR.png" />
-    <None Include="Resources\AccountsPayableButton1.png" />
-    <None Include="Resources\AccountsPayableButton.png" />
-    <None Include="Resources\Transparent.png" />
-    <None Include="Resources\No Image File.PNG" />
-    <None Include="Resources\Hyphen Icon.PNG" />
-    <EmbeddedResource Include="Resources\UPC-A.ttf" />
-    <None Include="Resources\X.PNG" />
-    <None Include="Resources\ReliableLongWhiteBlueNew.png" />
-    <None Include="Resources\ReliableLongWhiteBlue.png" />
-    <None Include="Resources\ReliableLongWhite.png" />
-    <None Include="Resources\Reliable Logo White.png" />
-    <None Include="Resources\Icon_-_Padlock_-_Monochrome.png" />
+    <Content Include="Resources\AccountsPayableButton.png" />
+    <Content Include="Resources\AccountsPayableButtonDisabled.png" />
+    <Content Include="Resources\AccountsReceivableButton.png" />
+    <Content Include="Resources\AccountsReceivableButtonDisabled.png" />
+    <Content Include="Resources\CatalogCreatorButton.png" />
+    <Content Include="Resources\CatalogCreatorButtonDisabled.png" />
+    <Content Include="Resources\GeneralLedgerButtonDisabled.png" />
+    <Content Include="Resources\ManagementButtonDisabled.png" />
+    <Content Include="Resources\Reliable Logo White.bmp" />
+    <Content Include="Resources\Reliable Logo White1.bmp" />
+    <Content Include="Resources\Reliable Logo White1.png" />
+    <Content Include="Resources\SalesButtonDisabled.png" />
+    <Content Include="Resources\WarehouseButtonDisabled.png" />
     <None Include="Reliable_TemporaryKey.pfx" />
-    <None Include="Resources\ReliableIndustrialLogoTrans.png" />
-    <None Include="Resources\ReliableLogoTrans.png" />
-    <None Include="Resources\Reliable-Industrial-Grey.jpg" />
-    <None Include="Resources\ReliableLogo.jpg" />
-    <None Include="Resources\ReliableLong.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

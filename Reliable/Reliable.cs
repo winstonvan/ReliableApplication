@@ -23,35 +23,42 @@ namespace Reliable {
             menuPanelTwo.Height = 14;
 
             if (AccountPriviledges.getAP() == false) {
-                AccountsPayable.Visible = false;
+                AccountsPayableButton.Visible = false;
+                AccountsPayableButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getAR() == false) {
-                AccountsReceivable.Visible = false;
+                AccountsReceivableButton.Visible = false;
+                AccountsReceivableButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getCatalogCreator() == false) {
-                CatalogCreator.Visible = false;
+                CatalogCreatorButton.Visible = false;
+                CatalogCreatorButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getGL() == false) {
-                GeneralLedger.Visible = false;
+                GeneralLedgerButton.Visible = false;
+                GeneralLedgerButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getSales() == false) {
-                Sales.Visible = false;
+                SalesButton.Visible = false;
+                SalesButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getManage() == false) {
-                Management.Visible = false;
+                ManagementButton.Visible = false;
+                ManagementButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getWarehouse() == false) {
-                Warehouse.Visible = false;
+                WarehouseButton.Visible = false;
+                WarehouseButtonDisabled.Visible = true;
             }
 
             if (AccountPriviledges.getAdminFlag() == false) {
-                accountManagmentButton.Visible = false;
+                AccountManagementButton.Visible = false;
             }
 
             FormState.PreviousPage = this;
@@ -120,8 +127,8 @@ namespace Reliable {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AccountsPayable_Click(object sender, EventArgs e) {
-            AccountsPayable.Visible = false;
-            apButtonTransition.ShowSync(AccountsPayable);
+            AccountsPayableButton.Visible = false;
+            apButtonTransition.ShowSync(AccountsPayableButton);
 
             this.Hide();
 
@@ -143,8 +150,8 @@ namespace Reliable {
         }
 
         private void GeneralLedger_Click(object sender, EventArgs e) {
-            GeneralLedger.Visible = false;
-            glTransition.ShowSync(GeneralLedger);
+            GeneralLedgerButton.Visible = false;
+            glTransition.ShowSync(GeneralLedgerButton);
 
             this.Hide();
 
@@ -166,8 +173,8 @@ namespace Reliable {
         }
 
         private void Sales_Click(object sender, EventArgs e) {
-            Sales.Visible = false;
-            salesTransition.ShowSync(Sales);
+            SalesButton.Visible = false;
+            salesTransition.ShowSync(SalesButton);
 
             this.Hide();
 
