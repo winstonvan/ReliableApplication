@@ -16,7 +16,7 @@ namespace Reliable {
         public Reliable() {
             InitializeComponent();
         }
-        
+
         private void Reliable_Load(object sender, EventArgs e) {
             menuPanel.Height = 45;
             menuPanel.Width = 146;
@@ -126,7 +126,7 @@ namespace Reliable {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AccountsPayable_Click(object sender, EventArgs e) {
+        private void AccountsPayableButton_Click(object sender, EventArgs e) {
             AccountsPayableButton.Visible = false;
             apButtonTransition.ShowSync(AccountsPayableButton);
 
@@ -138,7 +138,6 @@ namespace Reliable {
 
             apForm.Show();
         }
-
         private void AccountsReceivable_Click(object sender, EventArgs e) {
             this.Hide();
 

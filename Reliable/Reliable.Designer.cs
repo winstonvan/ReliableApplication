@@ -31,12 +31,12 @@ namespace Reliable
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation7 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation6 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation3 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation5 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation4 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reliable));
-            BunifuAnimatorNS.Animation animation9 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation8 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation10 = new BunifuAnimatorNS.Animation();
             this.mainMenuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.minimizeButton = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -49,7 +49,6 @@ namespace Reliable
             this.companyInformationButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.changePasswordButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.AccountsPayableButtonDisabled = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.AccountsPayableButton = new Bunifu.Framework.UI.BunifuTileButton();
             this.WarehouseButtonDisabled = new Bunifu.Framework.UI.BunifuTileButton();
             this.SalesButtonDisabled = new Bunifu.Framework.UI.BunifuTileButton();
@@ -211,7 +210,6 @@ namespace Reliable
             this.backPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
             this.backPanel.Controls.Add(this.menuPanelTwo);
             this.backPanel.Controls.Add(this.AccountsPayableButtonDisabled);
-            this.backPanel.Controls.Add(this.bunifuTileButton1);
             this.backPanel.Controls.Add(this.AccountsPayableButton);
             this.backPanel.Controls.Add(this.WarehouseButtonDisabled);
             this.backPanel.Controls.Add(this.SalesButtonDisabled);
@@ -407,32 +405,6 @@ namespace Reliable
             this.AccountsPayableButtonDisabled.TabIndex = 31;
             this.AccountsPayableButtonDisabled.Visible = false;
             // 
-            // bunifuTileButton1
-            // 
-            this.bunifuTileButton1.AutoSize = true;
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.bunifuTileButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuTileButton1.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.glTransition.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.apButtonTransition.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.companyTransition.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.salesTransition.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTransitionTwo.SetDecoration(this.bunifuTileButton1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.White;
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 14;
-            this.bunifuTileButton1.ImageZoom = 50;
-            this.bunifuTileButton1.LabelPosition = 27;
-            this.bunifuTileButton1.LabelText = "Accounts Payable";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(83, 115);
-            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(236, 191);
-            this.bunifuTileButton1.TabIndex = 30;
-            // 
             // AccountsPayableButton
             // 
             this.AccountsPayableButton.AutoSize = true;
@@ -457,7 +429,8 @@ namespace Reliable
             this.AccountsPayableButton.Margin = new System.Windows.Forms.Padding(0);
             this.AccountsPayableButton.Name = "AccountsPayableButton";
             this.AccountsPayableButton.Size = new System.Drawing.Size(236, 191);
-            this.AccountsPayableButton.TabIndex = 29;
+            this.AccountsPayableButton.TabIndex = 30;
+            this.AccountsPayableButton.Click += new System.EventHandler(this.AccountsPayableButton_Click);
             // 
             // WarehouseButtonDisabled
             // 
@@ -844,22 +817,22 @@ namespace Reliable
             // 
             this.apButtonTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.apButtonTransition.Cursor = null;
-            animation7.AnimateOnlyDifferences = true;
-            animation7.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.BlindCoeff")));
-            animation7.LeafCoeff = 0F;
-            animation7.MaxTime = 1F;
-            animation7.MinTime = 0F;
-            animation7.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicCoeff")));
-            animation7.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation7.MosaicShift")));
-            animation7.MosaicSize = 0;
-            animation7.Padding = new System.Windows.Forms.Padding(0);
-            animation7.RotateCoeff = 0F;
-            animation7.RotateLimit = 0F;
-            animation7.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.ScaleCoeff")));
-            animation7.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation7.SlideCoeff")));
-            animation7.TimeCoeff = 0F;
-            animation7.TransparencyCoeff = 1F;
-            this.apButtonTransition.DefaultAnimation = animation7;
+            animation3.AnimateOnlyDifferences = true;
+            animation3.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.BlindCoeff")));
+            animation3.LeafCoeff = 0F;
+            animation3.MaxTime = 1F;
+            animation3.MinTime = 0F;
+            animation3.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicCoeff")));
+            animation3.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation3.MosaicShift")));
+            animation3.MosaicSize = 0;
+            animation3.Padding = new System.Windows.Forms.Padding(0);
+            animation3.RotateCoeff = 0F;
+            animation3.RotateLimit = 0F;
+            animation3.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.ScaleCoeff")));
+            animation3.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation3.SlideCoeff")));
+            animation3.TimeCoeff = 0F;
+            animation3.TransparencyCoeff = 1F;
+            this.apButtonTransition.DefaultAnimation = animation3;
             this.apButtonTransition.Interval = 1;
             this.apButtonTransition.MaxAnimationTime = 500;
             this.apButtonTransition.TimeStep = 0.05F;
@@ -868,22 +841,22 @@ namespace Reliable
             // 
             this.glTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.glTransition.Cursor = null;
-            animation6.AnimateOnlyDifferences = true;
-            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
-            animation6.LeafCoeff = 0F;
-            animation6.MaxTime = 1F;
-            animation6.MinTime = 0F;
-            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
-            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
-            animation6.MosaicSize = 0;
-            animation6.Padding = new System.Windows.Forms.Padding(0);
-            animation6.RotateCoeff = 0F;
-            animation6.RotateLimit = 0F;
-            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
-            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
-            animation6.TimeCoeff = 0F;
-            animation6.TransparencyCoeff = 1F;
-            this.glTransition.DefaultAnimation = animation6;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 1F;
+            this.glTransition.DefaultAnimation = animation2;
             this.glTransition.Interval = 1;
             this.glTransition.MaxAnimationTime = 500;
             this.glTransition.TimeStep = 0.05F;
@@ -892,22 +865,22 @@ namespace Reliable
             // 
             this.salesTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.salesTransition.Cursor = null;
-            animation9.AnimateOnlyDifferences = true;
-            animation9.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.BlindCoeff")));
-            animation9.LeafCoeff = 0F;
-            animation9.MaxTime = 1F;
-            animation9.MinTime = 0F;
-            animation9.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicCoeff")));
-            animation9.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation9.MosaicShift")));
-            animation9.MosaicSize = 0;
-            animation9.Padding = new System.Windows.Forms.Padding(0);
-            animation9.RotateCoeff = 0F;
-            animation9.RotateLimit = 0F;
-            animation9.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.ScaleCoeff")));
-            animation9.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation9.SlideCoeff")));
-            animation9.TimeCoeff = 0F;
-            animation9.TransparencyCoeff = 1F;
-            this.salesTransition.DefaultAnimation = animation9;
+            animation5.AnimateOnlyDifferences = true;
+            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
+            animation5.LeafCoeff = 0F;
+            animation5.MaxTime = 1F;
+            animation5.MinTime = 0F;
+            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
+            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
+            animation5.MosaicSize = 0;
+            animation5.Padding = new System.Windows.Forms.Padding(0);
+            animation5.RotateCoeff = 0F;
+            animation5.RotateLimit = 0F;
+            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
+            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
+            animation5.TimeCoeff = 0F;
+            animation5.TransparencyCoeff = 1F;
+            this.salesTransition.DefaultAnimation = animation5;
             this.salesTransition.Interval = 1;
             this.salesTransition.MaxAnimationTime = 500;
             this.salesTransition.TimeStep = 0.05F;
@@ -916,22 +889,22 @@ namespace Reliable
             // 
             this.companyTransition.AnimationType = BunifuAnimatorNS.AnimationType.Transparent;
             this.companyTransition.Cursor = null;
-            animation8.AnimateOnlyDifferences = true;
-            animation8.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.BlindCoeff")));
-            animation8.LeafCoeff = 0F;
-            animation8.MaxTime = 1F;
-            animation8.MinTime = 0F;
-            animation8.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicCoeff")));
-            animation8.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation8.MosaicShift")));
-            animation8.MosaicSize = 0;
-            animation8.Padding = new System.Windows.Forms.Padding(0);
-            animation8.RotateCoeff = 0F;
-            animation8.RotateLimit = 0F;
-            animation8.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.ScaleCoeff")));
-            animation8.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation8.SlideCoeff")));
-            animation8.TimeCoeff = 0F;
-            animation8.TransparencyCoeff = 1F;
-            this.companyTransition.DefaultAnimation = animation8;
+            animation4.AnimateOnlyDifferences = true;
+            animation4.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.BlindCoeff")));
+            animation4.LeafCoeff = 0F;
+            animation4.MaxTime = 1F;
+            animation4.MinTime = 0F;
+            animation4.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicCoeff")));
+            animation4.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation4.MosaicShift")));
+            animation4.MosaicSize = 0;
+            animation4.Padding = new System.Windows.Forms.Padding(0);
+            animation4.RotateCoeff = 0F;
+            animation4.RotateLimit = 0F;
+            animation4.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.ScaleCoeff")));
+            animation4.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation4.SlideCoeff")));
+            animation4.TimeCoeff = 0F;
+            animation4.TransparencyCoeff = 1F;
+            this.companyTransition.DefaultAnimation = animation4;
             this.companyTransition.Interval = 1;
             this.companyTransition.MaxAnimationTime = 500;
             this.companyTransition.TimeStep = 0.05F;
@@ -940,22 +913,22 @@ namespace Reliable
             // 
             this.menuPanelTransitionTwo.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
             this.menuPanelTransitionTwo.Cursor = null;
-            animation10.AnimateOnlyDifferences = true;
-            animation10.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.BlindCoeff")));
-            animation10.LeafCoeff = 0F;
-            animation10.MaxTime = 1F;
-            animation10.MinTime = 0F;
-            animation10.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicCoeff")));
-            animation10.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation10.MosaicShift")));
-            animation10.MosaicSize = 0;
-            animation10.Padding = new System.Windows.Forms.Padding(0);
-            animation10.RotateCoeff = 0F;
-            animation10.RotateLimit = 0F;
-            animation10.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.ScaleCoeff")));
-            animation10.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation10.SlideCoeff")));
-            animation10.TimeCoeff = 0F;
-            animation10.TransparencyCoeff = 0F;
-            this.menuPanelTransitionTwo.DefaultAnimation = animation10;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.menuPanelTransitionTwo.DefaultAnimation = animation1;
             this.menuPanelTransitionTwo.Interval = 3;
             // 
             // Reliable
@@ -976,7 +949,7 @@ namespace Reliable
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reliable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "dff";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Reliable_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1019,9 +992,8 @@ namespace Reliable
         private Bunifu.Framework.UI.BunifuTileButton ManagementButtonDisabled;
         private Bunifu.Framework.UI.BunifuTileButton AccountsReceivableButtonDisabled;
         private Bunifu.Framework.UI.BunifuTileButton GeneralLedgerButtonDisabled;
-        private Bunifu.Framework.UI.BunifuTileButton AccountsPayableButton;
         private Bunifu.Framework.UI.BunifuTileButton AccountsPayableButtonDisabled;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
+        private Bunifu.Framework.UI.BunifuTileButton AccountsPayableButton;
     }
 }
 
