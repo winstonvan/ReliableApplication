@@ -219,7 +219,7 @@ namespace TestProject {
                         if (i != majorNumbers.Length - 1) {
                             condition += "OR ";
                         }
-                    }
+                    }   
                 } else if (majorNumberDropdown.SelectedItem.ToString() == "Pick") {
                     for (int i = 0; i < majorNumberList.CheckedItems.Count; i++) {
                         condition += "Major = '" + majorNumberList.CheckedItems[i].ToString().Split('-')[0] + "' ";

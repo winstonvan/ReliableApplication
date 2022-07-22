@@ -69,6 +69,7 @@ namespace Reliable {
                     else
                         AccountPriviledges.setManage(false);
 
+
                     if (row[7].ToString() == "1")
                         AccountPriviledges.setWarehouse(true);
                     else
@@ -83,6 +84,11 @@ namespace Reliable {
                         AccountPriviledges.setCatalogCreator(true);
                     else
                         AccountPriviledges.setCatalogCreator(false);
+
+                    if (row[10].ToString() == "1")
+                        AccountPriviledges.setReporting(true);
+                    else
+                        AccountPriviledges.setReporting(false);
 
                     cancel = true;
 

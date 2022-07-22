@@ -64,6 +64,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Reporting = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.createNewAccountTab.SuspendLayout();
@@ -85,9 +86,8 @@
             this.panel1.Controls.Add(this.closeButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(928, 44);
+            this.panel1.Size = new System.Drawing.Size(696, 36);
             this.panel1.TabIndex = 6;
             // 
             // bunifuCustomLabel2
@@ -95,10 +95,9 @@
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(16, 11);
-            this.bunifuCustomLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(12, 9);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(173, 25);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(138, 20);
             this.bunifuCustomLabel2.TabIndex = 17;
             this.bunifuCustomLabel2.Text = "Change Password";
             // 
@@ -125,14 +124,14 @@
             this.minimizeButton.IconVisible = true;
             this.minimizeButton.IconZoom = 50D;
             this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(821, 4);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(5);
+            this.minimizeButton.Location = new System.Drawing.Point(616, 3);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.minimizeButton.selected = false;
-            this.minimizeButton.Size = new System.Drawing.Size(41, 37);
+            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
             this.minimizeButton.TabIndex = 14;
             this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minimizeButton.Textcolor = System.Drawing.Color.White;
@@ -162,14 +161,14 @@
             this.closeButton.IconVisible = true;
             this.closeButton.IconZoom = 50D;
             this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(871, 4);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(5);
+            this.closeButton.Location = new System.Drawing.Point(653, 3);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.OnHovercolor = System.Drawing.Color.Red;
             this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.closeButton.selected = false;
-            this.closeButton.Size = new System.Drawing.Size(41, 37);
+            this.closeButton.Size = new System.Drawing.Size(31, 30);
             this.closeButton.TabIndex = 1;
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.closeButton.Textcolor = System.Drawing.Color.White;
@@ -187,17 +186,17 @@
             // 
             this.tabControl.Controls.Add(this.createNewAccountTab);
             this.tabControl.Controls.Add(this.existingAccountsTab);
-            this.tabControl.Location = new System.Drawing.Point(0, 78);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl.Location = new System.Drawing.Point(0, 63);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(928, 383);
+            this.tabControl.Size = new System.Drawing.Size(696, 311);
             this.tabControl.TabIndex = 7;
             this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // createNewAccountTab
             // 
             this.createNewAccountTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.createNewAccountTab.Controls.Add(this.Reporting);
             this.createNewAccountTab.Controls.Add(this.catalogCreatorBox);
             this.createNewAccountTab.Controls.Add(this.arBox);
             this.createNewAccountTab.Controls.Add(this.submitButton);
@@ -214,11 +213,10 @@
             this.createNewAccountTab.Controls.Add(this.passwordBox);
             this.createNewAccountTab.Controls.Add(this.usernameBox);
             this.createNewAccountTab.Controls.Add(this.bunifuSeparator2);
-            this.createNewAccountTab.Location = new System.Drawing.Point(4, 25);
-            this.createNewAccountTab.Margin = new System.Windows.Forms.Padding(4);
+            this.createNewAccountTab.Location = new System.Drawing.Point(4, 22);
             this.createNewAccountTab.Name = "createNewAccountTab";
-            this.createNewAccountTab.Padding = new System.Windows.Forms.Padding(4);
-            this.createNewAccountTab.Size = new System.Drawing.Size(920, 354);
+            this.createNewAccountTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.createNewAccountTab.Size = new System.Drawing.Size(688, 285);
             this.createNewAccountTab.TabIndex = 0;
             this.createNewAccountTab.Text = "Create New Account";
             // 
@@ -227,10 +225,9 @@
             this.catalogCreatorBox.AutoSize = true;
             this.catalogCreatorBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catalogCreatorBox.ForeColor = System.Drawing.Color.White;
-            this.catalogCreatorBox.Location = new System.Drawing.Point(609, 110);
-            this.catalogCreatorBox.Margin = new System.Windows.Forms.Padding(4);
+            this.catalogCreatorBox.Location = new System.Drawing.Point(445, 79);
             this.catalogCreatorBox.Name = "catalogCreatorBox";
-            this.catalogCreatorBox.Size = new System.Drawing.Size(149, 24);
+            this.catalogCreatorBox.Size = new System.Drawing.Size(126, 21);
             this.catalogCreatorBox.TabIndex = 41;
             this.catalogCreatorBox.Text = "Catalog Creator";
             this.catalogCreatorBox.UseVisualStyleBackColor = true;
@@ -240,10 +237,9 @@
             this.arBox.AutoSize = true;
             this.arBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.arBox.ForeColor = System.Drawing.Color.White;
-            this.arBox.Location = new System.Drawing.Point(609, 85);
-            this.arBox.Margin = new System.Windows.Forms.Padding(4);
+            this.arBox.Location = new System.Drawing.Point(445, 59);
             this.arBox.Name = "arBox";
-            this.arBox.Size = new System.Drawing.Size(188, 24);
+            this.arBox.Size = new System.Drawing.Size(159, 21);
             this.arBox.TabIndex = 40;
             this.arBox.Text = "Accounts Receivable";
             this.arBox.UseVisualStyleBackColor = true;
@@ -261,10 +257,10 @@
             this.submitButton.ImageZoom = 50;
             this.submitButton.LabelPosition = 35;
             this.submitButton.LabelText = "Submit";
-            this.submitButton.Location = new System.Drawing.Point(421, 286);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.submitButton.Location = new System.Drawing.Point(312, 236);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(153, 43);
+            this.submitButton.Size = new System.Drawing.Size(115, 43);
             this.submitButton.TabIndex = 39;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
@@ -273,10 +269,9 @@
             this.glBox.AutoSize = true;
             this.glBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.glBox.ForeColor = System.Drawing.Color.White;
-            this.glBox.Location = new System.Drawing.Point(609, 135);
-            this.glBox.Margin = new System.Windows.Forms.Padding(4);
+            this.glBox.Location = new System.Drawing.Point(445, 100);
             this.glBox.Name = "glBox";
-            this.glBox.Size = new System.Drawing.Size(147, 24);
+            this.glBox.Size = new System.Drawing.Size(127, 21);
             this.glBox.TabIndex = 13;
             this.glBox.Text = "General Ledger";
             this.glBox.UseVisualStyleBackColor = true;
@@ -286,12 +281,11 @@
             this.managmentBox.AutoSize = true;
             this.managmentBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.managmentBox.ForeColor = System.Drawing.Color.White;
-            this.managmentBox.Location = new System.Drawing.Point(609, 160);
-            this.managmentBox.Margin = new System.Windows.Forms.Padding(4);
+            this.managmentBox.Location = new System.Drawing.Point(445, 120);
             this.managmentBox.Name = "managmentBox";
-            this.managmentBox.Size = new System.Drawing.Size(118, 24);
+            this.managmentBox.Size = new System.Drawing.Size(109, 21);
             this.managmentBox.TabIndex = 12;
-            this.managmentBox.Text = "Managment";
+            this.managmentBox.Text = "Management";
             this.managmentBox.UseVisualStyleBackColor = true;
             // 
             // salesBox
@@ -299,10 +293,9 @@
             this.salesBox.AutoSize = true;
             this.salesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.salesBox.ForeColor = System.Drawing.Color.White;
-            this.salesBox.Location = new System.Drawing.Point(609, 185);
-            this.salesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.salesBox.Location = new System.Drawing.Point(445, 162);
             this.salesBox.Name = "salesBox";
-            this.salesBox.Size = new System.Drawing.Size(73, 24);
+            this.salesBox.Size = new System.Drawing.Size(62, 21);
             this.salesBox.TabIndex = 11;
             this.salesBox.Text = "Sales";
             this.salesBox.UseVisualStyleBackColor = true;
@@ -312,10 +305,9 @@
             this.warehouseBox.AutoSize = true;
             this.warehouseBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.warehouseBox.ForeColor = System.Drawing.Color.White;
-            this.warehouseBox.Location = new System.Drawing.Point(609, 210);
-            this.warehouseBox.Margin = new System.Windows.Forms.Padding(4);
+            this.warehouseBox.Location = new System.Drawing.Point(445, 183);
             this.warehouseBox.Name = "warehouseBox";
-            this.warehouseBox.Size = new System.Drawing.Size(116, 24);
+            this.warehouseBox.Size = new System.Drawing.Size(100, 21);
             this.warehouseBox.TabIndex = 10;
             this.warehouseBox.Text = "Warehouse";
             this.warehouseBox.UseVisualStyleBackColor = true;
@@ -325,10 +317,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(623, 15);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(467, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 25);
+            this.label4.Size = new System.Drawing.Size(130, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Module Access";
             // 
@@ -337,10 +328,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(161, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(121, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 25);
+            this.label3.Size = new System.Drawing.Size(124, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Account Login";
             // 
@@ -349,10 +339,10 @@
             this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bunifuSeparator1.LineThickness = 1;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(476, 0);
-            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(357, 0);
+            this.bunifuSeparator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Size = new System.Drawing.Size(43, 257);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(32, 214);
             this.bunifuSeparator1.TabIndex = 6;
             this.bunifuSeparator1.Transparency = 255;
             this.bunifuSeparator1.Vertical = true;
@@ -362,10 +352,9 @@
             this.apBox.AutoSize = true;
             this.apBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apBox.ForeColor = System.Drawing.Color.White;
-            this.apBox.Location = new System.Drawing.Point(609, 60);
-            this.apBox.Margin = new System.Windows.Forms.Padding(4);
+            this.apBox.Location = new System.Drawing.Point(445, 39);
             this.apBox.Name = "apBox";
-            this.apBox.Size = new System.Drawing.Size(165, 24);
+            this.apBox.Size = new System.Drawing.Size(140, 21);
             this.apBox.TabIndex = 5;
             this.apBox.Text = "Accounts Payable";
             this.apBox.UseVisualStyleBackColor = true;
@@ -375,10 +364,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(44, 161);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(33, 131);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 20);
+            this.label2.Size = new System.Drawing.Size(73, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password:";
             // 
@@ -387,29 +375,26 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(40, 87);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(30, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(77, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Username:";
             // 
             // passwordBox
             // 
             this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordBox.Location = new System.Drawing.Point(147, 154);
-            this.passwordBox.Margin = new System.Windows.Forms.Padding(4);
+            this.passwordBox.Location = new System.Drawing.Point(110, 125);
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(255, 30);
+            this.passwordBox.Size = new System.Drawing.Size(192, 26);
             this.passwordBox.TabIndex = 2;
             // 
             // usernameBox
             // 
             this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameBox.Location = new System.Drawing.Point(147, 80);
-            this.usernameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.usernameBox.Location = new System.Drawing.Point(110, 65);
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(255, 30);
+            this.usernameBox.Size = new System.Drawing.Size(192, 26);
             this.usernameBox.TabIndex = 0;
             // 
             // bunifuSeparator2
@@ -417,10 +402,10 @@
             this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bunifuSeparator2.LineThickness = 1;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(5, 254);
-            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(3, 214);
+            this.bunifuSeparator2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Size = new System.Drawing.Size(923, 10);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(692, 8);
             this.bunifuSeparator2.TabIndex = 7;
             this.bunifuSeparator2.Transparency = 255;
             this.bunifuSeparator2.Vertical = false;
@@ -432,11 +417,10 @@
             this.existingAccountsTab.Controls.Add(this.idBox);
             this.existingAccountsTab.Controls.Add(this.removebutton);
             this.existingAccountsTab.Controls.Add(this.accountsDGV);
-            this.existingAccountsTab.Location = new System.Drawing.Point(4, 25);
-            this.existingAccountsTab.Margin = new System.Windows.Forms.Padding(4);
+            this.existingAccountsTab.Location = new System.Drawing.Point(4, 22);
             this.existingAccountsTab.Name = "existingAccountsTab";
-            this.existingAccountsTab.Padding = new System.Windows.Forms.Padding(4);
-            this.existingAccountsTab.Size = new System.Drawing.Size(920, 354);
+            this.existingAccountsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.existingAccountsTab.Size = new System.Drawing.Size(688, 285);
             this.existingAccountsTab.TabIndex = 1;
             this.existingAccountsTab.Text = "Existing Accounts";
             this.existingAccountsTab.Click += new System.EventHandler(this.existingAccountsTab_Click);
@@ -446,20 +430,18 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(125, 68);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(94, 55);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 16);
+            this.label6.Size = new System.Drawing.Size(21, 13);
             this.label6.TabIndex = 19;
             this.label6.Text = "ID:";
             // 
             // idBox
             // 
             this.idBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.idBox.Location = new System.Drawing.Point(55, 87);
-            this.idBox.Margin = new System.Windows.Forms.Padding(4);
+            this.idBox.Location = new System.Drawing.Point(41, 71);
             this.idBox.Name = "idBox";
-            this.idBox.Size = new System.Drawing.Size(176, 22);
+            this.idBox.Size = new System.Drawing.Size(133, 20);
             this.idBox.TabIndex = 18;
             // 
             // removebutton
@@ -475,10 +457,10 @@
             this.removebutton.ImageZoom = 50;
             this.removebutton.LabelPosition = 27;
             this.removebutton.LabelText = "Remove";
-            this.removebutton.Location = new System.Drawing.Point(71, 151);
-            this.removebutton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.removebutton.Location = new System.Drawing.Point(53, 123);
+            this.removebutton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.removebutton.Name = "removebutton";
-            this.removebutton.Size = new System.Drawing.Size(139, 129);
+            this.removebutton.Size = new System.Drawing.Size(104, 105);
             this.removebutton.TabIndex = 17;
             this.removebutton.Click += new System.EventHandler(this.removebutton_Click);
             // 
@@ -505,12 +487,11 @@
             this.accountsDGV.EnableHeadersVisualStyles = false;
             this.accountsDGV.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.accountsDGV.HeaderForeColor = System.Drawing.Color.White;
-            this.accountsDGV.Location = new System.Drawing.Point(283, 7);
-            this.accountsDGV.Margin = new System.Windows.Forms.Padding(4);
+            this.accountsDGV.Location = new System.Drawing.Point(212, 6);
             this.accountsDGV.Name = "accountsDGV";
             this.accountsDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.accountsDGV.RowHeadersWidth = 51;
-            this.accountsDGV.Size = new System.Drawing.Size(627, 336);
+            this.accountsDGV.Size = new System.Drawing.Size(470, 273);
             this.accountsDGV.TabIndex = 0;
             // 
             // menuStrip1
@@ -519,9 +500,10 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 44);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 36);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(928, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(696, 24);
             this.menuStrip1.TabIndex = 51;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -531,7 +513,7 @@
             this.mainMenuToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // mainMenuToolStripMenuItem
@@ -539,22 +521,33 @@
             this.mainMenuToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.mainMenuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.mainMenuToolStripMenuItem.Name = "mainMenuToolStripMenuItem";
-            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.mainMenuToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.mainMenuToolStripMenuItem.Text = "Main Menu";
             this.mainMenuToolStripMenuItem.Click += new System.EventHandler(this.mainMenuToolStripMenuItem_Click);
             // 
+            // Reporting
+            // 
+            this.Reporting.AutoSize = true;
+            this.Reporting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Reporting.ForeColor = System.Drawing.Color.White;
+            this.Reporting.Location = new System.Drawing.Point(445, 141);
+            this.Reporting.Name = "Reporting";
+            this.Reporting.Size = new System.Drawing.Size(89, 21);
+            this.Reporting.TabIndex = 42;
+            this.Reporting.Text = "Reporting";
+            this.Reporting.UseVisualStyleBackColor = true;
+            // 
             // Account_Managment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(928, 463);
+            this.ClientSize = new System.Drawing.Size(696, 376);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Account_Managment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account_Managment";
@@ -607,5 +600,6 @@
         private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.CheckBox arBox;
         private System.Windows.Forms.CheckBox catalogCreatorBox;
+        private System.Windows.Forms.CheckBox Reporting;
     }
 }

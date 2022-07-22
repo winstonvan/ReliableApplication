@@ -13,7 +13,7 @@ namespace Reliable {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PasswordForm());
+                Application.Run(new PasswordForm());
         }
     }
 }

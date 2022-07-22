@@ -15,6 +15,7 @@ namespace Reliable {
         private static bool sales;
         private static bool management;
         private static bool warehouse;
+        private static bool reporting;
         private static bool adminFlag;
 
         public static void setAP(bool x) {
@@ -35,6 +36,10 @@ namespace Reliable {
         public static void setManage(bool x) {
             management = x;
         }
+        public static void setReporting(bool x) {
+            reporting = x;
+        }
+
         public static void setWarehouse(bool x) {
             warehouse = x;
         }
@@ -62,6 +67,9 @@ namespace Reliable {
         }
         public static bool getWarehouse() {
             return warehouse;
+        }
+        public static bool getReporting() {
+            return reporting;
         }
         public static bool getAdminFlag() {
             return adminFlag;

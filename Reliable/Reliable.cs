@@ -57,9 +57,15 @@ namespace Reliable {
                 WarehouseButtonDisabled.Visible = true;
             }
 
+            if (AccountPriviledges.getReporting() == false) {
+                ReportingButton.Visible = false;
+                ReportingDisabledButton.Visible = true;
+            }
+
             if (AccountPriviledges.getAdminFlag() == false) {
                 AccountManagementButton.Visible = false;
             }
+
 
             FormState.PreviousPage = this;
         }
@@ -197,6 +203,16 @@ namespace Reliable {
             this.Hide();
 
             CatalogCreator newForm = new CatalogCreator();
+
+            newForm.Closed += (s, args) => this.Close();
+
+            newForm.Show();
+        }
+
+        private void OrderDeskInvoicesButton_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            ReportingMenu newForm = new ReportingMenu();
 
             newForm.Closed += (s, args) => this.Close();
 

@@ -44,6 +44,8 @@ namespace Reliable
             this.closeButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.backPanel = new System.Windows.Forms.Panel();
+            this.ReportingDisabledButton = new Bunifu.Framework.UI.BunifuTileButton();
+            this.ReportingButton = new Bunifu.Framework.UI.BunifuTileButton();
             this.menuPanelTwo = new System.Windows.Forms.Panel();
             this.AccountManagementButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.companyInformationButton = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -94,9 +96,8 @@ namespace Reliable
             this.menuPanelTransitionTwo.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 44);
+            this.panel1.Size = new System.Drawing.Size(948, 36);
             this.panel1.TabIndex = 9;
             // 
             // minimizeButton
@@ -126,14 +127,14 @@ namespace Reliable
             this.minimizeButton.IconVisible = true;
             this.minimizeButton.IconZoom = 50D;
             this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(1178, 5);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(5);
+            this.minimizeButton.Location = new System.Drawing.Point(884, 4);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.minimizeButton.selected = false;
-            this.minimizeButton.Size = new System.Drawing.Size(41, 37);
+            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
             this.minimizeButton.TabIndex = 12;
             this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.minimizeButton.Textcolor = System.Drawing.Color.White;
@@ -149,10 +150,9 @@ namespace Reliable
             this.apButtonTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
             this.salesTransition.SetDecoration(this.pictureBox2, BunifuAnimatorNS.DecorationType.None);
-            this.pictureBox2.Location = new System.Drawing.Point(16, 7);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(25, 26);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
@@ -183,14 +183,14 @@ namespace Reliable
             this.closeButton.IconVisible = true;
             this.closeButton.IconZoom = 50D;
             this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(1217, 5);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(5);
+            this.closeButton.Location = new System.Drawing.Point(913, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.OnHovercolor = System.Drawing.Color.Red;
             this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
             this.closeButton.selected = false;
-            this.closeButton.Size = new System.Drawing.Size(41, 37);
+            this.closeButton.Size = new System.Drawing.Size(31, 30);
             this.closeButton.TabIndex = 0;
             this.closeButton.Text = "gfdsg";
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,6 +208,8 @@ namespace Reliable
             // backPanel
             // 
             this.backPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.backPanel.Controls.Add(this.ReportingDisabledButton);
+            this.backPanel.Controls.Add(this.ReportingButton);
             this.backPanel.Controls.Add(this.menuPanelTwo);
             this.backPanel.Controls.Add(this.AccountsPayableButtonDisabled);
             this.backPanel.Controls.Add(this.AccountsPayableButton);
@@ -230,10 +232,63 @@ namespace Reliable
             this.glTransition.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.backPanel, BunifuAnimatorNS.DecorationType.None);
             this.backPanel.Location = new System.Drawing.Point(0, 0);
-            this.backPanel.Margin = new System.Windows.Forms.Padding(4);
             this.backPanel.Name = "backPanel";
-            this.backPanel.Size = new System.Drawing.Size(1264, 648);
+            this.backPanel.Size = new System.Drawing.Size(948, 526);
             this.backPanel.TabIndex = 10;
+            // 
+            // ReportingDisabledButton
+            // 
+            this.ReportingDisabledButton.AutoSize = true;
+            this.ReportingDisabledButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.ReportingDisabledButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ReportingDisabledButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.ReportingDisabledButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.ReportingDisabledButton.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.glTransition.SetDecoration(this.ReportingDisabledButton, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.ReportingDisabledButton, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.ReportingDisabledButton, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.ReportingDisabledButton, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.ReportingDisabledButton, BunifuAnimatorNS.DecorationType.None);
+            this.ReportingDisabledButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ReportingDisabledButton.ForeColor = System.Drawing.Color.White;
+            this.ReportingDisabledButton.Image = ((System.Drawing.Image)(resources.GetObject("ReportingDisabledButton.Image")));
+            this.ReportingDisabledButton.ImagePosition = 14;
+            this.ReportingDisabledButton.ImageZoom = 50;
+            this.ReportingDisabledButton.LabelPosition = 27;
+            this.ReportingDisabledButton.LabelText = "Reporting";
+            this.ReportingDisabledButton.Location = new System.Drawing.Point(287, 289);
+            this.ReportingDisabledButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ReportingDisabledButton.Name = "ReportingDisabledButton";
+            this.ReportingDisabledButton.Size = new System.Drawing.Size(177, 155);
+            this.ReportingDisabledButton.TabIndex = 34;
+            this.ReportingDisabledButton.Visible = false;
+            // 
+            // ReportingButton
+            // 
+            this.ReportingButton.AutoSize = true;
+            this.ReportingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.ReportingButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ReportingButton.color = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.ReportingButton.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.ReportingButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.glTransition.SetDecoration(this.ReportingButton, BunifuAnimatorNS.DecorationType.None);
+            this.apButtonTransition.SetDecoration(this.ReportingButton, BunifuAnimatorNS.DecorationType.None);
+            this.companyTransition.SetDecoration(this.ReportingButton, BunifuAnimatorNS.DecorationType.None);
+            this.salesTransition.SetDecoration(this.ReportingButton, BunifuAnimatorNS.DecorationType.None);
+            this.menuPanelTransitionTwo.SetDecoration(this.ReportingButton, BunifuAnimatorNS.DecorationType.None);
+            this.ReportingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ReportingButton.ForeColor = System.Drawing.Color.White;
+            this.ReportingButton.Image = ((System.Drawing.Image)(resources.GetObject("ReportingButton.Image")));
+            this.ReportingButton.ImagePosition = 14;
+            this.ReportingButton.ImageZoom = 50;
+            this.ReportingButton.LabelPosition = 27;
+            this.ReportingButton.LabelText = "Reporting";
+            this.ReportingButton.Location = new System.Drawing.Point(287, 289);
+            this.ReportingButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ReportingButton.Name = "ReportingButton";
+            this.ReportingButton.Size = new System.Drawing.Size(177, 155);
+            this.ReportingButton.TabIndex = 33;
+            this.ReportingButton.Click += new System.EventHandler(this.OrderDeskInvoicesButton_Click);
             // 
             // menuPanelTwo
             // 
@@ -246,10 +301,9 @@ namespace Reliable
             this.apButtonTransition.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.menuPanelTwo, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanelTwo.Location = new System.Drawing.Point(0, 81);
-            this.menuPanelTwo.Margin = new System.Windows.Forms.Padding(4);
+            this.menuPanelTwo.Location = new System.Drawing.Point(0, 66);
             this.menuPanelTwo.Name = "menuPanelTwo";
-            this.menuPanelTwo.Size = new System.Drawing.Size(195, 155);
+            this.menuPanelTwo.Size = new System.Drawing.Size(146, 126);
             this.menuPanelTwo.TabIndex = 11;
             // 
             // AccountManagementButton
@@ -279,14 +333,14 @@ namespace Reliable
             this.AccountManagementButton.IconVisible = true;
             this.AccountManagementButton.IconZoom = 90D;
             this.AccountManagementButton.IsTab = false;
-            this.AccountManagementButton.Location = new System.Drawing.Point(4, 108);
-            this.AccountManagementButton.Margin = new System.Windows.Forms.Padding(5);
+            this.AccountManagementButton.Location = new System.Drawing.Point(3, 88);
+            this.AccountManagementButton.Margin = new System.Windows.Forms.Padding(4);
             this.AccountManagementButton.Name = "AccountManagementButton";
             this.AccountManagementButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.AccountManagementButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.AccountManagementButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.AccountManagementButton.selected = false;
-            this.AccountManagementButton.Size = new System.Drawing.Size(188, 34);
+            this.AccountManagementButton.Size = new System.Drawing.Size(141, 28);
             this.AccountManagementButton.TabIndex = 2;
             this.AccountManagementButton.Text = "Account Managment";
             this.AccountManagementButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,14 +375,14 @@ namespace Reliable
             this.companyInformationButton.IconVisible = true;
             this.companyInformationButton.IconZoom = 90D;
             this.companyInformationButton.IsTab = false;
-            this.companyInformationButton.Location = new System.Drawing.Point(4, 66);
-            this.companyInformationButton.Margin = new System.Windows.Forms.Padding(5);
+            this.companyInformationButton.Location = new System.Drawing.Point(3, 54);
+            this.companyInformationButton.Margin = new System.Windows.Forms.Padding(4);
             this.companyInformationButton.Name = "companyInformationButton";
             this.companyInformationButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.companyInformationButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.companyInformationButton.selected = false;
-            this.companyInformationButton.Size = new System.Drawing.Size(187, 34);
+            this.companyInformationButton.Size = new System.Drawing.Size(140, 28);
             this.companyInformationButton.TabIndex = 1;
             this.companyInformationButton.Text = "Company Info";
             this.companyInformationButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -363,14 +417,14 @@ namespace Reliable
             this.changePasswordButton.IconVisible = true;
             this.changePasswordButton.IconZoom = 90D;
             this.changePasswordButton.IsTab = false;
-            this.changePasswordButton.Location = new System.Drawing.Point(4, 25);
-            this.changePasswordButton.Margin = new System.Windows.Forms.Padding(5);
+            this.changePasswordButton.Location = new System.Drawing.Point(3, 20);
+            this.changePasswordButton.Margin = new System.Windows.Forms.Padding(4);
             this.changePasswordButton.Name = "changePasswordButton";
             this.changePasswordButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.changePasswordButton.OnHoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.changePasswordButton.selected = false;
-            this.changePasswordButton.Size = new System.Drawing.Size(187, 34);
+            this.changePasswordButton.Size = new System.Drawing.Size(140, 28);
             this.changePasswordButton.TabIndex = 0;
             this.changePasswordButton.Text = "Change Password";
             this.changePasswordButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -398,10 +452,10 @@ namespace Reliable
             this.AccountsPayableButtonDisabled.ImageZoom = 50;
             this.AccountsPayableButtonDisabled.LabelPosition = 27;
             this.AccountsPayableButtonDisabled.LabelText = "Accounts Payable";
-            this.AccountsPayableButtonDisabled.Location = new System.Drawing.Point(83, 115);
+            this.AccountsPayableButtonDisabled.Location = new System.Drawing.Point(62, 93);
             this.AccountsPayableButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.AccountsPayableButtonDisabled.Name = "AccountsPayableButtonDisabled";
-            this.AccountsPayableButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.AccountsPayableButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.AccountsPayableButtonDisabled.TabIndex = 31;
             this.AccountsPayableButtonDisabled.Visible = false;
             // 
@@ -425,10 +479,10 @@ namespace Reliable
             this.AccountsPayableButton.ImageZoom = 50;
             this.AccountsPayableButton.LabelPosition = 27;
             this.AccountsPayableButton.LabelText = "Accounts Payable";
-            this.AccountsPayableButton.Location = new System.Drawing.Point(83, 115);
+            this.AccountsPayableButton.Location = new System.Drawing.Point(62, 93);
             this.AccountsPayableButton.Margin = new System.Windows.Forms.Padding(0);
             this.AccountsPayableButton.Name = "AccountsPayableButton";
-            this.AccountsPayableButton.Size = new System.Drawing.Size(236, 191);
+            this.AccountsPayableButton.Size = new System.Drawing.Size(177, 155);
             this.AccountsPayableButton.TabIndex = 30;
             this.AccountsPayableButton.Click += new System.EventHandler(this.AccountsPayableButton_Click);
             // 
@@ -452,10 +506,10 @@ namespace Reliable
             this.WarehouseButtonDisabled.ImageZoom = 50;
             this.WarehouseButtonDisabled.LabelPosition = 27;
             this.WarehouseButtonDisabled.LabelText = "Warehouse";
-            this.WarehouseButtonDisabled.Location = new System.Drawing.Point(683, 356);
+            this.WarehouseButtonDisabled.Location = new System.Drawing.Point(737, 289);
             this.WarehouseButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.WarehouseButtonDisabled.Name = "WarehouseButtonDisabled";
-            this.WarehouseButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.WarehouseButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.WarehouseButtonDisabled.TabIndex = 27;
             this.WarehouseButtonDisabled.Visible = false;
             // 
@@ -479,10 +533,10 @@ namespace Reliable
             this.SalesButtonDisabled.ImageZoom = 50;
             this.SalesButtonDisabled.LabelPosition = 27;
             this.SalesButtonDisabled.LabelText = "Sales";
-            this.SalesButtonDisabled.Location = new System.Drawing.Point(383, 356);
+            this.SalesButtonDisabled.Location = new System.Drawing.Point(512, 289);
             this.SalesButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.SalesButtonDisabled.Name = "SalesButtonDisabled";
-            this.SalesButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.SalesButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.SalesButtonDisabled.TabIndex = 26;
             this.SalesButtonDisabled.Visible = false;
             // 
@@ -506,10 +560,10 @@ namespace Reliable
             this.ManagementButtonDisabled.ImageZoom = 50;
             this.ManagementButtonDisabled.LabelPosition = 27;
             this.ManagementButtonDisabled.LabelText = "Management";
-            this.ManagementButtonDisabled.Location = new System.Drawing.Point(83, 356);
+            this.ManagementButtonDisabled.Location = new System.Drawing.Point(62, 289);
             this.ManagementButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.ManagementButtonDisabled.Name = "ManagementButtonDisabled";
-            this.ManagementButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.ManagementButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.ManagementButtonDisabled.TabIndex = 25;
             this.ManagementButtonDisabled.Visible = false;
             // 
@@ -533,10 +587,10 @@ namespace Reliable
             this.AccountsReceivableButtonDisabled.ImageZoom = 50;
             this.AccountsReceivableButtonDisabled.LabelPosition = 27;
             this.AccountsReceivableButtonDisabled.LabelText = "Accounts Receivable";
-            this.AccountsReceivableButtonDisabled.Location = new System.Drawing.Point(383, 115);
+            this.AccountsReceivableButtonDisabled.Location = new System.Drawing.Point(287, 93);
             this.AccountsReceivableButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.AccountsReceivableButtonDisabled.Name = "AccountsReceivableButtonDisabled";
-            this.AccountsReceivableButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.AccountsReceivableButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.AccountsReceivableButtonDisabled.TabIndex = 24;
             this.AccountsReceivableButtonDisabled.Visible = false;
             // 
@@ -560,10 +614,10 @@ namespace Reliable
             this.GeneralLedgerButtonDisabled.ImageZoom = 50;
             this.GeneralLedgerButtonDisabled.LabelPosition = 27;
             this.GeneralLedgerButtonDisabled.LabelText = "General Ledger";
-            this.GeneralLedgerButtonDisabled.Location = new System.Drawing.Point(983, 115);
+            this.GeneralLedgerButtonDisabled.Location = new System.Drawing.Point(737, 93);
             this.GeneralLedgerButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.GeneralLedgerButtonDisabled.Name = "GeneralLedgerButtonDisabled";
-            this.GeneralLedgerButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.GeneralLedgerButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.GeneralLedgerButtonDisabled.TabIndex = 23;
             this.GeneralLedgerButtonDisabled.Visible = false;
             // 
@@ -587,10 +641,10 @@ namespace Reliable
             this.CatalogCreatorButtonDisabled.ImageZoom = 50;
             this.CatalogCreatorButtonDisabled.LabelPosition = 27;
             this.CatalogCreatorButtonDisabled.LabelText = "Catalog Creator";
-            this.CatalogCreatorButtonDisabled.Location = new System.Drawing.Point(683, 115);
+            this.CatalogCreatorButtonDisabled.Location = new System.Drawing.Point(512, 93);
             this.CatalogCreatorButtonDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.CatalogCreatorButtonDisabled.Name = "CatalogCreatorButtonDisabled";
-            this.CatalogCreatorButtonDisabled.Size = new System.Drawing.Size(236, 191);
+            this.CatalogCreatorButtonDisabled.Size = new System.Drawing.Size(177, 155);
             this.CatalogCreatorButtonDisabled.TabIndex = 22;
             this.CatalogCreatorButtonDisabled.Visible = false;
             // 
@@ -614,10 +668,10 @@ namespace Reliable
             this.CatalogCreatorButton.ImageZoom = 50;
             this.CatalogCreatorButton.LabelPosition = 27;
             this.CatalogCreatorButton.LabelText = "Catalog Creator";
-            this.CatalogCreatorButton.Location = new System.Drawing.Point(683, 115);
+            this.CatalogCreatorButton.Location = new System.Drawing.Point(512, 93);
             this.CatalogCreatorButton.Margin = new System.Windows.Forms.Padding(0);
             this.CatalogCreatorButton.Name = "CatalogCreatorButton";
-            this.CatalogCreatorButton.Size = new System.Drawing.Size(236, 191);
+            this.CatalogCreatorButton.Size = new System.Drawing.Size(177, 155);
             this.CatalogCreatorButton.TabIndex = 21;
             this.CatalogCreatorButton.Click += new System.EventHandler(this.CatalogCreator_Click);
             // 
@@ -641,10 +695,10 @@ namespace Reliable
             this.WarehouseButton.ImageZoom = 50;
             this.WarehouseButton.LabelPosition = 27;
             this.WarehouseButton.LabelText = "Warehouse";
-            this.WarehouseButton.Location = new System.Drawing.Point(683, 356);
+            this.WarehouseButton.Location = new System.Drawing.Point(737, 289);
             this.WarehouseButton.Margin = new System.Windows.Forms.Padding(0);
             this.WarehouseButton.Name = "WarehouseButton";
-            this.WarehouseButton.Size = new System.Drawing.Size(236, 191);
+            this.WarehouseButton.Size = new System.Drawing.Size(177, 155);
             this.WarehouseButton.TabIndex = 20;
             this.WarehouseButton.Click += new System.EventHandler(this.Warehouse_Click);
             // 
@@ -668,10 +722,10 @@ namespace Reliable
             this.SalesButton.ImageZoom = 50;
             this.SalesButton.LabelPosition = 27;
             this.SalesButton.LabelText = "Sales";
-            this.SalesButton.Location = new System.Drawing.Point(383, 356);
+            this.SalesButton.Location = new System.Drawing.Point(512, 289);
             this.SalesButton.Margin = new System.Windows.Forms.Padding(0);
             this.SalesButton.Name = "SalesButton";
-            this.SalesButton.Size = new System.Drawing.Size(236, 191);
+            this.SalesButton.Size = new System.Drawing.Size(177, 155);
             this.SalesButton.TabIndex = 19;
             this.SalesButton.Click += new System.EventHandler(this.Sales_Click);
             // 
@@ -695,10 +749,10 @@ namespace Reliable
             this.ManagementButton.ImageZoom = 50;
             this.ManagementButton.LabelPosition = 27;
             this.ManagementButton.LabelText = "Management";
-            this.ManagementButton.Location = new System.Drawing.Point(83, 356);
+            this.ManagementButton.Location = new System.Drawing.Point(62, 289);
             this.ManagementButton.Margin = new System.Windows.Forms.Padding(0);
             this.ManagementButton.Name = "ManagementButton";
-            this.ManagementButton.Size = new System.Drawing.Size(236, 191);
+            this.ManagementButton.Size = new System.Drawing.Size(177, 155);
             this.ManagementButton.TabIndex = 18;
             this.ManagementButton.Click += new System.EventHandler(this.Management_Click);
             // 
@@ -722,10 +776,10 @@ namespace Reliable
             this.GeneralLedgerButton.ImageZoom = 50;
             this.GeneralLedgerButton.LabelPosition = 27;
             this.GeneralLedgerButton.LabelText = "General Ledger";
-            this.GeneralLedgerButton.Location = new System.Drawing.Point(983, 115);
+            this.GeneralLedgerButton.Location = new System.Drawing.Point(737, 93);
             this.GeneralLedgerButton.Margin = new System.Windows.Forms.Padding(0);
             this.GeneralLedgerButton.Name = "GeneralLedgerButton";
-            this.GeneralLedgerButton.Size = new System.Drawing.Size(236, 191);
+            this.GeneralLedgerButton.Size = new System.Drawing.Size(177, 155);
             this.GeneralLedgerButton.TabIndex = 17;
             this.GeneralLedgerButton.Click += new System.EventHandler(this.GeneralLedger_Click);
             // 
@@ -749,10 +803,10 @@ namespace Reliable
             this.AccountsReceivableButton.ImageZoom = 50;
             this.AccountsReceivableButton.LabelPosition = 27;
             this.AccountsReceivableButton.LabelText = "Accounts Receivable";
-            this.AccountsReceivableButton.Location = new System.Drawing.Point(383, 106);
+            this.AccountsReceivableButton.Location = new System.Drawing.Point(287, 93);
             this.AccountsReceivableButton.Margin = new System.Windows.Forms.Padding(0);
             this.AccountsReceivableButton.Name = "AccountsReceivableButton";
-            this.AccountsReceivableButton.Size = new System.Drawing.Size(236, 191);
+            this.AccountsReceivableButton.Size = new System.Drawing.Size(177, 155);
             this.AccountsReceivableButton.TabIndex = 16;
             this.AccountsReceivableButton.Click += new System.EventHandler(this.AccountsReceivable_Click);
             // 
@@ -765,10 +819,9 @@ namespace Reliable
             this.apButtonTransition.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
             this.glTransition.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
             this.menuPanelTransitionTwo.SetDecoration(this.menuPanel, BunifuAnimatorNS.DecorationType.None);
-            this.menuPanel.Location = new System.Drawing.Point(0, 43);
-            this.menuPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.menuPanel.Location = new System.Drawing.Point(0, 35);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(195, 55);
+            this.menuPanel.Size = new System.Drawing.Size(146, 45);
             this.menuPanel.TabIndex = 4;
             // 
             // menuButton
@@ -798,14 +851,14 @@ namespace Reliable
             this.menuButton.IconVisible = true;
             this.menuButton.IconZoom = 50D;
             this.menuButton.IsTab = false;
-            this.menuButton.Location = new System.Drawing.Point(4, 9);
-            this.menuButton.Margin = new System.Windows.Forms.Padding(5);
+            this.menuButton.Location = new System.Drawing.Point(3, 7);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(4);
             this.menuButton.Name = "menuButton";
             this.menuButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.menuButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.menuButton.OnHoverTextColor = System.Drawing.Color.White;
             this.menuButton.selected = false;
-            this.menuButton.Size = new System.Drawing.Size(187, 42);
+            this.menuButton.Size = new System.Drawing.Size(140, 34);
             this.menuButton.TabIndex = 1;
             this.menuButton.Text = "Menu";
             this.menuButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -933,10 +986,10 @@ namespace Reliable
             // 
             // Reliable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1264, 646);
+            this.ClientSize = new System.Drawing.Size(948, 525);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.backPanel);
             this.salesTransition.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
@@ -946,7 +999,6 @@ namespace Reliable
             this.menuPanelTransitionTwo.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Reliable";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
@@ -994,6 +1046,8 @@ namespace Reliable
         private Bunifu.Framework.UI.BunifuTileButton GeneralLedgerButtonDisabled;
         private Bunifu.Framework.UI.BunifuTileButton AccountsPayableButtonDisabled;
         private Bunifu.Framework.UI.BunifuTileButton AccountsPayableButton;
+        private Bunifu.Framework.UI.BunifuTileButton ReportingButton;
+        private Bunifu.Framework.UI.BunifuTileButton ReportingDisabledButton;
     }
 }
 

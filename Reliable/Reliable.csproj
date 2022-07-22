@@ -331,6 +331,18 @@
     <Compile Include="ARForm.designer.cs">
       <DependentUpon>ARForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportingMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportingMenu.Designer.cs">
+      <DependentUpon>ReportingMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDeskInvoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDeskInvoices.designer.cs">
+      <DependentUpon>OrderDeskInvoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="GLLForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -499,6 +511,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ARForm.resx">
       <DependentUpon>ARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportingMenu.resx">
+      <DependentUpon>ReportingMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDeskInvoices.resx">
+      <DependentUpon>OrderDeskInvoices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GLLForm.resx">
       <DependentUpon>GLLForm.cs</DependentUpon>
