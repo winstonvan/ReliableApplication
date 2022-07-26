@@ -33,6 +33,7 @@ namespace TestProject {
         private string QueryBuilder() {
             string query = "SELECT " +
                                 "Invoices.CustAcct, " +
+                                "Invoices.ItemCode, " +
                                 "Invoices.InvoiceDate, " +
                                 "Invoices.InvoiceNum, " +
                                 "Invoices.NumShipped, " +
@@ -70,7 +71,7 @@ namespace TestProject {
             } else if (CustomerNumberRadioButton.Checked) {
                 if (this.FilterDropdown.GetItemText(this.FilterDropdown.SelectedItem).Equals("Pick")) {
                     for (int i = 0; i < FilterList.CheckedItems.Count; i++) {
-                        condition += "PricingClasses.PricingClassDesc = '" + FilterList.CheckedItems[i].ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0] + "' ";
+                        condition += "Invoices.CustAcct = '" + FilterList.CheckedItems[i].ToString().Split(new string[] { " - " }, StringSplitOptions.None)[0] + "' ";
 
                         if (i != FilterList.CheckedItems.Count - 1) {
                             condition += "OR ";
@@ -79,7 +80,7 @@ namespace TestProject {
                 } else if (this.FilterDropdown.GetItemText(this.FilterDropdown.SelectedItem).Equals("Create")) {
                     string[] items = FilterListCreate.Text.Split('\n');
                     for (int i = 0; i < items.Length; i++) {
-                        condition += "PricingClasses.PricingClassDesc = '" + items[i].Trim() + "' ";
+                        condition += "Invoices.CustAcct = '" + items[i].Trim() + "' ";
 
                         if (i != items.Length - 1) {
                             condition += "OR ";
@@ -109,7 +110,7 @@ namespace TestProject {
                 if (itemNumberCondition != "") {
                     if (!query.Contains("WHERE")) {
                         query += "WHERE ";
-                    } else if (!query.Contains("AND")) {
+                    } else {
                         query += "AND ";
                     }
                     query += "(" + itemNumberCondition + ") ";
@@ -134,20 +135,20 @@ namespace TestProject {
                 if (invoiceNumberCondition != "") {
                     if (!query.Contains("WHERE")) {
                         query += "WHERE ";
-                    } else if (!query.Contains("AND")) {
+                    } else {
                         query += "AND ";
                     }
                     query += "(" + invoiceNumberCondition + ") ";
                 }
             }
 
-            if (PeriodDropdown.Text != "Any") {
+            if (PeriodDropdown.Text != "All") {
                 string startDate = StartDatePicker.Value.ToString("yyyy-MM-dd");
                 string endDate = EndDatePicker.Value.ToString("yyyy-MM-dd");
 
                 if (!query.Contains("WHERE")) {
                     query += "WHERE ";
-                } else if (!query.Contains("AND")) {
+                } else {
                     query += "AND ";
                 }
 
@@ -155,7 +156,7 @@ namespace TestProject {
             }
 
             //MessageBox.Show(query);
-            return query;
+            return query + " ORDER BY Invoices.InvoiceDate DESC";
         }
 
         private void QueryButton_Click(object sender, EventArgs e) {
@@ -304,7 +305,7 @@ namespace TestProject {
             DateTime dateTime2 = default(DateTime);
             DateTime date = DateTime.Now.Date;
 
-            if (PeriodDropdown.SelectedItem.ToString() == "Any") {
+            if (PeriodDropdown.SelectedItem.ToString() == "All") {
                 StartDatePicker.CustomFormat = " ";
                 EndDatePicker.CustomFormat = " ";
             } else {

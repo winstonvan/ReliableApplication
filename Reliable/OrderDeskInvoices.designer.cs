@@ -32,8 +32,8 @@ namespace TestProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderDeskInvoices));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +43,6 @@ namespace TestProject
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.headerpanel = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.minimizeButton = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.closeButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.FilterListCreate = new System.Windows.Forms.RichTextBox();
             this.QueryButton = new System.Windows.Forms.Button();
@@ -67,6 +65,8 @@ namespace TestProject
             this.ItemNumberField = new System.Windows.Forms.TextBox();
             this.ItemNumberTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.InvoiceNumberTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.minimizeButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.closeButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             this.headerpanel.SuspendLayout();
@@ -115,22 +115,22 @@ namespace TestProject
             // 
             // DataTable
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DataTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DataTable.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.DataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataTable.DoubleBuffered = true;
             this.DataTable.EnableHeadersVisualStyles = false;
@@ -142,7 +142,6 @@ namespace TestProject
             this.DataTable.RowHeadersWidth = 25;
             this.DataTable.Size = new System.Drawing.Size(1036, 300);
             this.DataTable.TabIndex = 39;
-            this.DataTable.VirtualMode = true;
             // 
             // bunifuElipse1
             // 
@@ -170,81 +169,7 @@ namespace TestProject
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(170, 20);
             this.bunifuCustomLabel2.TabIndex = 20;
-            this.bunifuCustomLabel2.Text = "General Ledger Listing";
-            // 
-            // minimizeButton
-            // 
-            this.minimizeButton.Active = false;
-            this.minimizeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.minimizeButton.BorderRadius = 0;
-            this.minimizeButton.ButtonText = "";
-            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimizeButton.DisabledColor = System.Drawing.Color.Gray;
-            this.minimizeButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.minimizeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Iconimage")));
-            this.minimizeButton.Iconimage_right = null;
-            this.minimizeButton.Iconimage_right_Selected = null;
-            this.minimizeButton.Iconimage_Selected = null;
-            this.minimizeButton.IconMarginLeft = 0;
-            this.minimizeButton.IconMarginRight = 0;
-            this.minimizeButton.IconRightVisible = true;
-            this.minimizeButton.IconRightZoom = 0D;
-            this.minimizeButton.IconVisible = true;
-            this.minimizeButton.IconZoom = 50D;
-            this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(956, 3);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.minimizeButton.selected = false;
-            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
-            this.minimizeButton.TabIndex = 13;
-            this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.minimizeButton.Textcolor = System.Drawing.Color.White;
-            this.minimizeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Active = false;
-            this.closeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeButton.BorderRadius = 0;
-            this.closeButton.ButtonText = "gfdsg";
-            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeButton.DisabledColor = System.Drawing.Color.Gray;
-            this.closeButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.closeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("closeButton.Iconimage")));
-            this.closeButton.Iconimage_right = null;
-            this.closeButton.Iconimage_right_Selected = null;
-            this.closeButton.Iconimage_Selected = null;
-            this.closeButton.IconMarginLeft = 0;
-            this.closeButton.IconMarginRight = 0;
-            this.closeButton.IconRightVisible = true;
-            this.closeButton.IconRightZoom = 0D;
-            this.closeButton.IconVisible = true;
-            this.closeButton.IconZoom = 50D;
-            this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(993, 3);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.closeButton.OnHovercolor = System.Drawing.Color.Red;
-            this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.closeButton.selected = false;
-            this.closeButton.Size = new System.Drawing.Size(31, 30);
-            this.closeButton.TabIndex = 1;
-            this.closeButton.Text = "gfdsg";
-            this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closeButton.Textcolor = System.Drawing.Color.White;
-            this.closeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.Text = "Order Desk Invoices";
             // 
             // bunifuDragControl1
             // 
@@ -320,15 +245,12 @@ namespace TestProject
             // 
             this.PeriodDropdown.FormattingEnabled = true;
             this.PeriodDropdown.Items.AddRange(new object[] {
-            "Any",
-            "Today",
+            "All",
             "Yesterday",
             "This Week",
             "Last Week",
-            "Next Week",
             "This Month",
             "Last Month",
-            "Next Month",
             "Custom"});
             this.PeriodDropdown.Location = new System.Drawing.Point(66, 15);
             this.PeriodDropdown.Name = "PeriodDropdown";
@@ -505,6 +427,80 @@ namespace TestProject
             this.ItemNumberField.Name = "ItemNumberField";
             this.ItemNumberField.Size = new System.Drawing.Size(79, 20);
             this.ItemNumberField.TabIndex = 82;
+            // 
+            // minimizeButton
+            // 
+            this.minimizeButton.Active = false;
+            this.minimizeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.minimizeButton.BorderRadius = 0;
+            this.minimizeButton.ButtonText = "";
+            this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizeButton.DisabledColor = System.Drawing.Color.Gray;
+            this.minimizeButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.minimizeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Iconimage")));
+            this.minimizeButton.Iconimage_right = null;
+            this.minimizeButton.Iconimage_right_Selected = null;
+            this.minimizeButton.Iconimage_Selected = null;
+            this.minimizeButton.IconMarginLeft = 0;
+            this.minimizeButton.IconMarginRight = 0;
+            this.minimizeButton.IconRightVisible = true;
+            this.minimizeButton.IconRightZoom = 0D;
+            this.minimizeButton.IconVisible = true;
+            this.minimizeButton.IconZoom = 50D;
+            this.minimizeButton.IsTab = false;
+            this.minimizeButton.Location = new System.Drawing.Point(956, 3);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.minimizeButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.minimizeButton.selected = false;
+            this.minimizeButton.Size = new System.Drawing.Size(31, 30);
+            this.minimizeButton.TabIndex = 13;
+            this.minimizeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.minimizeButton.Textcolor = System.Drawing.Color.White;
+            this.minimizeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Active = false;
+            this.closeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.closeButton.BorderRadius = 0;
+            this.closeButton.ButtonText = "gfdsg";
+            this.closeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closeButton.DisabledColor = System.Drawing.Color.Gray;
+            this.closeButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.closeButton.Iconimage = ((System.Drawing.Image)(resources.GetObject("closeButton.Iconimage")));
+            this.closeButton.Iconimage_right = null;
+            this.closeButton.Iconimage_right_Selected = null;
+            this.closeButton.Iconimage_Selected = null;
+            this.closeButton.IconMarginLeft = 0;
+            this.closeButton.IconMarginRight = 0;
+            this.closeButton.IconRightVisible = true;
+            this.closeButton.IconRightZoom = 0D;
+            this.closeButton.IconVisible = true;
+            this.closeButton.IconZoom = 50D;
+            this.closeButton.IsTab = false;
+            this.closeButton.Location = new System.Drawing.Point(993, 3);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(4);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.closeButton.OnHovercolor = System.Drawing.Color.Red;
+            this.closeButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.closeButton.selected = false;
+            this.closeButton.Size = new System.Drawing.Size(31, 30);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.Text = "gfdsg";
+            this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.closeButton.Textcolor = System.Drawing.Color.White;
+            this.closeButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // OrderDeskInvoices
             // 
