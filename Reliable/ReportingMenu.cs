@@ -111,6 +111,16 @@ namespace Reliable
 
             formNew.Show();
         }
+
+        private void RebateContractsButton_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            RebateContracts formNew = new RebateContracts();
+
+            formNew.Closed += (s, args) => this.Close();
+
+            formNew.Show();
+        }
     }
 
 }

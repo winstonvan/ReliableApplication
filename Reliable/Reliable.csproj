@@ -331,6 +331,12 @@
     <Compile Include="ARForm.designer.cs">
       <DependentUpon>ARForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RebateContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RebateContracts.designer.cs">
+      <DependentUpon>RebateContracts.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportingMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ARForm.resx">
       <DependentUpon>ARForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RebateContracts.resx">
+      <DependentUpon>RebateContracts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportingMenu.resx">
       <DependentUpon>ReportingMenu.cs</DependentUpon>
