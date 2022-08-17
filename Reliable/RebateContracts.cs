@@ -4,6 +4,9 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using Reliable;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Diagnostics;
 
 namespace TestProject {
 
@@ -13,7 +16,6 @@ namespace TestProject {
 
         public RebateContracts() {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void GLListing_FormClosing(object sender, FormClosingEventArgs e) {
@@ -71,8 +73,8 @@ namespace TestProject {
                                             "dbo_RebateGroups RebateGroups " +
                                             "LEFT JOIN dbo_CPMContracts CPMContracts ON (RebateGroups.CustDiscClassID = CPMContracts.ContractPricingClassID) ";
 
-            if (RebateContractIdCheckbox.Checked && RebateContractIdField.Text != "") {
-                query += "WHERE CPMContracts.CPMContractID = " + RebateContractIdField.Text + " ";
+            if (CustomerContractCode.Checked && CustomerContractCodeField.Text != "") {
+                query += "WHERE CPMContracts.CPMContractID = " + CustomerContractCodeField.Text + " ";
             }
 
 
@@ -83,20 +85,22 @@ namespace TestProject {
                     "LEFT JOIN dbo_RebateContracts RebateContracts ON(RebateItems.RebateContractID = RebateContracts.RebateContractID)) ";
 
             string condition = "";
-            if (RebateContractIdCheckbox.Checked && RebateContractIdField.Text != "") {
-                condition += "CPMContracts.CPMContractID = " + RebateContractIdField.Text + " ";
+            if (CustomerContractCode.Checked && CustomerContractCodeField.Text != "") {
+                condition += "CPMContracts.CPMContractID = " + CustomerContractCodeField.Text + " ";
             }
 
             if (!IncludeExpiredCheckbox.Checked) {
                 if (condition != "") {
                     condition += "AND ";
                 }
-                condition += "((RebateContracts.ContractExpireDate > FORMAT(DATE(), 'yyyy/mm/dd') OR RebateContracts.ContractExpireDate IS NULL)) ";
+                condition += "(RebateContracts.ContractExpireDate > FORMAT(DATE(), 'yyyy-mm-dd') OR (RebateContracts.ContractExpireDate IS NULL)) ";
             }
 
             query += condition != "" ? "WHERE " + condition : "";
-            query += "ORDER BY vInventoryItems.ItemCode ";
-
+            query += "ORDER BY " +
+                     "CPMContracts.ContractDesc, " +
+                     "RebateContracts.ContractExpireDate, " +
+                     "vInventoryItems.ItemCode ";
             return query;
         }
 
@@ -123,17 +127,17 @@ namespace TestProject {
 
 
         private void RebateContractIdCheckbox_CheckedChanged(object sender, EventArgs e) {
-            if (RebateContractIdCheckbox.Checked) {
-                RebateContractIdField.BackColor = Color.White;
-                RebateContractIdField.Enabled = true;
+            if (CustomerContractCode.Checked) {
+                CustomerContractCodeField.BackColor = Color.White;
+                CustomerContractCodeField.Enabled = true;
             } else {
-                RebateContractIdField.BackColor = Color.DarkGray;
-                RebateContractIdField.Enabled = false;
+                CustomerContractCodeField.BackColor = Color.DarkGray;
+                CustomerContractCodeField.Enabled = false;
             }
         }
 
         private void RebateContractIdCheckbox_MouseMove(object sender, EventArgs e) {
-            ItemNumberTooltip.SetToolTip(RebateContractIdCheckbox, "Use commas to specify more than one rebate contract IDs."); // you can change the first parameter (textbox3) on any control you wanna focus
+            ItemNumberTooltip.SetToolTip(CustomerContractCode, "Use commas to specify more than one rebate contract IDs."); // you can change the first parameter (textbox3) on any control you wanna focus
         }
 
         private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -153,6 +157,53 @@ namespace TestProject {
 
         private void closeButton_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void mainMenuToolStripMenuItem_Click_2(object sender, EventArgs e) {
+            FormState.PreviousPage.Show();
+
+            this.Hide();
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e) {
+            Cursor = Cursors.WaitCursor;
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            string fileName = "Rebate Contracts Report " + DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss") + ".csv";
+            sfd.Filter = "CSV (*.csv)|*.csv";
+            sfd.FileName = fileName;
+
+            StreamWriter sw = new StreamWriter(sfd.FileName, false);
+            //headers    
+            for (int i = 1; i < DataTable.Columns.Count; i++) {
+                sw.Write(DataTable.Columns[i].HeaderText);
+                if (i < DataTable.Columns.Count - 1) {
+                    sw.Write(",");
+                }
+            }
+            sw.Write(sw.NewLine);
+            for (int i = 0; i < DataTable.Rows.Count - 1; i++) {
+                for (int j = 1; j < DataTable.Columns.Count; j++) {
+                    if (!Convert.IsDBNull(DataTable.Rows[i].Cells[j].Value.ToString())) {
+                        string value = DataTable.Rows[i].Cells[j].Value.ToString();
+                        if (value.Contains(',')) {
+                            value = String.Format("\"{0}\"", value);
+                            sw.Write(value);
+                        } else {
+                            sw.Write(DataTable.Rows[i].Cells[j].Value.ToString());
+                        }
+                    }
+                    if (j < DataTable.Columns.Count - 1) {
+                        sw.Write(",");
+                    }
+                }
+                sw.Write(sw.NewLine);
+            }
+
+            sw.Close();
+            Process.Start(sfd.FileName);
+
+            Cursor = Cursors.Default;
         }
     }
 }
