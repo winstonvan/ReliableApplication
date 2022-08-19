@@ -44,6 +44,10 @@
             this.queryButton = new Bunifu.Framework.UI.BunifuTileButton();
             this.printLocationCheckbox = new System.Windows.Forms.CheckBox();
             this.locationsListbox = new System.Windows.Forms.ListBox();
+            this.WHIDList = new System.Windows.Forms.CheckedListBox();
+            this.WHIDCreateField = new System.Windows.Forms.RichTextBox();
+            this.WHIDDropdown = new System.Windows.Forms.ComboBox();
+            this.WarehouseLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +66,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(617, 36);
+            this.panel1.Size = new System.Drawing.Size(784, 36);
             this.panel1.TabIndex = 1;
             // 
             // bunifuCustomLabel2
@@ -78,6 +82,7 @@
             // 
             // minimizeButton
             // 
+            this.minimizeButton.Active = false;
             this.minimizeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
@@ -98,7 +103,7 @@
             this.minimizeButton.IconVisible = true;
             this.minimizeButton.IconZoom = 50D;
             this.minimizeButton.IsTab = false;
-            this.minimizeButton.Location = new System.Drawing.Point(537, 3);
+            this.minimizeButton.Location = new System.Drawing.Point(704, 3);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.minimizeButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -113,6 +118,7 @@
             // 
             // closeButton
             // 
+            this.closeButton.Active = false;
             this.closeButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
@@ -133,7 +139,7 @@
             this.closeButton.IconVisible = true;
             this.closeButton.IconZoom = 50D;
             this.closeButton.IsTab = false;
-            this.closeButton.Location = new System.Drawing.Point(574, 3);
+            this.closeButton.Location = new System.Drawing.Point(741, 3);
             this.closeButton.Name = "closeButton";
             this.closeButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
             this.closeButton.OnHovercolor = System.Drawing.Color.Red;
@@ -159,10 +165,10 @@
             this.itemNumbersBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.itemNumbersBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.itemNumbersBox.Location = new System.Drawing.Point(61, 109);
+            this.itemNumbersBox.Location = new System.Drawing.Point(16, 110);
             this.itemNumbersBox.Multiline = true;
             this.itemNumbersBox.Name = "itemNumbersBox";
-            this.itemNumbersBox.Size = new System.Drawing.Size(187, 491);
+            this.itemNumbersBox.Size = new System.Drawing.Size(303, 593);
             this.itemNumbersBox.TabIndex = 45;
             this.itemNumbersBox.TextChanged += new System.EventHandler(this.itemNumbersBox_TextChanged);
             // 
@@ -184,7 +190,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 36);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(617, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 48;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -219,7 +225,7 @@
             this.queryButton.ImageZoom = 60;
             this.queryButton.LabelPosition = 27;
             this.queryButton.LabelText = "Export";
-            this.queryButton.Location = new System.Drawing.Point(385, 442);
+            this.queryButton.Location = new System.Drawing.Point(646, 320);
             this.queryButton.Margin = new System.Windows.Forms.Padding(6);
             this.queryButton.Name = "queryButton";
             this.queryButton.Size = new System.Drawing.Size(123, 120);
@@ -231,7 +237,7 @@
             this.printLocationCheckbox.AutoSize = true;
             this.printLocationCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printLocationCheckbox.ForeColor = System.Drawing.Color.White;
-            this.printLocationCheckbox.Location = new System.Drawing.Point(372, 109);
+            this.printLocationCheckbox.Location = new System.Drawing.Point(460, 75);
             this.printLocationCheckbox.Name = "printLocationCheckbox";
             this.printLocationCheckbox.Size = new System.Drawing.Size(145, 24);
             this.printLocationCheckbox.TabIndex = 49;
@@ -244,18 +250,65 @@
             this.locationsListbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.locationsListbox.FormattingEnabled = true;
             this.locationsListbox.ItemHeight = 20;
-            this.locationsListbox.Location = new System.Drawing.Point(341, 158);
+            this.locationsListbox.Location = new System.Drawing.Point(404, 110);
             this.locationsListbox.Name = "locationsListbox";
             this.locationsListbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.locationsListbox.Size = new System.Drawing.Size(201, 224);
             this.locationsListbox.TabIndex = 50;
+            // 
+            // WHIDList
+            // 
+            this.WHIDList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WHIDList.CheckOnClick = true;
+            this.WHIDList.FormattingEnabled = true;
+            this.WHIDList.Location = new System.Drawing.Point(404, 464);
+            this.WHIDList.Margin = new System.Windows.Forms.Padding(2);
+            this.WHIDList.Name = "WHIDList";
+            this.WHIDList.Size = new System.Drawing.Size(198, 240);
+            this.WHIDList.TabIndex = 63;
+            // 
+            // WHIDCreateField
+            // 
+            this.WHIDCreateField.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WHIDCreateField.Location = new System.Drawing.Point(404, 466);
+            this.WHIDCreateField.Margin = new System.Windows.Forms.Padding(2);
+            this.WHIDCreateField.Name = "WHIDCreateField";
+            this.WHIDCreateField.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.WHIDCreateField.Size = new System.Drawing.Size(198, 237);
+            this.WHIDCreateField.TabIndex = 61;
+            this.WHIDCreateField.Text = "";
+            this.WHIDCreateField.Visible = false;
+            // 
+            // WHIDDropdown
+            // 
+            this.WHIDDropdown.FormattingEnabled = true;
+            this.WHIDDropdown.Location = new System.Drawing.Point(404, 428);
+            this.WHIDDropdown.Name = "WHIDDropdown";
+            this.WHIDDropdown.Size = new System.Drawing.Size(198, 21);
+            this.WHIDDropdown.TabIndex = 62;
+            this.WHIDDropdown.SelectedIndexChanged += new System.EventHandler(this.majorNumberDropdown_SelectedIndexChanged);
+            // 
+            // WarehouseLabel
+            // 
+            this.WarehouseLabel.AutoSize = true;
+            this.WarehouseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WarehouseLabel.ForeColor = System.Drawing.Color.White;
+            this.WarehouseLabel.Location = new System.Drawing.Point(521, 399);
+            this.WarehouseLabel.Name = "WarehouseLabel";
+            this.WarehouseLabel.Size = new System.Drawing.Size(81, 17);
+            this.WarehouseLabel.TabIndex = 64;
+            this.WarehouseLabel.Text = "Warehouse";
             // 
             // WarehouseProductLabels
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(617, 627);
+            this.ClientSize = new System.Drawing.Size(784, 729);
+            this.Controls.Add(this.WarehouseLabel);
+            this.Controls.Add(this.WHIDList);
+            this.Controls.Add(this.WHIDCreateField);
+            this.Controls.Add(this.WHIDDropdown);
             this.Controls.Add(this.locationsListbox);
             this.Controls.Add(this.printLocationCheckbox);
             this.Controls.Add(this.menuStrip1);
@@ -294,5 +347,9 @@
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private System.Windows.Forms.CheckBox printLocationCheckbox;
         private System.Windows.Forms.ListBox locationsListbox;
+        private System.Windows.Forms.Label WarehouseLabel;
+        private System.Windows.Forms.CheckedListBox WHIDList;
+        private System.Windows.Forms.RichTextBox WHIDCreateField;
+        private System.Windows.Forms.ComboBox WHIDDropdown;
     }
 }

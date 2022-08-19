@@ -13,11 +13,10 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using System.Text.RegularExpressions;
+using TestProject;
 
-namespace Reliable
-{
-    public partial class WarehouseProductLabels : Form
-    {
+namespace Reliable {
+    public partial class WarehouseProductLabels : Form {
         BaseColor colourBlack = new BaseColor(0, 0, 0);
         BaseColor colourBlue = new BaseColor(0, 0, 255);
         BaseColor colourWhite = new BaseColor(255, 255, 255);
@@ -36,7 +35,7 @@ namespace Reliable
         string[] innerLeft = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         string[] innerRight = { "@", "A", "B", "C", "D", "E", "F", "G", "H", "I" };
         string[] right = { "`", "a", "b", "c", "d", "e", "f", "g", "h", "i" };
-        string[] codeArray = { " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "\\", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~", "Ã", "Ä", "Å", "Æ", "Ç", "È", "É", "Ê"};
+        string[] codeArray = { " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "\\", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~", "Ã", "Ä", "Å", "Æ", "Ç", "È", "É", "Ê" };
 
         List<int> barcodeSum = new List<int>();
 
@@ -45,31 +44,29 @@ namespace Reliable
         string barcode = null;
 
         string theBarcode = null;
-        public WarehouseProductLabels()
-        {
+        public WarehouseProductLabels() {
             InitializeComponent();
+            WHIDDropdown.Items.Insert(0, new ComboBoxItem("All", "0"));
+            WHIDDropdown.Items.Insert(1, new ComboBoxItem("Pick", "1"));
+            WHIDDropdown.Items.Insert(1, new ComboBoxItem("Create", "2"));
+            WHIDDropdown.SelectedIndex = WHIDDropdown.FindString("All");
         }
-        public static iTextSharp.text.Font GetUPCA()
-        {
+        public static iTextSharp.text.Font GetUPCA() {
             var fontName = "UPCA";
-            if (!FontFactory.IsRegistered(fontName))
-            {
+            if (!FontFactory.IsRegistered(fontName)) {
                 var fontPath = Environment.GetEnvironmentVariable("SystemRoot") + "\\fonts\\UPCA.ttf";
                 FontFactory.Register(fontPath);
             }
             return FontFactory.GetFont(fontName, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         }
-        private void closeButton_Click(object sender, EventArgs e)
-        {
+        private void closeButton_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void minimizeButton_Click(object sender, EventArgs e)
-        {
+        private void minimizeButton_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
-        private string queryBuilder()
-        {
+        private string queryBuilder() {
 
             String query = null;
 
@@ -79,42 +76,54 @@ namespace Reliable
 
             query += "FROM (dbo_ICItems INNER JOIN dbo_ICWHBals ON dbo_ICItems.ItemID = dbo_ICWHBals.ItemID) ";
 
-            for(int i = 0; i < itemsArray.Length; i++)
-            {
-                if (i == 0)
-                {
-                    if (itemsArray.Length == 1)
-                    {
+            for (int i = 0; i < itemsArray.Length; i++) {
+                if (i == 0) {
+                    if (itemsArray.Length == 1) {
                         query += "WHERE (dbo_ICItems.ItemCode = '" + itemsArray[i].ToString();
-                    }
-
-                    else
-                    {
+                    } else {
                         query += "WHERE (dbo_ICItems.ItemCode = '" + itemsArray[i].ToString() + "' OR dbo_ICItems.ItemCode = '";
                     }
-                }
-
-                else if(i != itemsArray.Length - 1)
-                {
+                } else if (i != itemsArray.Length - 1) {
                     query += itemsArray[i].ToString() + "' OR dbo_ICItems.ItemCode = '";
-                }
-
-                else
-                {
+                } else {
                     query += itemsArray[i].ToString();
                 }
-                
+
             }
 
-            query += "') AND dbo_ICWHBals.WHID = 1 ";
+            string condition = "";
+            if (!(WHIDDropdown.SelectedItem.ToString() == "All")) {
+                if (WHIDDropdown.SelectedItem.ToString() == "Create") {
+                    string[] majorNumbers = WHIDCreateField.Text.Split('\n');
+                    for (int i = 0; i < majorNumbers.Length; i++) {
+                        condition += "dbo_ICWHBals.WHID = " + majorNumbers[i] + " ";
+
+                        if (i != majorNumbers.Length - 1) {
+                            condition += "OR ";
+                        }
+                    }
+                } else if (WHIDDropdown.SelectedItem.ToString() == "Pick") {
+                    for (int i = 0; i < WHIDList.CheckedItems.Count; i++) {
+                        condition += "dbo_ICWHBals.WHID = " + WHIDList.CheckedItems[i].ToString().Split('-')[0] + " ";
+
+                        if (i != WHIDList.CheckedItems.Count - 1) {
+                            condition += "OR ";
+                        }
+                    }
+                }
+            }
+
+            query += "') ";
+
+            if (condition != "") { 
+                query += "AND (" + condition + ") ";
+            }
 
             query += "ORDER BY dbo_ICItems.ItemCode;";
-
             return query;
         }
 
-        private string QueryBuilderAllLocationsInWarehouse()
-        {
+        private string QueryBuilderAllLocationsInWarehouse() {
             string query = null;
 
             query += "SELECT dbo_ICWHBals.ItemID ";
@@ -128,16 +137,14 @@ namespace Reliable
             return query;
         }
 
-        private void queryButton_Click(object sender, EventArgs e)
-        {
+        private void queryButton_Click(object sender, EventArgs e) {
             this.Cursor = Cursors.WaitCursor;
 
             itemTable.Clear();
 
             string[] itemsArray = itemNumbersBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (printLocationCheckbox.Checked == false)
-            {
+            if (printLocationCheckbox.Checked == false) {
 
                 connect = new OleDbConnection(OLDBEConnect);
                 OleDbCommand command = new OleDbCommand(queryBuilder(), connect);
@@ -147,10 +154,7 @@ namespace Reliable
 
                 adapter.Fill(itemTable);
 
-            }
-
-            else
-            {
+            } else {
 
                 String query = null;
 
@@ -160,42 +164,61 @@ namespace Reliable
 
                 List<string> itemLocationsSelected = new List<string>();
 
-                foreach (object location in locationsListbox.SelectedItems)
-                {
+                foreach (object location in locationsListbox.SelectedItems) {
                     itemLocationsSelected.Add(location.ToString());
 
                 }
 
 
-                for (int q = 0; q < itemLocationsSelected.Count; q++)
-                {
+                for (int q = 0; q < itemLocationsSelected.Count; q++) {
 
-                    if (q == 0)
-                    {
-                        if (itemLocationsSelected.Count == 1)
-                        {
+                    if (q == 0) {
+                        if (itemLocationsSelected.Count == 1) {
                             query += "WHERE (dbo_ICWHBals.BinNumber = '" + itemLocationsSelected[q].ToString();
-                        }
-
-                        else
-                        {
+                        } else {
                             query += "WHERE (dbo_ICWHBals.BinNumber = '" + itemLocationsSelected[q].ToString() + "' OR dbo_ICWHBals.BinNumber = '";
                         }
-                    }
-
-                    else if (q != itemLocationsSelected.Count - 1)
-                    {
+                    } else if (q != itemLocationsSelected.Count - 1) {
                         query += itemLocationsSelected[q].ToString() + "' OR dbo_ICWHBals.BinNumber = '";
-                    }
-
-                    else
-                    {
+                    } else {
                         query += itemLocationsSelected[q].ToString();
                     }
 
                 }
 
-                query += "') AND dbo_ICWHBals.WHID = 1 ";
+                ///////
+
+
+                string condition = "";
+                if (!(WHIDDropdown.SelectedItem.ToString() == "All")) {
+                    if (WHIDDropdown.SelectedItem.ToString() == "Create") {
+                        string[] IDs = WHIDCreateField.Text.Split('\n');
+                        for (int i = 0; i < IDs.Length; i++) {
+                            condition += "dbo_ICWHBals.WHID = " + IDs[i] + " ";
+
+                            if (i != IDs.Length - 1) {
+                                condition += "OR ";
+                            }
+                        }
+                    } else if (WHIDDropdown.SelectedItem.ToString() == "Pick") {
+                        for (int i = 0; i < WHIDList.CheckedItems.Count; i++) {
+                            condition += "dbo_ICWHBals.WHID = " + WHIDList.CheckedItems[i].ToString().Split('-')[0] + " ";
+
+                            if (i != WHIDList.CheckedItems.Count - 1) {
+                                condition += "OR ";
+                            }
+                        }
+                    }
+                }
+
+                query += "') ";
+
+                if (condition != "") {
+                    query += "AND (" + condition + ") ";
+                }
+                //////
+
+
 
                 query += "ORDER BY dbo_ICWHBals.BinNumber ASC;";
 
@@ -206,13 +229,11 @@ namespace Reliable
                 adapter.SelectCommand = command;
 
                 adapter.Fill(itemTable);
-
             }
 
             string folderPath = "Z:\\Warehouse Labels\\";
 
-            if (!Directory.Exists(folderPath))
-            {
+            if (!Directory.Exists(folderPath)) {
                 Directory.CreateDirectory(folderPath);
             }
 
@@ -240,25 +261,16 @@ namespace Reliable
             BaseFont myFontRegular = FontFactory.GetFont(BaseFont.HELVETICA).BaseFont;
             BaseFont codeFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\code128.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
-            int i = 0;
 
-            int j = 0;
-
-            for (; i < itemTable.Rows.Count; i++)
-            {
-
-                if (itemTable.Rows[i][0].ToString() != "")
-                {
+            for (int i = 0; i < itemTable.Rows.Count; i++) {
+                if (itemTable.Rows[i][0].ToString() != "") {
                     Code128Conversion bCode = new Code128Conversion(itemTable.Rows[i][4].ToString());
-
                     bCode.ConvertToCode128();
-
                     theBarcode = bCode.GetBarcode();
 
-                    j = i % 4;
+                    int j = i % 4;
 
-                    if (j == 0)
-                    {
+                    if (j == 0) {
 
                         iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 395, 307, 769);
                         border.BackgroundColor = colourWhite;
@@ -287,8 +299,7 @@ namespace Reliable
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 173, 582, 90);
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 582, 90);
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
                             contentByte.SetFontAndSize(codeFont, 35);
 
                             contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 287, 405, 90);
@@ -308,30 +319,21 @@ namespace Reliable
                         string oldImage = null;
 
 
-                        for (int q = 0; q < outputOld.Length; q++)
-                        {
+                        for (int q = 0; q < outputOld.Length; q++) {
 
-                            if (q == outputOld.Length - 1)
-                            {
+                            if (q == outputOld.Length - 1) {
                                 break;
-                            }
-
-                            else if (q == outputOld.Length - 2)
-                            {
+                            } else if (q == outputOld.Length - 2) {
                                 oldImage += outputOld[q];
 
-                            }
-
-                            else if (q < outputOld.Length - 2)
-                            {
+                            } else if (q < outputOld.Length - 2) {
                                 oldImage += outputOld[q] + "-";
                             }
 
                         }
 
 
-                        if (itemTable.Rows[i][5].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][5].ToString() != "") {
 
                             string input = itemTable.Rows[i][6].ToString();
                             string condition = "  *";
@@ -339,8 +341,7 @@ namespace Reliable
                             string partNum = output[0];
 
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"))
-                            {
+                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"));
 
@@ -352,10 +353,7 @@ namespace Reliable
                                 logo.RotationDegrees = 90;
                                 logo.SetAbsolutePosition(218, 668);
                                 contentByte.AddImage(logo);
-                            }
-
-                            else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                            {
+                            } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                                 iTextSharp.text.BaseColor myColour = null;
@@ -368,10 +366,7 @@ namespace Reliable
                                 contentByte.AddImage(logo);
                             }
 
-                        }
-
-                        else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                        {
+                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                             System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                             iTextSharp.text.BaseColor myColour = null;
@@ -385,10 +380,7 @@ namespace Reliable
                         }
 
 
-                    }
-
-                    else if (j == 1)
-                    {
+                    } else if (j == 1) {
 
                         iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 21, 307, 395);
                         border.BackgroundColor = colourWhite;
@@ -418,8 +410,7 @@ namespace Reliable
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 208, 90);
 
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
                             contentByte.SetFontAndSize(codeFont, 35);
 
 
@@ -441,37 +432,27 @@ namespace Reliable
                         string oldImage = null;
 
 
-                        for (int q = 0; q < outputOld.Length; q++)
-                        {
+                        for (int q = 0; q < outputOld.Length; q++) {
 
-                            if (q == outputOld.Length - 1)
-                            {
+                            if (q == outputOld.Length - 1) {
                                 break;
-                            }
-
-                            else if (q == outputOld.Length - 2)
-                            {
+                            } else if (q == outputOld.Length - 2) {
                                 oldImage += outputOld[q];
 
-                            }
-
-                            else if (q < outputOld.Length - 2)
-                            {
+                            } else if (q < outputOld.Length - 2) {
                                 oldImage += outputOld[q] + "-";
                             }
 
                         }
 
-                        if (itemTable.Rows[i][5].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][5].ToString() != "") {
 
                             string input = itemTable.Rows[i][6].ToString();
                             string condition = "  *";
                             string[] output = Regex.Split(input, condition);
                             string partNum = output[0];
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"))
-                            {
+                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
 
@@ -483,10 +464,7 @@ namespace Reliable
                                 logo.RotationDegrees = 90;
                                 logo.SetAbsolutePosition(218, 294);
                                 contentByte.AddImage(logo);
-                            }
-
-                            else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                            {
+                            } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                                 iTextSharp.text.BaseColor myColour = null;
@@ -499,10 +477,7 @@ namespace Reliable
                                 contentByte.AddImage(logo);
                             }
 
-                        }
-
-                        else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                        {
+                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                             System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                             iTextSharp.text.BaseColor myColour = null;
@@ -514,10 +489,7 @@ namespace Reliable
                             logo.SetAbsolutePosition(218, 294);
                             contentByte.AddImage(logo);
                         }
-                    }
-
-                    else if (j == 2)
-                    {
+                    } else if (j == 2) {
 
                         iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 395, 531, 769);
                         border.BackgroundColor = colourWhite;
@@ -546,8 +518,7 @@ namespace Reliable
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 397, 582, 90);
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 582, 90);
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
 
                             contentByte.SetFontAndSize(codeFont, 35);
 
@@ -569,36 +540,26 @@ namespace Reliable
                         string oldImage = null;
 
 
-                        for (int q = 0; q < outputOld.Length; q++)
-                        {
+                        for (int q = 0; q < outputOld.Length; q++) {
 
-                            if (q == outputOld.Length - 1)
-                            {
+                            if (q == outputOld.Length - 1) {
                                 break;
-                            }
-
-                            else if (q == outputOld.Length - 2)
-                            {
+                            } else if (q == outputOld.Length - 2) {
                                 oldImage += outputOld[q];
 
-                            }
-
-                            else if (q < outputOld.Length - 2)
-                            {
+                            } else if (q < outputOld.Length - 2) {
                                 oldImage += outputOld[q] + "-";
                             }
 
                         }
 
-                        if (itemTable.Rows[i][5].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][5].ToString() != "") {
                             string input = itemTable.Rows[i][6].ToString();
                             string condition = "  *";
                             string[] output = Regex.Split(input, condition);
                             string partNum = output[0];
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"))
-                            {
+                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
 
@@ -610,10 +571,7 @@ namespace Reliable
                                 logo.RotationDegrees = 90;
                                 logo.SetAbsolutePosition(442, 668);
                                 contentByte.AddImage(logo);
-                            }
-
-                            else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                            {
+                            } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                                 iTextSharp.text.BaseColor myColour = null;
@@ -626,10 +584,7 @@ namespace Reliable
                                 contentByte.AddImage(logo);
                             }
 
-                        }
-
-                        else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                        {
+                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                             System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                             iTextSharp.text.BaseColor myColour = null;
@@ -641,10 +596,7 @@ namespace Reliable
                             logo.SetAbsolutePosition(442, 668);
                             contentByte.AddImage(logo);
                         }
-                    }
-
-                    else if (j == 3)
-                    {
+                    } else if (j == 3) {
 
                         iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 21, 531, 395);
                         border.BackgroundColor = colourWhite;
@@ -674,8 +626,7 @@ namespace Reliable
                         contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 208, 90);
 
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
 
                             contentByte.SetFontAndSize(codeFont, 35);
 
@@ -697,37 +648,27 @@ namespace Reliable
                         string oldImage = null;
 
 
-                        for (int q = 0; q < outputOld.Length; q++)
-                        {
+                        for (int q = 0; q < outputOld.Length; q++) {
 
-                            if (q == outputOld.Length - 1)
-                            {
+                            if (q == outputOld.Length - 1) {
                                 break;
-                            }
-
-                            else if (q == outputOld.Length - 2)
-                            {
+                            } else if (q == outputOld.Length - 2) {
                                 oldImage += outputOld[q];
 
-                            }
-
-                            else if (q < outputOld.Length - 2)
-                            {
+                            } else if (q < outputOld.Length - 2) {
                                 oldImage += outputOld[q] + "-";
                             }
 
                         }
 
-                        if (itemTable.Rows[i][5].ToString() != "")
-                        {
+                        if (itemTable.Rows[i][5].ToString() != "") {
 
                             string input = itemTable.Rows[i][6].ToString();
                             string condition = "  *";
                             string[] output = Regex.Split(input, condition);
                             string partNum = output[0];
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"))
-                            {
+                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
 
@@ -739,10 +680,7 @@ namespace Reliable
                                 logo.RotationDegrees = 90;
                                 logo.SetAbsolutePosition(442, 294);
                                 contentByte.AddImage(logo);
-                            }
-
-                            else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                            {
+                            } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                                 iTextSharp.text.BaseColor myColour = null;
@@ -755,10 +693,7 @@ namespace Reliable
                                 contentByte.AddImage(logo);
                             }
 
-                        }
-
-                        else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg"))
-                        {
+                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                             System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
                             iTextSharp.text.BaseColor myColour = null;
@@ -775,16 +710,17 @@ namespace Reliable
 
                     }
 
-                }
-
-                else
-                {
+                } else {
 
                 }
 
             }
 
-            myPDF.Close();
+            try {
+                myPDF.Close();
+            } catch { 
+            
+            }
 
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -797,22 +733,18 @@ namespace Reliable
 
         }
 
-        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void mainMenuToolStripMenuItem_Click(object sender, EventArgs e) {
             FormState.PreviousPage.Show();
 
             this.Hide();
         }
 
-        private void itemNumbersBox_TextChanged(object sender, EventArgs e)
-        {
+        private void itemNumbersBox_TextChanged(object sender, EventArgs e) {
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if(printLocationCheckbox.Checked == true)
-            {
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            if (printLocationCheckbox.Checked == true) {
                 this.Cursor = Cursors.WaitCursor;
 
                 itemNumbersBox.Visible = false;
@@ -843,8 +775,7 @@ namespace Reliable
 
                 locationsList.Clear();
 
-                foreach (DataRow row in locationsTable.Rows)
-                {
+                foreach (DataRow row in locationsTable.Rows) {
                     locationsList.Add(row[0].ToString());
                 }
 
@@ -854,21 +785,61 @@ namespace Reliable
 
                 this.Cursor = Cursors.Default;
 
-            }
-
-            else
-            {
+            } else {
                 itemNumbersBox.Visible = true;
                 locationsListbox.Visible = false;
                 label1.Visible = true;
             }
         }
 
-        private void WarehouseProductLabels_Load(object sender, EventArgs e)
-        {
+        private void WarehouseProductLabels_Load(object sender, EventArgs e) {
             itemNumbersBox.Visible = true;
             locationsListbox.Visible = false;
             label1.Visible = true;
+        }
+
+        private void majorNumberDropdown_SelectedIndexChanged(object sender, EventArgs e) {
+            List<string> WHID = new List<string>();
+            List<string> WHDescription = new List<string>();
+
+            if (WHIDDropdown.SelectedIndex.Equals(0)) {
+                WHIDList.Visible = true;
+                WHIDCreateField.Visible = false;
+                WHIDList.BackColor = Color.DarkGray;
+                WHIDList.Enabled = false;
+            } else if (WHIDDropdown.SelectedIndex.Equals(1)) {
+                WHIDList.Visible = false;
+                WHIDCreateField.Visible = true;
+            } else if (WHIDDropdown.SelectedIndex.Equals(2)) {
+                WHIDList.Visible = true;
+                WHIDCreateField.Visible = false;
+                WHIDList.BackColor = Color.White;
+                WHIDList.Enabled = true;
+                try {
+                    WHID.Clear();
+                    WHDescription.Clear();
+                    WHIDList.Items.Clear();
+                    connect = new OleDbConnection(OLDBEConnect);
+                    OleDbCommand selectCommand = new OleDbCommand("SELECT WHID, WHDescription FROM dbo_ICWhouse", connect);
+                    OleDbDataAdapter oleDbDataAdapter = new OleDbDataAdapter(selectCommand);
+                    DataSet dataSet = new DataSet();
+                    oleDbDataAdapter.SelectCommand = selectCommand;
+                    oleDbDataAdapter.Fill(dataSet);
+                    for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++) {
+                        if (dataSet.Tables[0].Rows[i][0].ToString() == "") {
+                            WHID.Add("IS NULL");
+                            WHDescription.Add("IS NULL");
+                            WHIDList.Items.Add("");
+                        } else {
+                            WHID.Add(dataSet.Tables[0].Rows[i][0].ToString());
+                            WHDescription.Add(dataSet.Tables[0].Rows[i][1].ToString());
+                            WHIDList.Items.Add(WHID[i] + " - " + WHDescription[i]);
+                        }
+                    }
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
