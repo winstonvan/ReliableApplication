@@ -232,127 +232,140 @@ namespace Reliable {
             }
 
             string folderPath = "Z:\\Warehouse Labels\\";
+            string fileName = folderPath + DateTime.Now.ToString("MM-dd-yyyy HH-mm-ss") + " - " + "WarehouseLabels.pdf";
 
             if (!Directory.Exists(folderPath)) {
                 Directory.CreateDirectory(folderPath);
             }
 
-            System.IO.FileStream fs = new FileStream(folderPath + DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "-" + "WarehouseLabels.pdf", FileMode.Create);
+            using (FileStream stream = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)) {
+                Document pdf = new Document(PageSize.LETTER, 10f, 10f, 30f, 30f);
 
-            Document myPDF = new Document(PageSize.LETTER, 10f, 10f, 30f, 30f);
+                PdfWriter write = PdfWriter.GetInstance(pdf, stream);
+                    
+                pdf.AddAuthor("Reliable");
 
-            PdfWriter write = PdfWriter.GetInstance(myPDF, fs);
+                pdf.AddCreator("This document was created using iTextSharp");
 
-            myPDF.AddAuthor("Reliable");
+                pdf.AddSubject("Warehouse Labels");
 
-            myPDF.AddCreator("This document was created using iTextSharp");
+                pdf.AddTitle("Warehouse Labels");
 
-            myPDF.AddSubject("Warehouse Labels");
+                pdf.Open();
 
-            myPDF.AddTitle("Warehouse Labels");
+                PdfContentByte contentByte = write.DirectContent;
 
-            myPDF.Open();
+                //GetUPCA();
 
-            PdfContentByte contentByte = write.DirectContent;
-
-            //GetUPCA();
-
-            BaseFont myFontBold = FontFactory.GetFont(BaseFont.HELVETICA_BOLD).BaseFont;
-            BaseFont myFontRegular = FontFactory.GetFont(BaseFont.HELVETICA).BaseFont;
-            BaseFont codeFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\code128.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-
-
-            for (int i = 0; i < itemTable.Rows.Count; i++) {
-                if (itemTable.Rows[i][0].ToString() != "") {
-                    Code128Conversion bCode = new Code128Conversion(itemTable.Rows[i][4].ToString());
-                    bCode.ConvertToCode128();
-                    theBarcode = bCode.GetBarcode();
-
-                    int j = i % 4;
-
-                    if (j == 0) {
-
-                        iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 395, 307, 769);
-                        border.BackgroundColor = colourWhite;
-                        border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
-                        border.BorderWidth = 1;
-                        border.BorderColor = colourBlack;
-                        contentByte.Rectangle(border);
-
-                        contentByte.BeginText();
-
-                        contentByte.SetFontAndSize(myFontBold, 30);
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 118, 582, 90);
-
-                        contentByte.SetFontAndSize(myFontBold, 15);
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 138, 582, 90);
-
-                        contentByte.SetFontAndSize(myFontBold, 30);
-
-                        string inputNew = itemTable.Rows[i][2].ToString();
-                        string conditionNew = "    *";
-                        string[] outputNew = Regex.Split(inputNew, conditionNew);
-                        string partNumNew = outputNew[0];
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 173, 582, 90);
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 582, 90);
-
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
-                            contentByte.SetFontAndSize(codeFont, 35);
-
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 287, 405, 90);
-
-                            float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
-
-                            contentByte.SetFontAndSize(myFontRegular, 10);
-
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 299, 405 + (barcodeWidth / 2), 90);
-                        }
-
-                        contentByte.EndText();
-
-                        string inputOld = itemTable.Rows[i][0].ToString();
-                        string conditionOld = "- *";
-                        string[] outputOld = Regex.Split(inputOld, conditionOld);
-                        string oldImage = null;
+                BaseFont myFontBold = FontFactory.GetFont(BaseFont.HELVETICA_BOLD).BaseFont;
+                BaseFont myFontRegular = FontFactory.GetFont(BaseFont.HELVETICA).BaseFont;
+                BaseFont codeFont = BaseFont.CreateFont("C:\\Windows\\Fonts\\code128.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
 
-                        for (int q = 0; q < outputOld.Length; q++) {
+                for (int i = 0; i < itemTable.Rows.Count; i++) {
+                    if (itemTable.Rows[i][0].ToString() != "") {
+                        Code128Conversion bCode = new Code128Conversion(itemTable.Rows[i][4].ToString());
+                        bCode.ConvertToCode128();
+                        theBarcode = bCode.GetBarcode();
 
-                            if (q == outputOld.Length - 1) {
-                                break;
-                            } else if (q == outputOld.Length - 2) {
-                                oldImage += outputOld[q];
+                        int j = i % 4;
 
-                            } else if (q < outputOld.Length - 2) {
-                                oldImage += outputOld[q] + "-";
+                        if (j == 0) {
+
+                            iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 395, 307, 769);
+                            border.BackgroundColor = colourWhite;
+                            border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
+                            border.BorderWidth = 1;
+                            border.BorderColor = colourBlack;
+                            contentByte.Rectangle(border);
+
+                            contentByte.BeginText();
+
+                            contentByte.SetFontAndSize(myFontBold, 30);
+
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 118, 582, 90);
+
+                            contentByte.SetFontAndSize(myFontBold, 15);
+
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 138, 582, 90);
+
+                            contentByte.SetFontAndSize(myFontBold, 30);
+
+                            string inputNew = itemTable.Rows[i][2].ToString();
+                            string conditionNew = "    *";
+                            string[] outputNew = Regex.Split(inputNew, conditionNew);
+                            string partNumNew = outputNew[0];
+
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 173, 582, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 582, 90);
+
+                            if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
+                                contentByte.SetFontAndSize(codeFont, 35);
+
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 287, 405, 90);
+
+                                float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
+
+                                contentByte.SetFontAndSize(myFontRegular, 10);
+
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 299, 405 + (barcodeWidth / 2), 90);
                             }
 
-                        }
+                            contentByte.EndText();
+
+                            string inputOld = itemTable.Rows[i][0].ToString();
+                            string conditionOld = "- *";
+                            string[] outputOld = Regex.Split(inputOld, conditionOld);
+                            string oldImage = null;
 
 
-                        if (itemTable.Rows[i][5].ToString() != "") {
+                            for (int q = 0; q < outputOld.Length; q++) {
 
-                            string input = itemTable.Rows[i][6].ToString();
-                            string condition = "  *";
-                            string[] output = Regex.Split(input, condition);
-                            string partNum = output[0];
+                                if (q == outputOld.Length - 1) {
+                                    break;
+                                } else if (q == outputOld.Length - 2) {
+                                    oldImage += outputOld[q];
+
+                                } else if (q < outputOld.Length - 2) {
+                                    oldImage += outputOld[q] + "-";
+                                }
+
+                            }
 
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+                            if (itemTable.Rows[i][5].ToString() != "") {
 
-                                System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"));
+                                string input = itemTable.Rows[i][6].ToString();
+                                string condition = "  *";
+                                string[] output = Regex.Split(input, condition);
+                                string partNum = output[0];
 
-                                iTextSharp.text.BaseColor myColour = null;
 
-                                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                                if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
-                                logo.ScaleToFit(81, 81);
-                                logo.RotationDegrees = 90;
-                                logo.SetAbsolutePosition(218, 668);
-                                contentByte.AddImage(logo);
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(218, 668);
+                                    contentByte.AddImage(logo);
+                                } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(218, 668);
+                                    contentByte.AddImage(logo);
+                                }
+
                             } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
@@ -366,104 +379,104 @@ namespace Reliable {
                                 contentByte.AddImage(logo);
                             }
 
-                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
-                            System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
-                            iTextSharp.text.BaseColor myColour = null;
+                        } else if (j == 1) {
 
-                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                            iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 21, 307, 395);
+                            border.BackgroundColor = colourWhite;
+                            border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
+                            border.BorderWidth = 1;
+                            border.BorderColor = colourBlack;
+                            contentByte.Rectangle(border);
 
-                            logo.ScaleToFit(81, 81);
-                            logo.RotationDegrees = 90;
-                            logo.SetAbsolutePosition(218, 668);
-                            contentByte.AddImage(logo);
-                        }
+                            contentByte.BeginText();
 
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                    } else if (j == 1) {
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 118, 208, 90);
 
-                        iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(83, 21, 307, 395);
-                        border.BackgroundColor = colourWhite;
-                        border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
-                        border.BorderWidth = 1;
-                        border.BorderColor = colourBlack;
-                        contentByte.Rectangle(border);
+                            contentByte.SetFontAndSize(myFontBold, 15);
 
-                        contentByte.BeginText();
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 138, 208, 90);
 
-                        contentByte.SetFontAndSize(myFontBold, 30);
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 118, 208, 90);
+                            string inputNew = itemTable.Rows[i][2].ToString();
+                            string conditionNew = "    *";
+                            string[] outputNew = Regex.Split(inputNew, conditionNew);
+                            string partNumNew = outputNew[0];
 
-                        contentByte.SetFontAndSize(myFontBold, 15);
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 138, 208, 90);
-
-                        contentByte.SetFontAndSize(myFontBold, 30);
-
-                        string inputNew = itemTable.Rows[i][2].ToString();
-                        string conditionNew = "    *";
-                        string[] outputNew = Regex.Split(inputNew, conditionNew);
-                        string partNumNew = outputNew[0];
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 173, 208, 90);
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 208, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 173, 208, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 208, 208, 90);
 
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
-                            contentByte.SetFontAndSize(codeFont, 35);
+                            if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
+                                contentByte.SetFontAndSize(codeFont, 35);
 
 
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 287, 31, 90);
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 287, 31, 90);
 
-                            float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
+                                float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
 
-                            contentByte.SetFontAndSize(myFontRegular, 10);
+                                contentByte.SetFontAndSize(myFontRegular, 10);
 
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 299, 31 + (barcodeWidth / 2), 90);
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 299, 31 + (barcodeWidth / 2), 90);
 
-                        }
-
-                        contentByte.EndText();
-
-                        string inputOld = itemTable.Rows[i][0].ToString();
-                        string conditionOld = "- *";
-                        string[] outputOld = Regex.Split(inputOld, conditionOld);
-                        string oldImage = null;
-
-
-                        for (int q = 0; q < outputOld.Length; q++) {
-
-                            if (q == outputOld.Length - 1) {
-                                break;
-                            } else if (q == outputOld.Length - 2) {
-                                oldImage += outputOld[q];
-
-                            } else if (q < outputOld.Length - 2) {
-                                oldImage += outputOld[q] + "-";
                             }
 
-                        }
+                            contentByte.EndText();
 
-                        if (itemTable.Rows[i][5].ToString() != "") {
+                            string inputOld = itemTable.Rows[i][0].ToString();
+                            string conditionOld = "- *";
+                            string[] outputOld = Regex.Split(inputOld, conditionOld);
+                            string oldImage = null;
 
-                            string input = itemTable.Rows[i][6].ToString();
-                            string condition = "  *";
-                            string[] output = Regex.Split(input, condition);
-                            string partNum = output[0];
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+                            for (int q = 0; q < outputOld.Length; q++) {
 
-                                System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+                                if (q == outputOld.Length - 1) {
+                                    break;
+                                } else if (q == outputOld.Length - 2) {
+                                    oldImage += outputOld[q];
 
-                                iTextSharp.text.BaseColor myColour = null;
+                                } else if (q < outputOld.Length - 2) {
+                                    oldImage += outputOld[q] + "-";
+                                }
 
-                                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                            }
 
-                                logo.ScaleToFit(81, 81);
-                                logo.RotationDegrees = 90;
-                                logo.SetAbsolutePosition(218, 294);
-                                contentByte.AddImage(logo);
+                            if (itemTable.Rows[i][5].ToString() != "") {
+
+                                string input = itemTable.Rows[i][6].ToString();
+                                string condition = "  *";
+                                string[] output = Regex.Split(input, condition);
+                                string partNum = output[0];
+
+                                if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(218, 294);
+                                    contentByte.AddImage(logo);
+                                } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(218, 294);
+                                    contentByte.AddImage(logo);
+                                }
+
                             } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
@@ -476,101 +489,101 @@ namespace Reliable {
                                 logo.SetAbsolutePosition(218, 294);
                                 contentByte.AddImage(logo);
                             }
+                        } else if (j == 2) {
 
-                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
-                            System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+                            iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 395, 531, 769);
+                            border.BackgroundColor = colourWhite;
+                            border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
+                            border.BorderWidth = 1;
+                            border.BorderColor = colourBlack;
+                            contentByte.Rectangle(border);
 
-                            iTextSharp.text.BaseColor myColour = null;
+                            contentByte.BeginText();
 
-                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                            logo.ScaleToFit(81, 81);
-                            logo.RotationDegrees = 90;
-                            logo.SetAbsolutePosition(218, 294);
-                            contentByte.AddImage(logo);
-                        }
-                    } else if (j == 2) {
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 342, 582, 90);
 
-                        iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 395, 531, 769);
-                        border.BackgroundColor = colourWhite;
-                        border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
-                        border.BorderWidth = 1;
-                        border.BorderColor = colourBlack;
-                        contentByte.Rectangle(border);
+                            contentByte.SetFontAndSize(myFontBold, 15);
 
-                        contentByte.BeginText();
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 362, 582, 90);
 
-                        contentByte.SetFontAndSize(myFontBold, 30);
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 342, 582, 90);
+                            string inputNew = itemTable.Rows[i][2].ToString();
+                            string conditionNew = "    *";
+                            string[] outputNew = Regex.Split(inputNew, conditionNew);
+                            string partNumNew = outputNew[0];
 
-                        contentByte.SetFontAndSize(myFontBold, 15);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 397, 582, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 582, 90);
 
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 362, 582, 90);
+                            if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
 
-                        contentByte.SetFontAndSize(myFontBold, 30);
-
-                        string inputNew = itemTable.Rows[i][2].ToString();
-                        string conditionNew = "    *";
-                        string[] outputNew = Regex.Split(inputNew, conditionNew);
-                        string partNumNew = outputNew[0];
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 397, 582, 90);
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 582, 90);
-
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
-
-                            contentByte.SetFontAndSize(codeFont, 35);
+                                contentByte.SetFontAndSize(codeFont, 35);
 
 
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 511, 405, 90);
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 511, 405, 90);
 
-                            float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
+                                float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
 
-                            contentByte.SetFontAndSize(myFontRegular, 10);
+                                contentByte.SetFontAndSize(myFontRegular, 10);
 
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 523, 405 + (barcodeWidth / 2), 90);
-                        }
-
-                        contentByte.EndText();
-
-                        string inputOld = itemTable.Rows[i][0].ToString();
-                        string conditionOld = "- *";
-                        string[] outputOld = Regex.Split(inputOld, conditionOld);
-                        string oldImage = null;
-
-
-                        for (int q = 0; q < outputOld.Length; q++) {
-
-                            if (q == outputOld.Length - 1) {
-                                break;
-                            } else if (q == outputOld.Length - 2) {
-                                oldImage += outputOld[q];
-
-                            } else if (q < outputOld.Length - 2) {
-                                oldImage += outputOld[q] + "-";
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 523, 405 + (barcodeWidth / 2), 90);
                             }
 
-                        }
+                            contentByte.EndText();
 
-                        if (itemTable.Rows[i][5].ToString() != "") {
-                            string input = itemTable.Rows[i][6].ToString();
-                            string condition = "  *";
-                            string[] output = Regex.Split(input, condition);
-                            string partNum = output[0];
+                            string inputOld = itemTable.Rows[i][0].ToString();
+                            string conditionOld = "- *";
+                            string[] outputOld = Regex.Split(inputOld, conditionOld);
+                            string oldImage = null;
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
 
-                                System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+                            for (int q = 0; q < outputOld.Length; q++) {
 
-                                iTextSharp.text.BaseColor myColour = null;
+                                if (q == outputOld.Length - 1) {
+                                    break;
+                                } else if (q == outputOld.Length - 2) {
+                                    oldImage += outputOld[q];
 
-                                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                                } else if (q < outputOld.Length - 2) {
+                                    oldImage += outputOld[q] + "-";
+                                }
 
-                                logo.ScaleToFit(81, 81);
-                                logo.RotationDegrees = 90;
-                                logo.SetAbsolutePosition(442, 668);
-                                contentByte.AddImage(logo);
+                            }
+
+                            if (itemTable.Rows[i][5].ToString() != "") {
+                                string input = itemTable.Rows[i][6].ToString();
+                                string condition = "  *";
+                                string[] output = Regex.Split(input, condition);
+                                string partNum = output[0];
+
+                                if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(442, 668);
+                                    contentByte.AddImage(logo);
+                                } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(442, 668);
+                                    contentByte.AddImage(logo);
+                                }
+
                             } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
@@ -583,103 +596,103 @@ namespace Reliable {
                                 logo.SetAbsolutePosition(442, 668);
                                 contentByte.AddImage(logo);
                             }
+                        } else if (j == 3) {
 
-                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
-                            System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+                            iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 21, 531, 395);
+                            border.BackgroundColor = colourWhite;
+                            border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
+                            border.BorderWidth = 1;
+                            border.BorderColor = colourBlack;
+                            contentByte.Rectangle(border);
 
-                            iTextSharp.text.BaseColor myColour = null;
+                            contentByte.BeginText();
 
-                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                            logo.ScaleToFit(81, 81);
-                            logo.RotationDegrees = 90;
-                            logo.SetAbsolutePosition(442, 668);
-                            contentByte.AddImage(logo);
-                        }
-                    } else if (j == 3) {
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 342, 208, 90);
 
-                        iTextSharp.text.Rectangle border = new iTextSharp.text.Rectangle(307, 21, 531, 395);
-                        border.BackgroundColor = colourWhite;
-                        border.Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER;
-                        border.BorderWidth = 1;
-                        border.BorderColor = colourBlack;
-                        contentByte.Rectangle(border);
+                            contentByte.SetFontAndSize(myFontBold, 15);
 
-                        contentByte.BeginText();
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 362, 208, 90);
 
-                        contentByte.SetFontAndSize(myFontBold, 30);
+                            contentByte.SetFontAndSize(myFontBold, 30);
 
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][0].ToString(), 342, 208, 90);
+                            string inputNew = itemTable.Rows[i][2].ToString();
+                            string conditionNew = "    *";
+                            string[] outputNew = Regex.Split(inputNew, conditionNew);
+                            string partNumNew = outputNew[0];
 
-                        contentByte.SetFontAndSize(myFontBold, 15);
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][1].ToString(), 362, 208, 90);
-
-                        contentByte.SetFontAndSize(myFontBold, 30);
-
-                        string inputNew = itemTable.Rows[i][2].ToString();
-                        string conditionNew = "    *";
-                        string[] outputNew = Regex.Split(inputNew, conditionNew);
-                        string partNumNew = outputNew[0];
-
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 397, 208, 90);
-                        contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 208, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, partNumNew, 397, 208, 90);
+                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][3].ToString(), 432, 208, 90);
 
 
-                        if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
+                            if (itemTable.Rows[i][4].ToString() != "0" && itemTable.Rows[i][4].ToString() != "") {
 
-                            contentByte.SetFontAndSize(codeFont, 35);
-
-
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 511, 31, 90);
-
-                            float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
-
-                            contentByte.SetFontAndSize(myFontRegular, 10);
-
-                            contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 523, 31 + (barcodeWidth / 2), 90);
-                        }
-
-                        contentByte.EndText();
-
-                        string inputOld = itemTable.Rows[i][0].ToString();
-                        string conditionOld = "- *";
-                        string[] outputOld = Regex.Split(inputOld, conditionOld);
-                        string oldImage = null;
+                                contentByte.SetFontAndSize(codeFont, 35);
 
 
-                        for (int q = 0; q < outputOld.Length; q++) {
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_LEFT, theBarcode, 511, 31, 90);
 
-                            if (q == outputOld.Length - 1) {
-                                break;
-                            } else if (q == outputOld.Length - 2) {
-                                oldImage += outputOld[q];
+                                float barcodeWidth = codeFont.GetWidthPoint(theBarcode, 35);
 
-                            } else if (q < outputOld.Length - 2) {
-                                oldImage += outputOld[q] + "-";
+                                contentByte.SetFontAndSize(myFontRegular, 10);
+
+                                contentByte.ShowTextAligned(PdfContentByte.ALIGN_CENTER, itemTable.Rows[i][4].ToString(), 523, 31 + (barcodeWidth / 2), 90);
                             }
 
-                        }
+                            contentByte.EndText();
 
-                        if (itemTable.Rows[i][5].ToString() != "") {
+                            string inputOld = itemTable.Rows[i][0].ToString();
+                            string conditionOld = "- *";
+                            string[] outputOld = Regex.Split(inputOld, conditionOld);
+                            string oldImage = null;
 
-                            string input = itemTable.Rows[i][6].ToString();
-                            string condition = "  *";
-                            string[] output = Regex.Split(input, condition);
-                            string partNum = output[0];
 
-                            if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+                            for (int q = 0; q < outputOld.Length; q++) {
 
-                                System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+                                if (q == outputOld.Length - 1) {
+                                    break;
+                                } else if (q == outputOld.Length - 2) {
+                                    oldImage += outputOld[q];
 
-                                iTextSharp.text.BaseColor myColour = null;
+                                } else if (q < outputOld.Length - 2) {
+                                    oldImage += outputOld[q] + "-";
+                                }
 
-                                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+                            }
 
-                                logo.ScaleToFit(81, 81);
-                                logo.RotationDegrees = 90;
-                                logo.SetAbsolutePosition(442, 294);
-                                contentByte.AddImage(logo);
+                            if (itemTable.Rows[i][5].ToString() != "") {
+
+                                string input = itemTable.Rows[i][6].ToString();
+                                string condition = "  *";
+                                string[] output = Regex.Split(input, condition);
+                                string partNum = output[0];
+
+                                if (File.Exists("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString() + partNum + ".jpg")) {
+
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\PCC\\Product Photos\\JM Tech\\Print RGB\\" + itemTable.Rows[i][5].ToString() + "\\" + itemTable.Rows[i][5].ToString().ToLower() + partNum + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(442, 294);
+                                    contentByte.AddImage(logo);
+                                } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
+                                    System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+
+                                    iTextSharp.text.BaseColor myColour = null;
+
+                                    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
+
+                                    logo.ScaleToFit(81, 81);
+                                    logo.RotationDegrees = 90;
+                                    logo.SetAbsolutePosition(442, 294);
+                                    contentByte.AddImage(logo);
+                                }
+
                             } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
                                 System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
 
@@ -693,41 +706,31 @@ namespace Reliable {
                                 contentByte.AddImage(logo);
                             }
 
-                        } else if (File.Exists("Z:\\JMCat\\225\\" + oldImage + ".jpg")) {
-                            System.Drawing.Image myImage = (System.Drawing.Image.FromFile("Z:\\JMCat\\225\\" + oldImage + ".jpg"));
+                            pdf.NewPage();
 
-                            iTextSharp.text.BaseColor myColour = null;
-
-                            iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(myImage, myColour);
-
-                            logo.ScaleToFit(81, 81);
-                            logo.RotationDegrees = 90;
-                            logo.SetAbsolutePosition(442, 294);
-                            contentByte.AddImage(logo);
                         }
 
-                        myPDF.NewPage();
+                    } else {
 
                     }
 
-                } else {
-
                 }
 
+                try {
+                    pdf.Close();
+
+
+                    Process process = new Process();
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    process.StartInfo = startInfo;
+
+                    startInfo.FileName = fileName;
+                    process.Start();
+                } catch {
+
+                }
             }
 
-            try {
-                myPDF.Close();
-            } catch { 
-            
-            }
-
-            Process process = new Process();
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            process.StartInfo = startInfo;
-
-            startInfo.FileName = folderPath + DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "-" + "WarehouseLabels.pdf";
-            process.Start();
 
             this.Cursor = Cursors.Default;
 
