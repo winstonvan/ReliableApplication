@@ -205,6 +205,7 @@ namespace TestProject {
             this.Controls.Add(this.DataTable);
             this.Controls.Add(this.CustomerContractCode);
             this.Controls.Add(this.CustomerContractCodeField);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RebateContracts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

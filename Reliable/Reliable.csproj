@@ -26,7 +26,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\RMPSRV02\Reliable Files\Reliable Application\</UpdateUrl>
-    <ApplicationRevision>91</ApplicationRevision>
+    <ApplicationRevision>93</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -473,6 +473,12 @@
     <Compile Include="WarehouseMenu.Designer.cs">
       <DependentUpon>WarehouseMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryCount.Designer.cs">
+      <DependentUpon>InventoryCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="WarehouseProductLabels.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -589,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseMenu.resx">
       <DependentUpon>WarehouseMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryCount.resx">
+      <DependentUpon>InventoryCount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WarehouseProductLabels.resx">
       <DependentUpon>WarehouseProductLabels.cs</DependentUpon>

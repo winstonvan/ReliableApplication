@@ -121,6 +121,16 @@ namespace Reliable
 
             formNew.Show();
         }
+
+        private void InventoryCountButton_Click(object sender, EventArgs e) {
+            this.Hide();
+
+            InventoryCount formNew = new InventoryCount();
+
+            formNew.Closed += (s, args) => this.Close();
+
+            formNew.Show();
+        }
     }
 
 }

@@ -41,6 +41,7 @@
             this.mainMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrderDeskInvoicesButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.RebateContractsButton = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.InventoryCountButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -253,12 +254,49 @@
             this.RebateContractsButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RebateContractsButton.Click += new System.EventHandler(this.RebateContractsButton_Click);
             // 
+            // InventoryCountButton
+            // 
+            this.InventoryCountButton.Active = false;
+            this.InventoryCountButton.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.InventoryCountButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.InventoryCountButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.InventoryCountButton.BorderRadius = 0;
+            this.InventoryCountButton.ButtonText = "Inventory Count";
+            this.InventoryCountButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.InventoryCountButton.DisabledColor = System.Drawing.Color.Gray;
+            this.InventoryCountButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.InventoryCountButton.Iconimage = null;
+            this.InventoryCountButton.Iconimage_right = null;
+            this.InventoryCountButton.Iconimage_right_Selected = null;
+            this.InventoryCountButton.Iconimage_Selected = null;
+            this.InventoryCountButton.IconMarginLeft = 0;
+            this.InventoryCountButton.IconMarginRight = 0;
+            this.InventoryCountButton.IconRightVisible = true;
+            this.InventoryCountButton.IconRightZoom = 0D;
+            this.InventoryCountButton.IconVisible = true;
+            this.InventoryCountButton.IconZoom = 135D;
+            this.InventoryCountButton.IsTab = false;
+            this.InventoryCountButton.Location = new System.Drawing.Point(33, 262);
+            this.InventoryCountButton.Name = "InventoryCountButton";
+            this.InventoryCountButton.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.InventoryCountButton.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.InventoryCountButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.InventoryCountButton.selected = false;
+            this.InventoryCountButton.Size = new System.Drawing.Size(226, 71);
+            this.InventoryCountButton.TabIndex = 52;
+            this.InventoryCountButton.Text = "Inventory Count";
+            this.InventoryCountButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.InventoryCountButton.Textcolor = System.Drawing.Color.White;
+            this.InventoryCountButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InventoryCountButton.Click += new System.EventHandler(this.InventoryCountButton_Click);
+            // 
             // ReportingMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
             this.ClientSize = new System.Drawing.Size(293, 467);
+            this.Controls.Add(this.InventoryCountButton);
             this.Controls.Add(this.RebateContractsButton);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.OrderDeskInvoicesButton);
@@ -290,5 +328,6 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mainMenuToolStripMenuItem;
         private Bunifu.Framework.UI.BunifuFlatButton RebateContractsButton;
+        private Bunifu.Framework.UI.BunifuFlatButton InventoryCountButton;
     }
 }
